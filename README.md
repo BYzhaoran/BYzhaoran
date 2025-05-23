@@ -1,4 +1,4 @@
-<h1 align="center">Hi, I'm [Zhaoraning] 👋</h1>
+<h1 align="center">Hi, I'm BYzhaoran (王文钊) 👋</h1>
 
 <p align="center">
   Undergraduate | Embedded AI Developer | Visual Learning Enthusiast
@@ -27,10 +27,11 @@ My academic and personal projects revolve around intelligent systems that can se
 
 ## 🛠️ Tech Stack
 
-- **Microcontrollers**: STM32 (F4/H7), MSPM0G350x, K210  
-- **Sensors & Actuators**: Motors, encoders, PWM, GPIO, HC-05, depth cameras  
+- **Microcontrollers**: STM32 (F4/H7), MSPM0G350x  
+- **Edge Devices**: Jetson Nano, Raspberry Pi  
+- **Sensors & Actuators**: Motors, encoders, PWM, GPIO, HC-05, IR sensors, **Orbbec Gemini2** depth camera  
 - **Frameworks**: ROS2, Isaac Sim  
-- **Vision Models**: Deformable DETR, VisDrone, YOLO series  
+- **Vision Models**: Deformable DETR, YOLO series, VisDrone dataset  
 - **Languages**: C, C++, Python, Embedded C  
 - **AI Tools**: ChatGPT, DeepSeek, MarsCode
 
@@ -41,6 +42,8 @@ My academic and personal projects revolve around intelligent systems that can se
 - **⚙️ Embedded PID Motor Control** using MSPM0G350x and encoders  
 - **🚘 Line Tracking & Obstacle Avoidance Robot** using STM32 and IR sensors  
 - **🧠 Visual Object Detection** based on VisDrone dataset and Deformable DETR  
+- **📦 Jetson Nano + Gemini2** based depth-aware robotics platform (in progress)  
+- **🍓 Raspberry Pi** powered IoT prototypes and edge applications  
 - **📊 AI Strategy Presentation**: _From ChatGPT to DeepSeek: How AI Reshapes National Development_
 
 > More coming soon!
@@ -58,12 +61,8 @@ My academic and personal projects revolve around intelligent systems that can se
 
 ## 📫 Contact Me
 
-- Email: yourname@example.com  
-- Blog: [Coming soon...]  
-- Bilibili / 知乎: [Optional if applicable]
-
----
+- Email: zhaoraning@gmail.com  
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=YourGitHubUsername&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />
+  <img src="https://komarev.com/ghpvc/?username=BYzhaoran&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />
 </p>
