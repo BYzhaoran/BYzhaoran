@@ -1,16 +1,23 @@
-## Hi there 👋
+## Hi there，I'm BYzhaoran Welcome to my profile  👋
 
-<!--
-**BYzhaoran/BYzhaoran** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+🎓 Undergraduate Student in Electronic Information Science and Technology
+🔬 Aspiring Researcher in Embedded AI & Visual Perception Systems
+💡 Currently focusing on the intersection of AI, embedded systems, and embodied intelligence, with a strong interest in computer vision and visual learning.
+   ()
 
-Here are some ideas to get you started:
+🛠️ Hands-on experience with:
+• STM32 (H7/F4 series), MSPM0G350x, K210, ROS2, and various motor control systems
+• Vision-based object detection using datasets like VisDrone and models like Deformable DETR
+• Building real-time, edge-deployable intelligent systems with depth cameras, sensors, and microcontrollers
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+📈 Long-term goals:
+• Pursue graduate studies and possibly a Ph.D.
+• Bridge theory and practice in intelligent robotics
+• Achieve financial independence through tech and innovation
+
+📚 Learning & building with:
+ChatGPT · DeepSeek · MarsCode · Isaac Sim · Sora
+
+🌍 Enthusiastic about how AI transforms national strategies and global development.
+
+"Turning coffee and code into robots that think." ☕🤖
