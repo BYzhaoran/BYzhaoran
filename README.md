@@ -29,6 +29,7 @@ My academic and personal projects revolve around intelligent systems that can se
 
 - **Microcontrollers**: STM32 (F4/H7), MSPM0G350x  
 - **Edge Devices**: Jetson Nano, Raspberry Pi  
+- **Robotics**: SO100 Arm, PWM motor drive, encoder feedback  
 - **Sensors & Actuators**: Motors, encoders, PWM, GPIO, HC-05, IR sensors, **Orbbec Gemini2** depth camera  
 - **Frameworks**: ROS2, Isaac Sim  
 - **Vision Models**: Deformable DETR, YOLO series, VisDrone dataset  
@@ -40,6 +41,7 @@ My academic and personal projects revolve around intelligent systems that can se
 ## 🔧 Projects
 
 - **⚙️ Embedded PID Motor Control** using MSPM0G350x and encoders  
+- **🦾 SO100 Robotic Arm** development: joint control, motion planning, and feedback loop testing  
 - **🚘 Line Tracking & Obstacle Avoidance Robot** using STM32 and IR sensors  
 - **🧠 Visual Object Detection** based on VisDrone dataset and Deformable DETR  
 - **📦 Jetson Nano + Gemini2** based depth-aware robotics platform (in progress)  
