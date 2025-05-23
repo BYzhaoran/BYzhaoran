@@ -14,8 +14,6 @@ I’m particularly interested in **visual learning**, **robotic perception**, an
 
 My academic and personal projects revolve around intelligent systems that can see, think, and act in the physical world.
 
-![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=BYzhaoran&theme=rogue)
-
 ---
 
 ## 🧠 Research Interests
