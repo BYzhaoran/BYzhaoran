@@ -1,4 +1,7 @@
-<h1 align="center">Hi, I'm BYzhaoran (王文钊) 👋</h1>
+<h3 align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&pause=1000&color=F75C7E&center=true&vCenter=true&width=435&lines=Hi+there%2C+I'm+BYzhaoran+(王文钊)!;Embedded+AI+Developer+%7C+Visual+Learning+Fan;Welcome+to+my+GitHub+profile!">
+</h3>
+
 
 <p align="center">
   Undergraduate | Embedded AI Developer | Visual Learning Enthusiast
@@ -29,13 +32,17 @@ My academic and personal projects revolve around intelligent systems that can se
 
 ## 🛠️ Tech Stack
 
-- **Microcontrollers**: STM32 (F4/H7), MSPM0,ESP32,C51
-- **Edge Devices**: Jetson Nano, Raspberry Pi  
-- **Robotics**: SO100 Arm, PWM motor drive, encoder feedback  
-- **Sensors & Actuators**: **Orbbec Gemini2** depth camera  
-- **Frameworks**: ROS2, Isaac Sim  
-- **Vision Models**: Deformable DETR, YOLO series, VisDrone dataset  
-- **Languages**: C, C++, Python, Embedded C  
+<p align="center">
+  <a href="https://github.com/BYzhaoran">
+    <img src="https://img.shields.io/badge/Code-C++-informational?style=for-the-badge&logo=c%2b%2b&logoColor=white" />
+    <img src="https://img.shields.io/badge/Python-💖-informational?style=for-the-badge&logo=python&logoColor=white" />
+    <img src="https://img.shields.io/badge/STM32-H7%2FF4-0066cc?style=for-the-badge&logo=stmicroelectronics&logoColor=white" />
+    <img src="https://img.shields.io/badge/Jetson-Nano-00C853?style=for-the-badge&logo=nvidia&logoColor=white" />
+    <img src="https://img.shields.io/badge/Isaac-Sim-ff6600?style=for-the-badge&logo=nvidia&logoColor=white" />
+    <img src="https://img.shields.io/badge/DeepSeek-AI-blueviolet?style=for-the-badge" />
+  </a>
+</p>
+
 
 ---
 
