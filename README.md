@@ -14,6 +14,8 @@ I’m particularly interested in **visual learning**, **robotic perception**, an
 
 My academic and personal projects revolve around intelligent systems that can see, think, and act in the physical world.
 
+![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=BYzhaoran&theme=rogue)
+
 ---
 
 ## 🧠 Research Interests
@@ -27,7 +29,7 @@ My academic and personal projects revolve around intelligent systems that can se
 
 ## 🛠️ Tech Stack
 
-- **Microcontrollers**: STM32 (F4/H7), MSPM0G350x  
+- **Microcontrollers**: STM32 (F4/H7), MSPM0,ESP32,C51
 - **Edge Devices**: Jetson Nano, Raspberry Pi  
 - **Robotics**: SO100 Arm, PWM motor drive, encoder feedback  
 - **Sensors & Actuators**: **Orbbec Gemini2** depth camera  
@@ -45,6 +47,7 @@ My academic and personal projects revolve around intelligent systems that can se
 - **🧠 Visual Object Detection** based on VisDrone dataset and Deformable DETR  
 - **📦 Jetson Nano + Gemini2** based depth-aware robotics platform (in progress)  
 - **🍓 Raspberry Pi**  edge applications  
+- **👁️ Integration of Deformable DETR into Isaac Sim**: porting VisDrone-trained model for simulated robotic perception tasks  
 
 > More coming soon!
 
