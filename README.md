@@ -1,4 +1,4 @@
-<h1 align="center">Hi, I'm BYzhaoran (王文钊) 👋</h1>
+<h1 align="center">Hi, I'm BYzhaoran (Wenzhao Wang) 👋</h1>
 
 <p align="center">
   Undergraduate | Embedded AI Developer | Visual Learning Enthusiast
