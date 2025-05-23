@@ -30,23 +30,21 @@ My academic and personal projects revolve around intelligent systems that can se
 - **Microcontrollers**: STM32 (F4/H7), MSPM0G350x  
 - **Edge Devices**: Jetson Nano, Raspberry Pi  
 - **Robotics**: SO100 Arm, PWM motor drive, encoder feedback  
-- **Sensors & Actuators**: Motors, encoders, PWM, GPIO, HC-05, IR sensors, **Orbbec Gemini2** depth camera  
+- **Sensors & Actuators**: **Orbbec Gemini2** depth camera  
 - **Frameworks**: ROS2, Isaac Sim  
 - **Vision Models**: Deformable DETR, YOLO series, VisDrone dataset  
 - **Languages**: C, C++, Python, Embedded C  
-- **AI Tools**: ChatGPT, DeepSeek, MarsCode
 
 ---
 
 ## 🔧 Projects
 
-- **⚙️ Embedded PID Motor Control** using MSPM0G350x and encoders  
+- **⚙️ Embedded PID Motor Control** On the basis of various Microcontrollers
 - **🦾 SO100 Robotic Arm** development: joint control, motion planning, and feedback loop testing  
 - **🚘 Line Tracking & Obstacle Avoidance Robot** using STM32 and IR sensors  
 - **🧠 Visual Object Detection** based on VisDrone dataset and Deformable DETR  
 - **📦 Jetson Nano + Gemini2** based depth-aware robotics platform (in progress)  
-- **🍓 Raspberry Pi** powered IoT prototypes and edge applications  
-- **📊 AI Strategy Presentation**: _From ChatGPT to DeepSeek: How AI Reshapes National Development_
+- **🍓 Raspberry Pi**  edge applications  
 
 > More coming soon!
 
@@ -56,7 +54,6 @@ My academic and personal projects revolve around intelligent systems that can se
 
 - 🎓 Pursue graduate studies (possibly a Ph.D.)
 - 🧪 Do meaningful research in embodied intelligence
-- 💼 Achieve financial independence through tech
 - 🌍 Contribute to national and global AI innovation
 
 ---
