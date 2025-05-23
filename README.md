@@ -19,7 +19,7 @@ My academic and personal projects revolve around intelligent systems that can se
 ## 🧠 Research Interests
 
 - Embedded AI systems  
-- Visual perception & learning (e.g. object detection, depth estimation)  
+- Visual perception & learning
 - Real-time robotics and motor control  
 - AI for national development and strategy
 
