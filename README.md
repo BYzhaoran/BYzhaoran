@@ -43,7 +43,7 @@ My academic and personal projects revolve around intelligent systems that can se
     <img src="https://img.shields.io/badge/STM32-H7%2FF4-0066cc?style=for-the-badge&logo=stmicroelectronics&logoColor=white" />
     <img src="https://img.shields.io/badge/Jetson-Nano-00C853?style=for-the-badge&logo=nvidia&logoColor=white" />
     <img src="https://img.shields.io/badge/Isaac-Sim-ff6600?style=for-the-badge&logo=nvidia&logoColor=white" />
-    <img src="https://img.shields.io/badge/DeepSeek-AI-blueviolet?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Chatgpt-AI-blueviolet?style=for-the-badge" />
   </a>
 </p>
 
