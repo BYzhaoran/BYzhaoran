@@ -21,7 +21,6 @@ My academic and personal projects revolve around intelligent systems that can se
 - Embedded AI systems  
 - Visual perception & learning
 - Real-time robotics and motor control  
-- AI for national development and strategy
 
 ---
 
@@ -66,7 +65,7 @@ My academic and personal projects revolve around intelligent systems that can se
 
 ## 📈 Goals
 
-- 🎓 Pursue graduate studies (possibly a Ph.D.)
+- 🎓 Pursue graduate studies 
 - 🧪 Do meaningful research in embodied intelligence
 - 🌍 Contribute to national and global AI innovation
 
