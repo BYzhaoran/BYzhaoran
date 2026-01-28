@@ -46,7 +46,8 @@ I focus on <b>real-world deployable systems</b>, especially those that run on ed
 - <b>Other</b>: Data annotation/conversion, COCO dataset, speech synthesis (Edge-TTS)
 
 ---
-
+![Pranesh's GitHub stats](https://github-readme-stats-fast.vercel.app/api?username=BYzhaoran&theme=algolia&show_icons=true)
+---
 <p align="center">
   <a href="https://github.com/BYzhaoran">
     <img src="https://img.shields.io/badge/Python-AI-blue?style=for-the-badge&logo=python&logoColor=white" />
