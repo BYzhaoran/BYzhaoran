@@ -15,6 +15,8 @@ I focus on <b>real-world deployable systems</b>, especially those that run on ed
 
 ---
 
+<img align='right' src='./assets/damie.gif' width='80px'>
+
 ## 🧠 Research & Interest Areas
 
 - <b>Embedded & Edge AI Systems</b>  
