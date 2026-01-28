@@ -8,34 +8,42 @@
 
 ## 🔬 About Me
 
-I'm an undergraduate majoring in **Electronic Information Science and Technology**, passionate about the fusion of **AI and embedded systems**.  
+I'm an undergraduate majoring in <b>Electronic Information Science and Technology</b>, passionate about the fusion of <b>AI and embedded systems</b>.  
 
-I enjoy building **intelligent systems that sense, think, and act** — from hardware-level motor control to high-level visual perception with language interfaces.  
-I focus on **real-world deployable systems**, especially those that run on edge and interact physically with the world.
+I enjoy building <b>intelligent systems that sense, think, and act</b> — from hardware-level motor control to high-level visual perception with language interfaces.  
+I focus on <b>real-world deployable systems</b>, especially those that run on edge and interact physically with the world.
 
 ---
 
 ## 🧠 Research & Interest Areas
 
-- **Embedded & Edge AI Systems**  
-- **Visual Learning & Object Detection**  
-- **Multimodal Interaction & Embodied Intelligence**  
-- **Real-time Robotics & Control Systems**  
-- **Advanced Control Algorithms**: SMC, ADRC, LQR, MPC (with MATLAB & C implementation)  
-- **Robot Middleware & Systems**: ROS2, ROScpp, Isaac Sim  
+- <b>Embedded & Edge AI Systems</b>  
+- <b>Visual Learning & Object Detection</b>  
+- <b>Multimodal Interaction & Embodied Intelligence</b>  
+- <b>Real-time Robotics & Control Systems</b>  
+- <b>Advanced Control Algorithms</b>: SMC, ADRC, LQR, MPC (with MATLAB & C implementation)  
+- <b>Robot Middleware & Systems</b>: ROS2, ROScpp, Isaac Sim  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Microcontrollers**: STM32 (F4/H7), MSPM0G350x, ESP32, 51  
-- **Edge Devices**: Jetson Nano, Raspberry Pi 5  
-- **Robotics & Control**: SO100 ARM, PID motor control, PWM, encoder feedback, motion planning  
-- **Sensors & Perception**: Orbbec Gemini2, HSR01, ASR Pro, IR line tracking  
-- **Frameworks & Tools**: ROS2, ROScpp, Isaac Sim, PlatformIO, EasyEDA, Simulink  
-- **AI Models**: YOLO series, Deformable DETR (VisDrone fine-tuned), Whisper, DeepSeek-V2  
-- **Languages**: Python, C, C++, Embedded C  
-- **Other**: Data annotation/conversion, COCO dataset, speech synthesis (Edge-TTS)
+<div align="center">
+	<img height="100" width="100" src="https://cdn.jsdelivr.net/gh/codeacg/codeacg/assets/vscode.webp">
+	<img height="100" width="100" src="https://cdn.jsdelivr.net/gh/codeacg/codeacg/assets/python.webp">
+	<img height="100" width="100" src="https://cdn.jsdelivr.net/gh/codeacg/codeacg/assets/github.webp">
+</div>
+
+<br/>
+
+- <b>Microcontrollers</b>: STM32 (F4/H7), MSPM0G350x, ESP32, 51  
+- <b>Edge Devices</b>: Jetson Nano, Raspberry Pi 5  
+- <b>Robotics & Control</b>: SO100 ARM, PID motor control, PWM, encoder feedback, motion planning  
+- <b>Sensors & Perception</b>: Orbbec Gemini2, HSR01, ASR Pro, IR line tracking  
+- <b>Frameworks & Tools</b>: ROS2, ROScpp, Isaac Sim, PlatformIO, EasyEDA, Simulink  
+- <b>AI Models</b>: YOLO series, Deformable DETR (VisDrone fine-tuned), Whisper, DeepSeek-V2  
+- <b>Languages</b>: Python, C, C++, Embedded C  
+- <b>Other</b>: Data annotation/conversion, COCO dataset, speech synthesis (Edge-TTS)
 
 ---
 
@@ -56,14 +64,14 @@ I focus on **real-world deployable systems**, especially those that run on edge 
 
 ## 🚀 Highlighted Projects
 
-- **🧠 Visual Detection Pipeline** using VisDrone + Deformable DETR with custom dataset conversion & model tuning  
-- **🦾 SO100 Robotic Arm**: trajectory control, inverse kinematics, multi-joint feedback testing  
-- **🎮 Multimodal Line Tracking Robot**: combining IR sensors, speech control & edge decision  
-- **❄️ AI Voice-Controlled Smart Fridge**: YOLO-based food detection, voice interface with Whisper + TTS + DeepSeek-V2  
-- **🔁 Embedded PID Motor Control**: real-time speed feedback via timer + encoder on STM32/MSPM0  
-- **📐 Control Algorithm Experiments**: SMC, ADRC, LQR, MPC validated in MATLAB/Simulink and ported to embedded C  
-- **🌐 Gemini2 Camera ROS Integration**: adapted for LeRobot framework to support depth-aware robotic tasks  
-- **🧩 LLM-on-Edge**: Local small-scale language model integrated with voice interaction pipeline  
+- <b>🧠 Visual Detection Pipeline</b> using VisDrone + Deformable DETR with custom dataset conversion & model tuning  
+- <b>🦾 SO100 Robotic Arm</b>: trajectory control, inverse kinematics, multi-joint feedback testing  
+- <b>🎮 Multimodal Line Tracking Robot</b>: combining IR sensors, speech control & edge decision  
+- <b>❄️ AI Voice-Controlled Smart Fridge</b>: YOLO-based food detection, voice interface with Whisper + TTS + DeepSeek-V2  
+- <b>🔁 Embedded PID Motor Control</b>: real-time speed feedback via timer + encoder on STM32/MSPM0  
+- <b>📐 Control Algorithm Experiments</b>: SMC, ADRC, LQR, MPC validated in MATLAB/Simulink and ported to embedded C  
+- <b>🌐 Gemini2 Camera ROS Integration</b>: adapted for LeRobot framework to support depth-aware robotic tasks  
+- <b>🧩 LLM-on-Edge</b>: Local small-scale language model integrated with voice interaction pipeline  
 
 > More exciting work in progress… Stay tuned!
 
@@ -71,11 +79,11 @@ I focus on **real-world deployable systems**, especially those that run on edge 
 
 ## 🎯 Goals
 
-- 📚 Continue exploring **real-time, embodied AI systems**  
-- 🔬 Conduct meaningful research in **robotic perception & interaction**  
-- 📐 Advance from classical **PID control** to **modern control theory (SMC, ADRC, MPC)** in robotics  
-- 🤖 Deepen practical skills in **ROS2/ROScpp for large-scale robotic systems**  
-- 🌏 Contribute to **open-source tools** and **global edge AI innovation**
+- 📚 Continue exploring <b>real-time, embodied AI systems</b>  
+- 🔬 Conduct meaningful research in <b>robotic perception & interaction</b>  
+- 📐 Advance from classical <b>PID control</b> to <b>modern control theory (SMC, ADRC, MPC)</b> in robotics  
+- 🤖 Deepen practical skills in <b>ROS2/ROScpp for large-scale robotic systems</b>  
+- 🌏 Contribute to <b>open-source tools</b> and <b>global edge AI innovation</b>
 
 ---
 
