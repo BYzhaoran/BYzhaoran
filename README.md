@@ -6,10 +6,10 @@
 <h1 align="center">Hi, I'm BYzhaoran (Wenzhao Wang) 👋</h1>
 
 <div align="center">
-<img width="150" height="150" src="assets/damie.gif" />
-<img  src="assets/avator.jpg" align="center" height="200" width="200" />
-<img width="150" height="150" src="assets/damie.gif" />
-</div>  
+  <img width="150" height="150" src="assets/damie.gif" style="vertical-align: top;" />
+  <img src="assets/avator.jpg" align="center" height="200" width="200" style="vertical-align: top;" />
+  <img width="150" height="150" src="assets/damie.gif" style="vertical-align: top;" />
+</div>
 
 ---
 
