@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BYzhaoran 博客页面" />
+  <title>BYzhaoran | Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070d1f;
+      --panel: rgba(10, 18, 38, 0.82);
+      --line: rgba(114, 151, 255, 0.22);
+      --text: #e9f0ff;
+      --muted: #9fb0d4;
+      --accent: #39d2ff;
+      --accent2: #56f8b2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Source Han Sans SC", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 18% -12%, rgba(57, 210, 255, 0.2), transparent 35%),
+        radial-gradient(circle at 95% 0, rgba(86, 248, 178, 0.18), transparent 30%),
+        linear-gradient(180deg, #070d1f 0%, #090f20 55%, #050812 100%);
+    }
+
+    .wrap {
+      width: min(1080px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 22px 0 44px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #7e80ff);
+      color: #04101f;
+      font-family: "Orbitron", sans-serif;
+      font-weight: 800;
+    }
+
+    .brand strong {
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 0.08em;
+      font-size: 0.92rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.86rem;
+      border: 1px solid rgba(159, 176, 212, 0.28);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btn.primary {
+      color: #04101f;
+      border: 0;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    .hero {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(1.35rem, 2.8vw, 2rem);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .post-list,
+    .topic-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-list li,
+    .topic-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(159, 176, 212, 0.14);
+    }
+
+    .post-list li:last-child,
+    .topic-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .date {
+      color: var(--accent);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.76rem;
+      margin-right: 8px;
+    }
+
+    .desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .topic-list a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(57, 210, 255, 0.35);
+    }
+
+    .topic-list a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 780px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <span class="brand-box">BZ</span>
+        <strong>BYzhaoran Blog</strong>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="index.html">返回首页</a>
+        <a class="btn" href="PROJECTS.md">项目</a>
+        <a class="btn" href="CONTACT.md">联系</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>博客界面</h1>
+      <p>这里用于聚合学习笔记、工程复盘与阶段记录。当前先提供固定结构，后续可直接接入 Markdown 渲染或从仓库内容自动生成文章列表。</p>
+    </section>
+
+    <main class="grid">
+      <article class="panel">
+        <h2>最近文章</h2>
+        <ul class="post-list">
+          <li><span class="date">2026-04-09</span><span class="desc">双模式主页升级与博客入口接入。</span></li>
+          <li><span class="date">2026-04-01</span><span class="desc">控制算法工程化中的参数管理与回归验证要点。</span></li>
+          <li><span class="date">2026-03-24</span><span class="desc">嵌入式 AI 部署时序与资源隔离实践。</span></li>
+          <li><span class="date">2026-03-10</span><span class="desc">机器人系统模块边界设计与故障定位路径。</span></li>
+        </ul>
+      </article>
+
+      <aside class="panel">
+        <h2>专题导航</h2>
+        <ul class="topic-list">
+          <li><a href="STACK.md">控制 / 视觉 / 嵌入式 技术栈</a></li>
+          <li><a href="PROJECTS.md">项目归档与标签</a></li>
+          <li><a href="ABOUT.md">个人背景与方向</a></li>
+          <li><a href="README.md">站点总览说明</a></li>
+        </ul>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
