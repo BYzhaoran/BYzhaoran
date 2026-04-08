@@ -1,14 +1,15 @@
 :root {
   color-scheme: dark;
-  --bg: #050816;
-  --bg-soft: rgba(9, 14, 28, 0.72);
-  --line: rgba(140, 170, 255, 0.16);
-  --text: #e9f2ff;
-  --muted: #9bb0d0;
+  --bg: #03050c;
+  --bg-soft: rgba(8, 12, 22, 0.76);
+  --line: rgba(140, 170, 255, 0.18);
+  --line-strong: rgba(56, 213, 255, 0.38);
+  --text: #edf4ff;
+  --muted: #92a6c8;
   --accent: #38d5ff;
   --accent-2: #7c6cff;
   --accent-3: #00f5a0;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.52);
 }
 
 * {
@@ -25,11 +26,31 @@ body {
   font-family: "Space Grotesk", system-ui, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(56, 213, 255, 0.14), transparent 28%),
-    radial-gradient(circle at 85% 20%, rgba(124, 108, 255, 0.16), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(0, 245, 160, 0.09), transparent 24%),
-    linear-gradient(180deg, #050816 0%, #060b1b 55%, #04060d 100%);
+    radial-gradient(circle at top left, rgba(56, 213, 255, 0.18), transparent 26%),
+    radial-gradient(circle at 82% 18%, rgba(124, 108, 255, 0.2), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(0, 245, 160, 0.12), transparent 22%),
+    linear-gradient(180deg, #03050c 0%, #060b16 48%, #020308 100%);
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 8%, transparent 92%, rgba(255, 255, 255, 0.04));
+  opacity: 0.25;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 8px;
+  mix-blend-mode: screen;
+  opacity: 0.12;
 }
 
 a {
@@ -54,7 +75,7 @@ main {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.14;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
@@ -71,24 +92,24 @@ main {
 }
 
 .orb-1 {
-  width: 300px;
-  height: 300px;
+  width: 360px;
+  height: 360px;
   left: -100px;
   top: 150px;
   background: rgba(56, 213, 255, 0.16);
 }
 
 .orb-2 {
-  width: 240px;
-  height: 240px;
+  width: 260px;
+  height: 260px;
   right: 2%;
   top: 10%;
   background: rgba(124, 108, 255, 0.18);
 }
 
 .orb-3 {
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
   right: 14%;
   bottom: -80px;
   background: rgba(0, 245, 160, 0.14);
@@ -101,8 +122,8 @@ main {
   transform: translateX(-50%);
   z-index: 20;
   width: min(1180px, calc(100% - 32px));
-  border-radius: 22px;
-  padding: 14px 18px;
+  border-radius: 18px;
+  padding: 13px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -138,6 +159,9 @@ main {
   gap: 20px;
   flex-wrap: wrap;
   color: var(--muted);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
 }
 
 .nav a {
@@ -192,8 +216,8 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(3rem, 7vw, 5.8rem);
-  max-width: 12ch;
+  font-size: clamp(3.15rem, 7vw, 6.2rem);
+  max-width: 11ch;
 }
 
 h2 {
@@ -210,6 +234,21 @@ h3 {
   color: var(--muted);
   font-size: 1.08rem;
   line-height: 1.8;
+}
+
+.hero-copy {
+  position: relative;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 12px;
+  width: 3px;
+  height: 210px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  box-shadow: 0 0 18px rgba(56, 213, 255, 0.35);
 }
 
 .hero-actions,
@@ -229,6 +268,7 @@ h3 {
   border: 1px solid transparent;
   font-weight: 700;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  letter-spacing: 0.04em;
 }
 
 .btn:hover {
@@ -278,9 +318,18 @@ h3 {
 }
 
 .hero-panel {
-  border-radius: 28px;
+  border-radius: 22px;
   padding: 24px;
   overflow: hidden;
+  position: relative;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(56, 213, 255, 0.08), transparent 30%, rgba(0, 245, 160, 0.05));
+  pointer-events: none;
 }
 
 .panel-header {
@@ -289,6 +338,25 @@ h3 {
   gap: 10px;
   color: var(--muted);
   margin-bottom: 18px;
+}
+
+.file-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.file-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(155, 176, 208, 0.22);
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .pulse-dot {
@@ -333,6 +401,16 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.08);
   font-family: "Orbitron", sans-serif;
   font-size: 0.84rem;
+  position: relative;
+}
+
+.terminal::before {
+  content: ">";
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  color: rgba(56, 213, 255, 0.28);
+  font-size: 1.4rem;
 }
 
 .prompt {
@@ -377,6 +455,22 @@ h3 {
 .contact-card {
   border-radius: 24px;
   padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after,
+.stack-card::after,
+.project-card::after,
+.snake-card::after,
+.stats-card::after,
+.contact-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -55% -20%;
+  height: 120px;
+  background: radial-gradient(circle, rgba(56, 213, 255, 0.12), transparent 70%);
+  pointer-events: none;
 }
 
 .tag {
@@ -408,6 +502,7 @@ h3 {
   display: block;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
+  filter: drop-shadow(0 0 22px rgba(56, 213, 255, 0.08));
 }
 
 .stats-list {
@@ -452,13 +547,13 @@ h3 {
 
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(26px) scale(0.985);
   transition: opacity 700ms ease, transform 700ms ease;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 @keyframes pulse {
@@ -516,6 +611,10 @@ h3 {
 
   .nav {
     gap: 14px;
+  }
+
+  .nav a {
+    font-size: 0.72rem;
   }
 
   .about-grid,

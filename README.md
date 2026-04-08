@@ -1,7 +1,15 @@
-## GitHub Pages Home
+# README.md
 
-This repository now includes a static homepage at [index.html](index.html) for GitHub Pages. It presents the same profile in a more polished, tech-forward layout.
+欢迎来到 BYzhaoran 的个人主页仓库。
 
+这里是 GitHub Pages 的首页入口。你可以从主页快速进入下面这些文档：
+
+- [ABOUT.md](ABOUT.md)
+- [STACK.md](STACK.md)
+- [PROJECTS.md](PROJECTS.md)
+- [CONTACT.md](CONTACT.md)
+
+主页本体在 [index.html](index.html)
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Full+Stack+Embedded+AI+Explorer;Edge+%26+Embodied+Intelligence+Enthusiast;Bridging+Algorithms+and+Physical+Embodiment" alt="Typing SVG" />
 </div>
