@@ -13,6 +13,20 @@
 
 ---
 
+## 📊 Statistics & Contribution
+
+<div align="center">
+  <img height="180em" src="https://github-readme-stats-fast.vercel.app/api?username=BYzhaoran&theme=algolia&show_icons=true" />
+</div>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
+</picture>
+
+---
+
 <p align="center">
   <a href="https://github.com/BYzhaoran">
     <img src="https://img.shields.io/badge/Python-AI-blue?style=for-the-badge&logo=python&logoColor=white" />
@@ -82,19 +96,6 @@
 * **📐 Control Algorithm Suite**: Validated SMC, ADRC, LQR, and MPC in Simulink & Embedded C.
 * **🌐 Depth Camera Integration**: Adapted Orbbec Gemini2 for ROS-based Embodied AI frameworks.
 
----
-
-## 📊 Statistics & Contribution
-
-<div align="center">
-  <img height="180em" src="https://github-readme-stats-fast.vercel.app/api?username=BYzhaoran&theme=algolia&show_icons=true" />
-</div>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
-</picture>
 
 ---
 
