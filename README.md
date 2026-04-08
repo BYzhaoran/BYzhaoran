@@ -2,9 +2,16 @@
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Full+Stack+Embedded+AI+Explorer;Edge+%26+Embodied+Intelligence+Enthusiast;Bridging+Algorithms+and+Physical+Embodiment" alt="Typing SVG" />
 </div>
 
+
 <h1 align="center">Hi, I'm BYzhaoran (Wenzhao Wang) 👋</h1>
 
+<div align="center">
+<img width="150" height="150" src="assets/damie.gif" />
+<img  src="assets/avator.jpg" align="center" height="200" width="200" />
+<img width="150" height="150" src="assets/damie.gif" />
+</div>  
 
+---
 
 <p align="center">
   <a href="https://github.com/BYzhaoran">
@@ -24,7 +31,7 @@
 
 ## 🔬 Research & Interest Areas
 
-<img align='right' src='./assets/damie.gif' width='180px' style="margin-left: 10px;">
+
 
 - <b>Embedded & Edge AI Systems</b>: Real-time inference & optimization.
 - <b>Computer Vision</b>: Object Detection (DETR/YOLO) & Representation Learning.
@@ -83,13 +90,11 @@
   <img height="180em" src="https://github-readme-stats-fast.vercel.app/api?username=BYzhaoran&theme=algolia&show_icons=true" />
 </div>
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-contribution-grid-snake.svg">
-    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-contribution-grid-snake.svg">
-  </picture>
-</div>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
+</picture>
 
 ---
 
