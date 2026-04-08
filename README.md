@@ -1,3 +1,7 @@
+## GitHub Pages Home
+
+This repository now includes a static homepage at [index.html](index.html) for GitHub Pages. It presents the same profile in a more polished, tech-forward layout.
+
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Full+Stack+Embedded+AI+Explorer;Edge+%26+Embodied+Intelligence+Enthusiast;Bridging+Algorithms+and+Physical+Embodiment" alt="Typing SVG" />
 </div>
