@@ -1,0 +1,24 @@
+﻿{
+  "updates": [
+    {
+      "date": "2026-04-09",
+      "text": "主页完成双模式重构，支持博客首页模式与个人名片模式切换。"
+    },
+    {
+      "date": "2026-04-09",
+      "text": "最近更新模块改为自动数据源，优先读取 updates.json，失败回退 README.md。"
+    },
+    {
+      "date": "2026-04-08",
+      "text": "完善主页科技感视觉，包括网格背景、玻璃拟态和信息模块化布局。"
+    },
+    {
+      "date": "2026-04-07",
+      "text": "补充 ABOUT.md、STACK.md、PROJECTS.md、CONTACT.md 文档入口。"
+    },
+    {
+      "date": "2026-04-06",
+      "text": "整合 GitHub contribution snake 到主页内容流模块。"
+    }
+  ]
+}

@@ -1,3 +1,10 @@
+## Updates Feed
+
+- 2026-04-09: 主页完成双模式重构，支持博客首页模式与个人名片模式切换。
+- 2026-04-09: 最近更新模块改为自动数据源，优先读取 updates.json，失败回退 README.md。
+- 2026-04-08: 完善主页科技感视觉，包括网格背景、玻璃拟态和信息模块化布局。
+- 2026-04-07: 补充 ABOUT.md、STACK.md、PROJECTS.md、CONTACT.md 文档入口。
+
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Full+Stack+Embedded+AI+Explorer;Edge+%26+Embodied+Intelligence+Enthusiast;Bridging+Algorithms+and+Physical+Embodiment" alt="Typing SVG" />
 </div>
