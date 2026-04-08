@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BYzhaoran 的个人主页，融合技术博客导航与科技感作品展示。" />
+  <meta name="description" content="BYzhaoran 的双模式个人主页：博客首页模式与个人名片模式。" />
   <meta name="theme-color" content="#0a1226" />
-  <title>BYzhaoran | Hybrid Tech Home</title>
+  <title>BYzhaoran | Dual-Mode Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-mode="blog">
   <div class="bg-layer"></div>
   <div class="noise-layer"></div>
 
@@ -23,23 +23,35 @@
         <p class="brand-sub">Embedded AI / Robotics / Control</p>
       </div>
     </div>
-    <nav class="menu">
+
+    <nav class="menu" aria-label="main-nav">
       <a href="README.md">README.md</a>
       <a href="ABOUT.md">ABOUT.md</a>
       <a href="STACK.md">STACK.md</a>
       <a href="PROJECTS.md">PROJECTS.md</a>
       <a href="CONTACT.md">CONTACT.md</a>
     </nav>
-    <div class="status-pill">
-      <span class="dot"></span>
-      <span id="clock-mini">--:--:--</span>
+
+    <div class="nav-right">
+      <div class="mode-switch" role="tablist" aria-label="view-mode">
+        <button class="mode-btn active" id="mode-blog" type="button" data-mode-target="blog" role="tab" aria-selected="true">博客首页模式</button>
+        <button class="mode-btn" id="mode-card" type="button" data-mode-target="card" role="tab" aria-selected="false">个人名片模式</button>
+      </div>
+      <div class="status-pill">
+        <span class="dot"></span>
+        <span id="clock-mini">--:--:--</span>
+      </div>
     </div>
   </header>
 
   <main class="layout">
     <aside class="left-column">
       <section class="glass profile-card reveal">
-        <img class="avatar" src="assets/avator.jpg" alt="BYzhaoran avatar" />
+        <div class="avatar-row">
+          <img class="avatar-gif" src="assets/damie.gif" alt="tech mascot" width="96" height="96" />
+          <img class="avatar" src="assets/avator.jpg" alt="BYzhaoran avatar" width="380" height="380" />
+          <img class="avatar-gif" src="assets/damie.gif" alt="tech mascot" width="96" height="96" />
+        </div>
         <h1 id="typing-title">正在连接个人节点...</h1>
         <p>
           做嵌入式 AI、机器人与控制算法，偏好把复杂系统做成长期稳定运行的工程产物。
@@ -50,7 +62,7 @@
         </div>
       </section>
 
-      <section class="glass panel reveal">
+      <section class="glass panel reveal blog-only">
         <h2>站点导航</h2>
         <ul class="link-list">
           <li><a href="README.md">首页说明 README.md</a></li>
@@ -64,9 +76,9 @@
       <section class="glass panel reveal">
         <h2>站点统计</h2>
         <ul class="stat-list">
-          <li><span>文章数目</span><strong>16+</strong></li>
-          <li><span>技术标签</span><strong>20+</strong></li>
           <li><span>项目方向</span><strong>4</strong></li>
+          <li><span>技术关键词</span><strong>20+</strong></li>
+          <li><span>主页模式</span><strong id="mode-label">Blog</strong></li>
           <li><span>当前状态</span><strong>Online</strong></li>
         </ul>
       </section>
@@ -74,15 +86,15 @@
 
     <section class="right-column">
       <article class="glass hero-banner reveal">
-        <p class="eyebrow">HYBRID REBUILD</p>
-        <h2>融合博客信息架构与科技视觉的个人主页</h2>
+        <p class="eyebrow">DUAL MODE REBUILD</p>
+        <h2>一键切换博客首页模式与个人名片模式</h2>
         <p>
-          本页吸收了参考站点的优点：左侧聚合导航与统计信息，右侧突出内容与项目。
-          在体验上保留科技感动态视觉，同时保持内容检索和扩展友好。
+          博客首页模式强调信息结构、分类与更新流；个人名片模式强调个人定位、项目入口与联系方式。
+          两种模式使用同一份内容数据，不需要维护两套页面。
         </p>
       </article>
 
-      <div class="content-grid reveal">
+      <div class="content-grid reveal blog-only">
         <article class="glass card">
           <h3>归档 / Archive</h3>
           <p>按时间聚合学习笔记、竞赛总结和工程记录，适合持续更新。</p>
@@ -105,7 +117,17 @@
         </article>
       </div>
 
-      <article class="glass snake-panel reveal">
+      <article class="glass updates-panel reveal">
+        <div class="updates-head">
+          <h3>最近更新</h3>
+          <span id="updates-source">数据源: loading...</span>
+        </div>
+        <ul id="updates-list" class="updates-list">
+          <li class="loading">正在读取更新数据...</li>
+        </ul>
+      </article>
+
+      <article class="glass snake-panel reveal blog-only">
         <div class="snake-head">
           <h3>Contribution Stream</h3>
           <span id="date-line">Loading...</span>
@@ -117,13 +139,15 @@
         </picture>
       </article>
 
-      <article class="glass timeline reveal">
-        <h3>最近更新</h3>
-        <ul>
-          <li><span>2026-04</span><p>主页重构：融合博客导航结构与科技视觉。</p></li>
-          <li><span>2026-03</span><p>控制算法实验记录整理与模型迭代。</p></li>
-          <li><span>2026-02</span><p>机器人系统联调与 ROS2 工作流优化。</p></li>
-        </ul>
+      <article class="glass card-mode-panel reveal card-only">
+        <h3>名片模式摘要</h3>
+        <p>你正在查看个人名片模式。这个模式会隐藏冗余博客模块，突出个人定位和行动入口。</p>
+        <div class="quick-links">
+          <a href="ABOUT.md">关于我</a>
+          <a href="STACK.md">技术栈</a>
+          <a href="PROJECTS.md">项目</a>
+          <a href="CONTACT.md">联系</a>
+        </div>
       </article>
     </section>
   </main>
