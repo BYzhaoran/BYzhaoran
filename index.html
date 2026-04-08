@@ -1,203 +1,130 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BYzhaoran 的科技感个人主页，展示嵌入式、机器人、AI 与控制算法方向的项目与经历。" />
-  <meta name="theme-color" content="#050816" />
-  <title>BYzhaoran | Cyber Lab Portfolio</title>
+  <meta name="description" content="BYzhaoran 的个人主页，融合技术博客导航与科技感作品展示。" />
+  <meta name="theme-color" content="#0a1226" />
+  <title>BYzhaoran | Hybrid Tech Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-orb orb-3"></div>
+  <div class="bg-layer"></div>
+  <div class="noise-layer"></div>
 
-  <header class="topbar glass">
-    <a class="brand" href="#hero">
-      <span class="brand-mark">BZ</span>
-      <span class="brand-text">BYzhaoran</span>
-    </a>
-    <nav class="nav">
+  <header class="top-nav glass">
+    <div class="brand">
+      <span class="brand-box">BZ</span>
+      <div>
+        <p class="brand-title">BYzhaoran</p>
+        <p class="brand-sub">Embedded AI / Robotics / Control</p>
+      </div>
+    </div>
+    <nav class="menu">
       <a href="README.md">README.md</a>
       <a href="ABOUT.md">ABOUT.md</a>
       <a href="STACK.md">STACK.md</a>
       <a href="PROJECTS.md">PROJECTS.md</a>
       <a href="CONTACT.md">CONTACT.md</a>
     </nav>
+    <div class="status-pill">
+      <span class="dot"></span>
+      <span id="clock-mini">--:--:--</span>
+    </div>
   </header>
 
-  <main>
-    <section id="hero" class="hero section reveal">
-      <div class="hero-copy">
-        <p class="eyebrow">Embedded AI · Robotics · Control</p>
-        <h1>把算法、硬件和实时控制做成一台可运行的未来机器。</h1>
-        <p class="lead">
-          我是 BYzhaoran，关注嵌入式系统、机器人控制、计算机视觉与具身智能。
-          这里是我的个人主页，也是我把算法、硬件与工程系统串起来的展示窗口。
+  <main class="layout">
+    <aside class="left-column">
+      <section class="glass profile-card reveal">
+        <img class="avatar" src="assets/avator.jpg" alt="BYzhaoran avatar" />
+        <h1 id="typing-title">正在连接个人节点...</h1>
+        <p>
+          做嵌入式 AI、机器人与控制算法，偏好把复杂系统做成长期稳定运行的工程产物。
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="PROJECTS.md">打开 PROJECTS.md</a>
-          <a class="btn btn-ghost" href="README.md">打开 README.md</a>
+        <div class="action-row">
+          <a class="btn btn-solid" href="PROJECTS.md">项目总览</a>
+          <a class="btn btn-ghost" href="CONTACT.md">联系我</a>
         </div>
-        <div class="hero-metrics">
-          <div class="metric glass">
-            <strong>Real-Time</strong>
-            <span>控制与嵌入式优化</span>
-          </div>
-          <div class="metric glass">
-            <strong>AI + Robotics</strong>
-            <span>感知、决策、执行闭环</span>
-          </div>
-          <div class="metric glass">
-            <strong>Edge Systems</strong>
-            <span>Jetson、STM32、ROS2</span>
-          </div>
-        </div>
-      </div>
+      </section>
 
-      <div class="hero-panel glass">
-        <div class="panel-header">
-          <span class="pulse-dot"></span>
-          <span>Live Profile Node</span>
-        </div>
-        <div class="file-strip">
-          <span class="file-chip">README.md</span>
-          <span class="file-chip">ABOUT.md</span>
-          <span class="file-chip">STACK.md</span>
-          <span class="file-chip">PROJECTS.md</span>
-        </div>
-        <div class="avatar-stack">
-          <img class="avatar avatar-left" src="assets/damie.gif" alt="Animated tech mascot" />
-          <img class="avatar avatar-main" src="assets/avator.jpg" alt="BYzhaoran avatar" />
-          <img class="avatar avatar-right" src="assets/damie.gif" alt="Animated tech mascot" />
-        </div>
-        <div class="terminal">
-          <p><span class="prompt">user@byzhaoran</span>:~$ ls profile/</p>
-          <p>Embedded AI Systems</p>
-          <p>Robotics & Control</p>
-          <p>Vision · Simulation · ROS2</p>
-        </div>
-      </div>
-    </section>
+      <section class="glass panel reveal">
+        <h2>站点导航</h2>
+        <ul class="link-list">
+          <li><a href="README.md">首页说明 README.md</a></li>
+          <li><a href="ABOUT.md">关于我 ABOUT.md</a></li>
+          <li><a href="STACK.md">技术栈 STACK.md</a></li>
+          <li><a href="PROJECTS.md">项目列表 PROJECTS.md</a></li>
+          <li><a href="CONTACT.md">联系方式 CONTACT.md</a></li>
+        </ul>
+      </section>
 
-    <section id="about" class="section reveal">
-      <div class="section-head">
-        <p class="eyebrow">About</p>
-        <h2>让复杂系统稳定工作，是我最关心的事。</h2>
-      </div>
-      <div class="about-grid">
+      <section class="glass panel reveal">
+        <h2>站点统计</h2>
+        <ul class="stat-list">
+          <li><span>文章数目</span><strong>16+</strong></li>
+          <li><span>技术标签</span><strong>20+</strong></li>
+          <li><span>项目方向</span><strong>4</strong></li>
+          <li><span>当前状态</span><strong>Online</strong></li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="right-column">
+      <article class="glass hero-banner reveal">
+        <p class="eyebrow">HYBRID REBUILD</p>
+        <h2>融合博客信息架构与科技视觉的个人主页</h2>
+        <p>
+          本页吸收了参考站点的优点：左侧聚合导航与统计信息，右侧突出内容与项目。
+          在体验上保留科技感动态视觉，同时保持内容检索和扩展友好。
+        </p>
+      </article>
+
+      <div class="content-grid reveal">
         <article class="glass card">
-          <h3>方向</h3>
-          <p>嵌入式 AI、机器人控制、视觉感知、ROS2 中间件与仿真联调。</p>
+          <h3>归档 / Archive</h3>
+          <p>按时间聚合学习笔记、竞赛总结和工程记录，适合持续更新。</p>
+          <a href="README.md">进入归档入口</a>
         </article>
         <article class="glass card">
-          <h3>风格</h3>
-          <p>强调实时性、工程边界、算法鲁棒性和可落地性，不追求只停留在演示层。</p>
+          <h3>分类 / Categories</h3>
+          <p>按控制、视觉、嵌入式、机器人进行模块化组织，减少信息噪声。</p>
+          <a href="STACK.md">查看分类映射</a>
         </article>
         <article class="glass card">
-          <h3>目标</h3>
-          <p>把算法、硬件和系统架构连成闭环，做出真正能跑、能控、能扩展的方案。</p>
+          <h3>标签 / Tags</h3>
+          <p>通过关键词快速定位知识片段，提升后续复盘与检索效率。</p>
+          <a href="PROJECTS.md">浏览项目标签</a>
+        </article>
+        <article class="glass card">
+          <h3>留言 / Contact</h3>
+          <p>保持低成本协作入口，便于项目沟通和技术交流。</p>
+          <a href="CONTACT.md">打开联系方式</a>
         </article>
       </div>
-    </section>
 
-    <section id="stack" class="section reveal">
-      <div class="section-head">
-        <p class="eyebrow">Tech Stack</p>
-        <h2>从芯片到模型，从控制到系统集成。</h2>
-      </div>
-      <div class="stack-grid">
-        <div class="glass stack-card">
-          <h3>Embedded</h3>
-          <p>STM32, ESP32, MSPM0, 传感器融合, CAN 通信, 实时控制。</p>
-        </div>
-        <div class="glass stack-card">
-          <h3>AI / Vision</h3>
-          <p>YOLO, DETR, Whisper, DeepSeek, 多模态交互与边缘推理。</p>
-        </div>
-        <div class="glass stack-card">
-          <h3>Robotics</h3>
-          <p>ROS2, Isaac Sim, Gazebo, 机械臂轨迹规划与多关节反馈。</p>
-        </div>
-        <div class="glass stack-card">
-          <h3>Control</h3>
-          <p>PID, SMC, ADRC, LQR, MPC，关注稳定性与动态响应。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section reveal">
-      <div class="section-head">
-        <p class="eyebrow">Highlighted Projects</p>
-        <h2>把概念变成系统，把系统跑到真实环境里。</h2>
-      </div>
-      <div class="projects-grid">
-        <article class="glass project-card">
-          <span class="tag">Vision</span>
-          <h3>Visual Detection Pipeline</h3>
-          <p>基于 VisDrone 与 Deformable DETR 的端到端检测流程，关注复杂场景鲁棒性。</p>
-        </article>
-        <article class="glass project-card">
-          <span class="tag">Robotics</span>
-          <h3>SO100 Robotic Arm</h3>
-          <p>轨迹规划、逆运动学与多关节反馈控制，面向可重复执行的机械臂任务。</p>
-        </article>
-        <article class="glass project-card">
-          <span class="tag">Multimodal</span>
-          <h3>AI Voice Smart Fridge</h3>
-          <p>把 YOLO、Whisper、TTS 与 LLM 组合成可交互的边缘智能方案。</p>
-        </article>
-        <article class="glass project-card">
-          <span class="tag">Control</span>
-          <h3>Control Algorithm Suite</h3>
-          <p>在 Simulink 与 Embedded C 中验证 SMC、ADRC、LQR 和 MPC 的效果。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section reveal split-section">
-      <div class="glass snake-card">
-        <div class="section-head compact">
-          <p class="eyebrow">Contribution</p>
-          <h2>持续输出的轨迹。</h2>
+      <article class="glass snake-panel reveal">
+        <div class="snake-head">
+          <h3>Contribution Stream</h3>
+          <span id="date-line">Loading...</span>
         </div>
         <picture>
           <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
           <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake.svg" />
           <img class="snake" alt="GitHub contribution snake" src="https://raw.githubusercontent.com/BYzhaoran/BYzhaoran/output/github-snake-dark.svg" />
         </picture>
-      </div>
+      </article>
 
-      <div class="glass stats-card">
-        <div class="section-head compact">
-          <p class="eyebrow">Profile</p>
-          <h2>当前关注点</h2>
-        </div>
-        <ul class="stats-list">
-          <li><span>Real-time embedded systems</span><strong>01</strong></li>
-          <li><span>Embodied intelligence</span><strong>02</strong></li>
-          <li><span>ROS2 + simulation workflow</span><strong>03</strong></li>
-          <li><span>Classical control + learning</span><strong>04</strong></li>
+      <article class="glass timeline reveal">
+        <h3>最近更新</h3>
+        <ul>
+          <li><span>2026-04</span><p>主页重构：融合博客导航结构与科技视觉。</p></li>
+          <li><span>2026-03</span><p>控制算法实验记录整理与模型迭代。</p></li>
+          <li><span>2026-02</span><p>机器人系统联调与 ROS2 工作流优化。</p></li>
         </ul>
-      </div>
-    </section>
-
-    <section id="contact" class="section reveal">
-      <div class="contact-card glass">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2>如果你也在做机器人、控制或边缘智能，可以直接联系我。</h2>
-        </div>
-        <div class="contact-links">
-          <a class="btn btn-primary" href="CONTACT.md">打开 CONTACT.md</a>
-          <a class="btn btn-ghost" href="https://github.com/BYzhaoran" target="_blank" rel="noreferrer">GitHub 主页</a>
-        </div>
-      </div>
+      </article>
     </section>
   </main>
 
