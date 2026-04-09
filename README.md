@@ -4,7 +4,7 @@
 </div>
 
 
-<h1 align="center">Hi, I'm BYzhaoran (Wenzhao Wang) 👋</h1>
+<h1 align="center"><a href="https://byzhaoran.github.io/BYzhaoran/">Hi, I'm BYzhaoran (Wenzhao Wang) 👋</a></h1>
 
 <div align="center">
   <img width="150" height="150" src="assets/damie.gif" style="vertical-align: top;" />
