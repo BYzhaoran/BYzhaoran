@@ -458,6 +458,113 @@ p {
   transform: translateY(0);
 }
 
+.menu a[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.doc-page {
+  overflow-x: hidden;
+}
+
+.doc-nav {
+  top: 14px;
+}
+
+.doc-wrap {
+  width: min(980px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 110px 0 44px;
+}
+
+.doc-panel {
+  border-radius: 20px;
+  padding: 26px;
+}
+
+.doc-panel h1,
+.doc-panel h2,
+.doc-panel h3 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.doc-panel h1 {
+  margin-top: 0;
+}
+
+.doc-panel p,
+.doc-panel li {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.doc-panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.doc-panel a {
+  color: var(--accent);
+}
+
+.doc-panel hr {
+  border: 0;
+  height: 1px;
+  margin: 18px 0;
+  background: rgba(159, 176, 212, 0.2);
+}
+
+.center-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.center-title {
+  text-align: center;
+}
+
+.center-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.hero-avatar-row img {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  object-fit: cover;
+}
+
+.badge-wrap {
+  margin: 6px 0;
+}
+
+.icon-row img {
+  margin: 0 8px;
+}
+
+.doc-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.doc-panel th,
+.doc-panel td {
+  border: 1px solid rgba(159, 176, 212, 0.2);
+  padding: 10px;
+  text-align: left;
+  color: var(--muted);
+  vertical-align: top;
+}
+
+.doc-panel th {
+  color: var(--text);
+}
+
 body[data-mode="card"] .blog-only {
   display: none;
 }
@@ -503,6 +610,7 @@ body[data-mode="card"] .profile-card {
 @media (max-width: 760px) {
   .top-nav,
   .layout,
+  .doc-wrap,
   .footer {
     width: calc(100% - 16px);
   }
@@ -533,5 +641,14 @@ body[data-mode="card"] .profile-card {
   .updates-list .update-item {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .doc-panel {
+    padding: 18px;
+  }
+
+  .hero-avatar-row img {
+    width: 100px;
+    height: 100px;
   }
 }
