@@ -309,12 +309,29 @@ p {
 }
 
 .link-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
   color: var(--muted);
   text-decoration: none;
 }
 
 .link-list a:hover {
   color: var(--accent);
+}
+
+.nav-title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.nav-sub {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(159, 176, 212, 0.88);
 }
 
 .stat-list li {
