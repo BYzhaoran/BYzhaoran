@@ -211,11 +211,12 @@ body {
 
 .avatar {
   width: 100%;
-  max-width: 260px;
+  max-width: 100%;
+  height: auto;
   justify-self: center;
   border-radius: 16px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  aspect-ratio: auto;
+  object-fit: contain;
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
