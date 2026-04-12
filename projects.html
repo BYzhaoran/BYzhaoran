@@ -37,18 +37,159 @@
   <main class="doc-wrap">
     <article class="glass doc-panel reveal visible">
       <p class="eyebrow">PROJECTS.md</p>
-      <h1>项目方向</h1>
-      <p>当前主页展示的项目方向包括：</p>
+      <h1>项目总览</h1>
+      <p>本页已接入 GitHub 仓库数据，会自动读取并展示 <a href="https://github.com/BYzhaoran?tab=repositories" target="_blank" rel="noopener noreferrer">BYzhaoran 仓库列表</a>。</p>
 
-      <ul>
-        <li>Visual Detection Pipeline</li>
-        <li>SO100 Robotic Arm</li>
-        <li>AI Voice Smart Fridge</li>
-        <li>Control Algorithm Suite</li>
+      <div class="repo-meta">
+        <span class="repo-source" id="repo-source">数据源：加载中...</span>
+        <a class="repo-visit" href="https://github.com/BYzhaoran?tab=repositories" target="_blank" rel="noopener noreferrer">查看完整仓库页</a>
+      </div>
+
+      <ul class="repo-list" id="repo-list">
+        <li class="loading">正在同步 GitHub 仓库...</li>
       </ul>
 
-      <p>这些项目都围绕一个目标：让算法真正进入硬件与系统现场。</p>
+      <p class="repo-footnote">这些项目围绕一个目标：让算法真正进入硬件与系统现场。</p>
     </article>
   </main>
+
+  <script>
+    const githubUser = 'BYzhaoran';
+    const repoListNode = document.getElementById('repo-list');
+    const repoSourceNode = document.getElementById('repo-source');
+    const repoApi = `https://api.github.com/users/${githubUser}/repos?type=owner&sort=updated&per_page=100`;
+
+    const fallbackProjects = [
+      {
+        name: 'Visual Detection Pipeline',
+        description: '面向机器人场景的视觉检测链路，覆盖训练、部署与现场调优。',
+        language: 'Python',
+        url: 'https://github.com/BYzhaoran'
+      },
+      {
+        name: 'SO100 Robotic Arm',
+        description: '机械臂轨迹规划、逆解和多关节反馈控制。',
+        language: 'C++',
+        url: 'https://github.com/BYzhaoran'
+      },
+      {
+        name: 'AI Voice Smart Fridge',
+        description: '结合视觉识别、语音识别和大模型交互的多模态系统。',
+        language: 'Python',
+        url: 'https://github.com/BYzhaoran'
+      },
+      {
+        name: 'Control Algorithm Suite',
+        description: '对 PID/SMC/LQR/MPC 等控制算法进行工程化验证与对比。',
+        language: 'MATLAB',
+        url: 'https://github.com/BYzhaoran'
+      }
+    ];
+
+    const formatDate = (isoDate) => {
+      if (!isoDate) return '未知时间';
+      const date = new Date(isoDate);
+      if (Number.isNaN(date.getTime())) return '未知时间';
+      return new Intl.DateTimeFormat('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(date);
+    };
+
+    const renderRepoCards = (repos) => {
+      repoListNode.innerHTML = '';
+
+      repos.forEach((repo) => {
+        const li = document.createElement('li');
+        li.className = 'repo-item';
+
+        const title = document.createElement('a');
+        title.className = 'repo-title';
+        title.href = repo.url;
+        title.target = '_blank';
+        title.rel = 'noopener noreferrer';
+        title.textContent = repo.name;
+
+        const desc = document.createElement('p');
+        desc.className = 'repo-desc';
+        desc.textContent = repo.description || '暂无仓库描述。';
+
+        const meta = document.createElement('div');
+        meta.className = 'repo-item-meta';
+
+        const lang = document.createElement('span');
+        lang.className = 'repo-lang';
+        lang.textContent = repo.language || 'Unknown';
+
+        const stars = document.createElement('span');
+        stars.className = 'repo-stars';
+        stars.textContent = `★ ${repo.stars || 0}`;
+
+        const updated = document.createElement('span');
+        updated.className = 'repo-updated';
+        updated.textContent = `更新于 ${formatDate(repo.updatedAt)}`;
+
+        meta.appendChild(lang);
+        meta.appendChild(stars);
+        meta.appendChild(updated);
+
+        li.appendChild(title);
+        li.appendChild(desc);
+        li.appendChild(meta);
+        repoListNode.appendChild(li);
+      });
+    };
+
+    const renderFallback = () => {
+      repoSourceNode.textContent = '数据源：本地兜底数据';
+      renderRepoCards(
+        fallbackProjects.map((item) => ({
+          ...item,
+          stars: 0,
+          updatedAt: null
+        }))
+      );
+    };
+
+    const loadGithubRepos = async () => {
+      try {
+        const response = await fetch(repoApi, {
+          headers: {
+            Accept: 'application/vnd.github+json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`GitHub API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const repos = (Array.isArray(data) ? data : [])
+          .filter((repo) => !repo.fork)
+          .slice(0, 12)
+          .map((repo) => ({
+            name: repo.name,
+            description: repo.description,
+            language: repo.language,
+            stars: repo.stargazers_count,
+            updatedAt: repo.updated_at,
+            url: repo.html_url
+          }));
+
+        if (repos.length === 0) {
+          renderFallback();
+          return;
+        }
+
+        renderRepoCards(repos);
+        repoSourceNode.textContent = '数据源：GitHub Repositories API';
+      } catch (_) {
+        renderFallback();
+      }
+    };
+
+    loadGithubRepos();
+  </script>
 </body>
 </html>
