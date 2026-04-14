@@ -29,6 +29,29 @@ body {
   overflow-x: hidden;
 }
 
+#fx-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+#cursor-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(57, 210, 255, 0.16) 0%, rgba(57, 210, 255, 0.06) 35%, rgba(57, 210, 255, 0) 72%);
+  transform: translate(-50%, -50%);
+  transition: opacity 220ms ease;
+}
+
 .bg-layer {
   position: fixed;
   inset: 0;
@@ -54,6 +77,30 @@ body {
   border: 1px solid var(--line);
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
+  position: relative;
+  z-index: 2;
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+  transform-style: preserve-3d;
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(57, 210, 255, 0.08), transparent 35%, rgba(86, 248, 178, 0.06));
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.glass:hover {
+  border-color: rgba(57, 210, 255, 0.36);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.glass:hover::after {
+  opacity: 1;
 }
 
 .top-nav {
@@ -70,6 +117,7 @@ body {
   justify-content: space-between;
   gap: 14px;
   flex-wrap: wrap;
+  z-index: 30;
 }
 
 .brand {
@@ -181,6 +229,8 @@ body {
   display: grid;
   grid-template-columns: 360px 1fr;
   gap: 16px;
+  position: relative;
+  z-index: 2;
 }
 
 .left-column,
@@ -457,6 +507,8 @@ p {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 .footer p {
@@ -721,6 +773,11 @@ body[data-mode="card"] .profile-card {
 }
 
 @media (max-width: 760px) {
+  #cursor-glow,
+  #fx-particles {
+    display: none;
+  }
+
   .top-nav,
   .layout,
   .doc-wrap,
