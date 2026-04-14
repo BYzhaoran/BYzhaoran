@@ -128,14 +128,14 @@ const loadUpdates = async () => {
   }
 
   try {
-    const response = await fetch('README.md', { cache: 'no-store' });
+    const response = await fetch('docs/README.md', { cache: 'no-store' });
     if (!response.ok) {
-      throw new Error('README.md not found');
+      throw new Error('docs/README.md not found');
     }
     const markdown = await response.text();
     const updates = parseUpdatesFromReadme(markdown);
     renderUpdates(updates);
-    updatesSourceNode.textContent = '数据源: README.md';
+    updatesSourceNode.textContent = '数据源: docs/README.md';
   } catch (_) {
     updatesListNode.innerHTML = '<li class="loading">更新数据加载失败。</li>';
     updatesSourceNode.textContent = '数据源: unavailable';
