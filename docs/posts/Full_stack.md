@@ -162,19 +162,19 @@ AI + 嵌入式系统开发者，专注具身智能方向；掌握 STM32/RTOS 与
 
 另外在工程落地里，软件和工具链同样重要：
 
-- 嵌入式开发：CubeMX（工程生成）、Keil（编译调试）、DMTools（串口/协议联调）、FreeMaster（参数观测）、VOFA+（实时波形）
-- AI/数据与实验：Anaconda（环境管理）、Jupyter（实验记录）、MATLAB（控制建模）
-- 仿真平台：Isaac Sim（高保真仿真）、MuJoCo（RL 高频场景）、Gazebo（ROS 生态联调）
-- 开发协作与智能编码：Codex / Copilot（写码提效）、Git + GitHub（协作流程）、Notion / Obsidian / 飞书（知识沉淀）
-- 硬件设计与机械建模：嘉立创EDA（原理图与 PCB）、SolidWorks（可选）
-- 调试与效率工具：Geek（软件清理）、浏览器插件（调试辅助）、spacedesk（副屏）、UU远程（远程访问）
-- Linux 工具链：WSL / Ubuntu（统一环境）、CMake + Ninja（跨平台构建）、tmux（多终端管理）
-- 机器人中间件：ROS2（模块通信）、RViz（可视化）、rqt（调试）
+- 嵌入式开发：[STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)（工程生成）、[Keil MDK](https://www.keil.com/)（编译调试）、DMTools（串口/协议联调）、[FreeMASTER](https://www.nxp.com/design/design-center/software/development-software/freemaster-run-time-debugging-tool:FREEMASTER)（参数观测）、[VOFA+](https://www.vofa.plus/)（实时波形）
+- AI/数据与实验：[Anaconda](https://www.anaconda.com/docs/getting-started/anaconda/main)（环境管理）、[Jupyter](https://jupyter.org/documentation)（实验记录）、[MATLAB](https://www.mathworks.com/help/matlab/)（控制建模）
+- 仿真平台：[Isaac Sim](https://docs.isaacsim.omniverse.nvidia.com/latest/index.html)（高保真仿真）、[MuJoCo](https://mujoco.readthedocs.io/en/stable/)（RL 高频场景）、[Gazebo](https://gazebosim.org/docs)（ROS 生态联调）
+- 开发协作与智能编码：Codex（写码提效）、[GitHub Copilot](https://docs.github.com/copilot)（智能辅助）、[Git](https://git-scm.com/doc) + [GitHub Docs](https://docs.github.com/)（协作流程）、[Notion](https://www.notion.so/help) / [Obsidian](https://help.obsidian.md/) / [飞书](https://www.feishu.cn/hc)（知识沉淀）
+- 硬件设计与机械建模：[嘉立创EDA](https://lceda.cn/)（原理图与 PCB）、[SolidWorks](https://www.solidworks.com/)（可选）
+- 调试与效率工具：[Geek Uninstaller](https://geekuninstaller.com/)（软件清理）、浏览器插件（调试辅助）、[spacedesk](https://www.spacedesk.net/)（副屏）、[UU远程](https://uuyc.163.com/)（远程访问）
+- Linux 工具链：[WSL](https://learn.microsoft.com/windows/wsl/) / [Ubuntu](https://ubuntu.com/tutorials)（统一环境）、[CMake](https://cmake.org/documentation/) + [Ninja](https://ninja-build.org/manual.html)（跨平台构建）、[tmux](https://github.com/tmux/tmux/wiki)（多终端管理）
+- 机器人中间件：[ROS2](https://docs.ros.org/en/humble/index.html)（模块通信）、[RViz2](https://docs.ros.org/en/humble/Tutorials/Intermediate/RViz/RViz-Main.html)（可视化）、[rqt](https://docs.ros.org/en/humble/Concepts/About-RQt.html)（调试）
 
 可选择性补充：
 
-- 模型部署与推理：ONNX Runtime、TensorRT、OpenVINO
-- 测试与质量保障：pytest、pre-commit、GitHub Actions
+- 模型部署与推理：[ONNX Runtime](https://onnxruntime.ai/docs/)、[TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/)、[OpenVINO](https://docs.openvino.ai/)
+- 测试与质量保障：[pytest](https://docs.pytest.org/)、[pre-commit](https://pre-commit.com/)、[GitHub Actions](https://docs.github.com/actions)
 
 工具没有绝对好坏，关键是形成自己的稳定工作流：
 从建模仿真、训练部署，到联调验证和文档协作，流程打通才是核心竞争力。
