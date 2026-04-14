@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="全方位技术大纲 - BYzhaoran 博客文章" />
+  <title>全方位技术大纲 | BYzhaoran Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070d1f;
+      --panel: rgba(10, 18, 38, 0.84);
+      --line: rgba(114, 151, 255, 0.26);
+      --text: #e9f0ff;
+      --muted: #9fb0d4;
+      --accent: #39d2ff;
+      --accent2: #56f8b2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Source Han Sans SC", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 18% -12%, rgba(57, 210, 255, 0.2), transparent 35%),
+        radial-gradient(circle at 95% 0, rgba(86, 248, 178, 0.18), transparent 30%),
+        linear-gradient(180deg, #070d1f 0%, #090f20 55%, #050812 100%);
+      line-height: 1.75;
+    }
+
+    .wrap {
+      width: min(980px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 22px 0 44px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #7e80ff);
+      color: #04101f;
+      font-family: "Orbitron", sans-serif;
+      font-weight: 800;
+    }
+
+    .brand strong {
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 0.08em;
+      font-size: 0.92rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.86rem;
+      border: 1px solid rgba(159, 176, 212, 0.28);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btn.primary {
+      color: #04101f;
+      border: 0;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0 0 12px;
+    }
+
+    .article h1,
+    .article h2,
+    .article h3 {
+      font-family: "Orbitron", sans-serif;
+      line-height: 1.2;
+      margin-top: 1.4em;
+      margin-bottom: 0.6em;
+    }
+
+    .article h1 {
+      margin-top: 0;
+      font-size: clamp(1.35rem, 2.6vw, 2rem);
+    }
+
+    .article p,
+    .article li {
+      color: #d9e4ff;
+    }
+
+    .article ul {
+      padding-left: 1.2rem;
+    }
+
+    .article code {
+      background: rgba(57, 210, 255, 0.1);
+      border: 1px solid rgba(57, 210, 255, 0.28);
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+    }
+
+    .article blockquote {
+      margin: 1rem 0;
+      padding: 0.6rem 0.9rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(57, 210, 255, 0.08);
+      color: #cfe0ff;
+    }
+
+    .loading,
+    .error {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (max-width: 780px) {
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <span class="brand-box">BZ</span>
+        <strong>BYzhaoran Blog</strong>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="../blog.html">返回博客</a>
+        <a class="btn" href="../../index.html">首页</a>
+      </div>
+    </header>
+
+    <article class="panel article" id="article-root">
+      <p class="loading">正在加载文章内容...</p>
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const root = document.getElementById("article-root");
+    const mdPath = "../../docs/posts/Full_stack.md";
+
+    marked.setOptions({
+      gfm: true,
+      breaks: true,
+      mangle: false,
+      headerIds: false,
+    });
+
+    fetch(mdPath, { cache: "no-store" })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("load failed");
+        }
+        return res.text();
+      })
+      .then((md) => {
+        const html = marked.parse(md);
+        root.innerHTML = `
+          <p class="meta">来源：docs/posts/Full_stack.md</p>
+          ${html}
+        `;
+      })
+      .catch(() => {
+        root.innerHTML = '<p class="error">文章加载失败，请稍后重试。</p>';
+      });
+  </script>
+</body>
+</html>
