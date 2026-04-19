@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learning Schedule 多级入口" />
+  <title>Learning Schedule | BYzhaoran Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="learning/learning.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <span class="brand-box">LS</span>
+        <strong>Learning Schedule</strong>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="blog.html">返回 Blog</a>
+        <a class="btn" href="../index.html">首页</a>
+        <a class="btn" href="https://github.com/BYzhaoran/Learning_Schedule" target="_blank" rel="noopener noreferrer">仓库</a>
+      </div>
+    </header>
+
+    <section class="panel" style="margin-bottom: 16px;">
+      <h1 style="margin: 0 0 10px; font-family: Orbitron, sans-serif;">学习工程路线总览</h1>
+      <p class="desc">该专区已接入 BYzhaoran/Learning_Schedule 内容，采用多级结构：总览页 -> 分类页 -> 月计划索引 -> 单月执行卡片。</p>
+    </section>
+
+    <main class="grid">
+      <article class="panel card">
+        <h2>第一级：总体入口</h2>
+        <p>快速理解目录结构、阅读顺序与执行原则。</p>
+        <ul class="link-list">
+          <li><a href="learning-schedule/outline.html">关键部分划分（学习计划大纲）</a></li>
+          <li><a href="learning-schedule/plan.html">两年学习路线（计划）</a></li>
+          <li><a href="learning-schedule/resources.html">资源索引（按关键部分）</a></li>
+          <li><a href="learning-schedule/months.html">月计划索引（M01-M24）</a></li>
+        </ul>
+      </article>
+
+      <article class="panel card">
+        <h2>第二级：按任务进入</h2>
+        <ul class="link-list">
+          <li><a href="learning-schedule/plan.html">查看长期路线：先看两年路线图</a></li>
+          <li><a href="learning-schedule/months.html">马上执行：直接进入当月卡片</a></li>
+          <li><a href="learning-schedule/resources.html">补基础：按模块找资源</a></li>
+          <li><a href="learning-schedule/outline.html">看权重：按模块占比分配时间</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <section class="panel article" id="overview" style="margin-top: 16px;">
+      <p class="status">正在读取仓库 README...</p>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="learning/learning-render.js"></script>
+  <script>
+    LearningSchedule.renderMarkdownTo({
+      rootId: "overview",
+      markdownPath: "README.md",
+      sourceLabel: "Learning_Schedule/README.md"
+    });
+  </script>
+</body>
+</html>

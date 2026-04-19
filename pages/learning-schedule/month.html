@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="单月执行卡片" />
+  <title>月执行卡片 | Learning Schedule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../learning/learning.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <span class="brand-box" id="month-label">M01</span>
+        <strong id="month-title">月执行卡片</strong>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="months.html">返回月索引</a>
+        <a class="btn" id="prev-month" href="month.html?m=01">上个月</a>
+        <a class="btn" id="next-month" href="month.html?m=02">下个月</a>
+      </div>
+    </header>
+
+    <article class="panel article" id="doc-root">
+      <p class="status">正在加载月计划内容...</p>
+    </article>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="../learning/learning-render.js"></script>
+  <script>
+    const titleMap = {
+      "01": "数学速成 + Python基础",
+      "02": "C++与算法工程习惯",
+      "03": "训练工程模板",
+      "04": "系统建模 + PID",
+      "05": "状态空间 + LQR",
+      "06": "MPC入门 + 控制对比报告",
+      "07": "PyTorch训练模板强化",
+      "08": "YOLO视觉任务闭环",
+      "09": "DL工程化自动化",
+      "10": "DQN实战",
+      "11": "PPO实战",
+      "12": "SAC/TD3 + MuJoCo任务封装",
+      "13": "ROS2基础工程",
+      "14": "感知-控制闭环",
+      "15": "ROS2 + 仿真协同",
+      "16": "DRL与控制器对比",
+      "17": "融合策略实现",
+      "18": "Sim2Real准备与域随机化",
+      "19": "一键工具链",
+      "20": "测试体系建设",
+      "21": "性能优化与部署",
+      "22": "VLA方向复现",
+      "23": "系统冻结与全链路验收",
+      "24": "作品集封装与职业化表达"
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const rawMonth = params.get("m") || "01";
+    const parsed = Number(rawMonth);
+    const safeMonth = Number.isNaN(parsed) ? 1 : Math.min(24, Math.max(1, parsed));
+    const month = String(safeMonth).padStart(2, "0");
+
+    document.getElementById("month-label").textContent = `M${month}`;
+    document.getElementById("month-title").textContent = titleMap[month] || "月执行卡片";
+
+    const prev = String(Math.max(1, safeMonth - 1)).padStart(2, "0");
+    const next = String(Math.min(24, safeMonth + 1)).padStart(2, "0");
+    document.getElementById("prev-month").href = `month.html?m=${prev}`;
+    document.getElementById("next-month").href = `month.html?m=${next}`;
+
+    LearningSchedule.renderMarkdownTo({
+      rootId: "doc-root",
+      markdownPath: `月计划/M${month}.md`,
+      sourceLabel: `Learning_Schedule/月计划/M${month}.md`
+    });
+  </script>
+</body>
+</html>
