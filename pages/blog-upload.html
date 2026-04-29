@@ -670,12 +670,25 @@
             <label for="commit-message">提交说明</label>
             <input id="commit-message" type="text" placeholder="Add or update markdown blog post" />
           </div>
+          <div class="field">
+            <label for="pr-branch">PR 分支名</label>
+            <input id="pr-branch" type="text" placeholder="blog/update-20260429" />
+          </div>
+          <div class="field">
+            <label for="pr-title">PR 标题</label>
+            <input id="pr-title" type="text" placeholder="Publish markdown blog post" />
+          </div>
+          <div class="field full">
+            <label for="pr-body">PR 说明</label>
+            <input id="pr-body" type="text" placeholder="Auto-generated from the blog upload workspace" />
+          </div>
         </div>
 
         <div class="inline-actions">
           <button class="btn primary" id="load-repo-btn" type="button">读取仓库目录</button>
           <button class="btn ghost" id="load-file-btn" type="button">读取单个文件</button>
           <button class="btn ghost" id="save-repo-btn" type="button">写回 GitHub</button>
+          <button class="btn ghost" id="publish-pr-btn" type="button">通过 PR 发布</button>
           <button class="btn ghost" id="clear-token-btn" type="button">清除 Token</button>
         </div>
 
@@ -735,10 +748,14 @@
       const repoPathNode = document.getElementById('repo-path');
       const githubTokenNode = document.getElementById('github-token');
       const commitMessageNode = document.getElementById('commit-message');
+      const prBranchNode = document.getElementById('pr-branch');
+      const prTitleNode = document.getElementById('pr-title');
+      const prBodyNode = document.getElementById('pr-body');
 
       const loadRepoBtn = document.getElementById('load-repo-btn');
       const loadFileBtn = document.getElementById('load-file-btn');
       const saveRepoBtn = document.getElementById('save-repo-btn');
+      const publishPrBtn = document.getElementById('publish-pr-btn');
       const clearTokenBtn = document.getElementById('clear-token-btn');
       const saveDraftBtn = document.getElementById('save-draft-btn');
       const restoreDraftBtn = document.getElementById('restore-draft-btn');
@@ -774,6 +791,9 @@
         repoPath: '',
         githubToken: '',
         commitMessage: 'Add or update blog post',
+        prBranch: '',
+        prTitle: '',
+        prBody: '',
       };
 
       const currentRepoFile = {
@@ -925,6 +945,19 @@
         return owner && name ? `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(name)}` : '';
       };
 
+      const getTokenHeaders = () => {
+        const token = githubTokenNode.value.trim();
+        if (!token) {
+          throw new Error('需要 GitHub Token');
+        }
+
+        return {
+          Accept: 'application/vnd.github+json',
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        };
+      };
+
       const setMessage = (text, type = '') => {
         repoMessageNode.className = type ? `message ${type}` : 'message';
         repoMessageNode.textContent = text;
@@ -944,6 +977,9 @@
         repoPath: repoPathNode.value.trim(),
         githubToken: githubTokenNode.value,
         commitMessage: commitMessageNode.value.trim() || defaultState.commitMessage,
+        prBranch: prBranchNode.value.trim(),
+        prTitle: prTitleNode.value.trim(),
+        prBody: prBodyNode.value.trim(),
       });
 
       const persistState = () => {
@@ -959,6 +995,9 @@
         repoPathNode.value = state.repoPath || '';
         githubTokenNode.value = state.githubToken || '';
         commitMessageNode.value = state.commitMessage || defaultState.commitMessage;
+        prBranchNode.value = state.prBranch || '';
+        prTitleNode.value = state.prTitle || '';
+        prBodyNode.value = state.prBody || '';
         repoPathLabelNode.textContent = repoPathNode.value.trim() || '路径未设置';
         repoLatestNode.textContent = `分支 ${repoBranchNode.value.trim() || 'main'}`;
         updatePreview();
@@ -1019,6 +1058,131 @@
         }
 
         return response.json();
+      };
+
+      const isPermissionError = (error) => {
+        const message = String(error?.message || error || '').toLowerCase();
+        return message.includes('resource not accessible') || message.includes('forbidden') || message.includes('permission') || message.includes('403');
+      };
+
+      const waitForRepo = async (owner, repoName, attempts = 10) => {
+        for (let index = 0; index < attempts; index += 1) {
+          try {
+            return await apiJson(`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repoName)}`, {
+              headers: getTokenHeaders(),
+            });
+          } catch (error) {
+            if (index === attempts - 1) {
+              throw error;
+            }
+            await new Promise((resolve) => window.setTimeout(resolve, 1200));
+          }
+        }
+
+        throw new Error('fork 仓库创建超时');
+      };
+
+      const getAuthenticatedUser = async () => {
+        const user = await apiJson('https://api.github.com/user', {
+          headers: getTokenHeaders(),
+        });
+        if (!user?.login) {
+          throw new Error('无法读取 GitHub 用户信息');
+        }
+        return user.login;
+      };
+
+      const ensureFork = async () => {
+        const base = getRepoBase();
+        const response = await fetch(`${base}/forks`, {
+          method: 'POST',
+          headers: getTokenHeaders(),
+          body: JSON.stringify({}),
+        });
+
+        if (!response.ok && response.status !== 202) {
+          const details = await response.text().catch(() => '');
+          throw new Error(details || `创建 fork 失败 (${response.status})`);
+        }
+
+        const forkOwner = await getAuthenticatedUser();
+        return waitForRepo(forkOwner, repoNameNode.value.trim());
+      };
+
+      const createBranch = async (repoOwner, repoName, branchName, baseBranch = 'main') => {
+        const baseRef = await apiJson(`https://api.github.com/repos/${encodeURIComponent(repoOwner)}/${encodeURIComponent(repoName)}/git/ref/heads/${encodeURIComponent(baseBranch)}`, {
+          headers: getTokenHeaders(),
+        });
+
+        const createRefResponse = await fetch(`https://api.github.com/repos/${encodeURIComponent(repoOwner)}/${encodeURIComponent(repoName)}/git/refs`, {
+          method: 'POST',
+          headers: getTokenHeaders(),
+          body: JSON.stringify({
+            ref: `refs/heads/${branchName}`,
+            sha: baseRef.object.sha,
+          }),
+        });
+
+        if (!createRefResponse.ok) {
+          const details = await createRefResponse.text().catch(() => '');
+          throw new Error(details || `创建分支失败 (${createRefResponse.status})`);
+        }
+      };
+
+      const createPullRequest = async (forkOwner, branchName) => {
+        const baseBranch = repoBranchNode.value.trim() || 'main';
+        const title = prTitleNode.value.trim() || titleNode.value.trim() || 'Publish markdown blog post';
+        const body = prBodyNode.value.trim() || `Auto-generated from the blog upload workspace.\n\nTarget path: ${repoPathNode.value.trim() || 'new post'}`;
+        const response = await fetch(`${getRepoBase()}/pulls`, {
+          method: 'POST',
+          headers: getTokenHeaders(),
+          body: JSON.stringify({
+            title,
+            body,
+            head: `${forkOwner}:${branchName}`,
+            base: baseBranch,
+            draft: true,
+          }),
+        });
+
+        const responseText = await response.text();
+        if (!response.ok) {
+          throw new Error(responseText || `创建 PR 失败 (${response.status})`);
+        }
+
+        return JSON.parse(responseText);
+      };
+
+      const publishToPullRequest = async () => {
+        const branchName = normalizePath(prBranchNode.value) || `blog/upload-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`;
+        const baseBranch = repoBranchNode.value.trim() || 'main';
+        const targetPath = normalizePath(repoPathNode.value) || `${(titleNode.value.trim() || 'blog-post').replace(/\s+/g, '-').replace(/[^\w\u4e00-\u9fa5.-]+/g, '') || 'blog-post'}.md`;
+        const forkRepo = await ensureFork();
+        const forkOwner = forkRepo.owner?.login || await getAuthenticatedUser();
+
+        await createBranch(forkOwner, forkRepo.name, branchName, baseBranch);
+
+        const currentFile = currentRepoFile.path === targetPath && currentRepoFile.sha ? { sha: currentRepoFile.sha } : {};
+        const commitResponse = await fetch(`https://api.github.com/repos/${encodeURIComponent(forkOwner)}/${encodeURIComponent(forkRepo.name)}/contents/${encodeRepoPath(targetPath)}`, {
+          method: 'PUT',
+          headers: getTokenHeaders(),
+          body: JSON.stringify({
+            message: commitMessageNode.value.trim() || defaultState.commitMessage,
+            content: utf8ToBase64(markdownNode.value),
+            branch: branchName,
+            ...currentFile,
+          }),
+        });
+
+        const commitText = await commitResponse.text();
+        if (!commitResponse.ok) {
+          throw new Error(commitText || `向 fork 写入失败 (${commitResponse.status})`);
+        }
+
+        const pullRequest = await createPullRequest(forkOwner, branchName);
+        repoStatusNode.textContent = 'PR 已创建';
+        setMessage(`已创建草稿 PR：#${pullRequest.number} ${pullRequest.html_url}`, 'ok');
+        return pullRequest;
       };
 
       const loadRepoFile = async (path) => {
@@ -1112,8 +1276,7 @@
           throw new Error('请先填写仓库 owner 和 name');
         }
 
-        const token = githubTokenNode.value.trim();
-        if (!token) {
+        if (!githubTokenNode.value.trim()) {
           throw new Error('写回 GitHub 需要 Token');
         }
 
@@ -1134,11 +1297,7 @@
 
         const response = await fetch(`${base}/contents/${encodeRepoPath(path)}`, {
           method: 'PUT',
-          headers: {
-            Accept: 'application/vnd.github+json',
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
+          headers: getTokenHeaders(),
           body: JSON.stringify(payload),
         });
 
@@ -1155,6 +1314,17 @@
         repoStatusNode.textContent = '已写回 GitHub';
         setMessage(`已提交到 ${currentRepoFile.path}。`, 'ok');
         saveDraft();
+      };
+
+      const publishAsPullRequest = async () => {
+        try {
+          const pullRequest = await publishToPullRequest();
+          repoStatusNode.textContent = 'PR 已创建';
+          setMessage(`已创建草稿 PR：#${pullRequest.number} ${pullRequest.html_url}`, 'ok');
+        } catch (error) {
+          repoStatusNode.textContent = 'PR 失败';
+          setMessage(`创建 PR 失败：${error.message}`, 'error');
+        }
       };
 
       const init = () => {
@@ -1231,9 +1401,19 @@
         try {
           await writeRepoFile();
         } catch (error) {
+          if (isPermissionError(error)) {
+            repoStatusNode.textContent = '权限不足，改为 PR';
+            setMessage(`直接写入被拒绝，已切换到 PR 流程：${error.message}`, 'error');
+            await publishAsPullRequest();
+            return;
+          }
           repoStatusNode.textContent = '写入失败';
           setMessage(`写入仓库失败：${error.message}`, 'error');
         }
+      });
+
+      publishPrBtn.addEventListener('click', async () => {
+        await publishAsPullRequest();
       });
 
       init();
