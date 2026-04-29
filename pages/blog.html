@@ -12,11 +12,14 @@
     :root {
       --bg: #070d1f;
       --panel: rgba(10, 18, 38, 0.82);
+      --panel-strong: rgba(12, 22, 48, 0.96);
       --line: rgba(114, 151, 255, 0.22);
       --text: #e9f0ff;
       --muted: #9fb0d4;
       --accent: #39d2ff;
       --accent2: #56f8b2;
+      --warn: #ffcb77;
+      --danger: #ff8b8b;
     }
 
     * {
@@ -112,6 +115,27 @@
       line-height: 1.75;
     }
 
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 18px rgba(57, 210, 255, 0.6);
+    }
+
     h1, h2 {
       margin: 0;
       font-family: "Orbitron", sans-serif;
@@ -132,6 +156,308 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
+    }
+
+    .studio {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(12, 22, 48, 0.96), rgba(7, 13, 31, 0.9)),
+        radial-gradient(circle at top right, rgba(86, 248, 178, 0.12), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(57, 210, 255, 0.12), transparent 35%);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .studio-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .studio-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      color: var(--text);
+      border: 1px solid rgba(159, 176, 212, 0.24);
+      background: rgba(255, 255, 255, 0.03);
+      white-space: nowrap;
+    }
+
+    .status-pill strong {
+      color: var(--accent);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+
+    .editor-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .studio-panel {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(159, 176, 212, 0.18);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .panel-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .mini-note {
+      color: var(--warn);
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(159, 176, 212, 0.22);
+      border-radius: 14px;
+      background: rgba(4, 9, 21, 0.82);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(57, 210, 255, 0.55);
+      box-shadow: 0 0 0 3px rgba(57, 210, 255, 0.12);
+    }
+
+    .field textarea {
+      min-height: 260px;
+      resize: vertical;
+      line-height: 1.7;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .inline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn.danger {
+      color: #ffe9e9;
+      border-color: rgba(255, 139, 139, 0.28);
+      background: rgba(255, 139, 139, 0.08);
+    }
+
+    .split-view {
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .preview {
+      min-height: 260px;
+      border-radius: 16px;
+      border: 1px solid rgba(159, 176, 212, 0.18);
+      background: rgba(4, 9, 21, 0.72);
+      padding: 18px;
+      overflow: auto;
+    }
+
+    .preview h1,
+    .preview h2,
+    .preview h3,
+    .preview h4,
+    .preview h5,
+    .preview h6 {
+      font-family: "Source Han Sans SC", "Segoe UI", sans-serif;
+      margin-top: 1.2em;
+      margin-bottom: 0.6em;
+    }
+
+    .preview h1 { font-size: 1.6rem; }
+    .preview h2 { font-size: 1.28rem; }
+    .preview h3 { font-size: 1.08rem; }
+
+    .preview p,
+    .preview li,
+    .preview blockquote {
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .preview p {
+      margin: 0 0 0.9em;
+    }
+
+    .preview a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(57, 210, 255, 0.32);
+    }
+
+    .preview code,
+    .preview pre {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.92rem;
+    }
+
+    .preview code {
+      padding: 0.12rem 0.38rem;
+      border-radius: 8px;
+      background: rgba(57, 210, 255, 0.12);
+    }
+
+    .preview pre {
+      overflow: auto;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(159, 176, 212, 0.16);
+    }
+
+    .preview blockquote {
+      margin: 0 0 1em;
+      padding: 0.75em 1em;
+      border-left: 3px solid var(--accent);
+      background: rgba(57, 210, 255, 0.06);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .preview ul,
+    .preview ol {
+      padding-left: 1.3rem;
+      margin: 0 0 1em;
+    }
+
+    .repo-shell {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .repo-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      max-height: 360px;
+      overflow: auto;
+    }
+
+    .repo-list button {
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(159, 176, 212, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .repo-list button:hover {
+      border-color: rgba(57, 210, 255, 0.45);
+    }
+
+    .repo-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .repo-meta span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(159, 176, 212, 0.16);
+    }
+
+    .message {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.7;
+    }
+
+    .message.error {
+      color: var(--danger);
+    }
+
+    .message.ok {
+      color: var(--accent2);
+    }
+
+    .hidden {
+      display: none !important;
     }
 
     .panel {
@@ -188,6 +514,20 @@
         grid-template-columns: 1fr;
       }
 
+      .editor-layout,
+      .repo-shell,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .studio-head {
+        flex-direction: column;
+      }
+
+      .status-row {
+        justify-content: flex-start;
+      }
+
       .top {
         flex-direction: column;
         align-items: flex-start;
@@ -221,15 +561,142 @@
       <a class="btn primary" href="learning-schedule.html">进入 Learning Schedule</a>
     </section>
 
+    <section class="studio">
+      <div class="studio-head">
+        <div>
+          <div class="section-label">Markdown Studio</div>
+          <h1>在线写作 + GitHub 仓库读取</h1>
+          <p>在这个工作台里直接写 Markdown、实时预览、加载 GitHub 仓库里的文章，并在填写仓库权限后把内容写回到仓库。默认也会把草稿保存在浏览器里，避免编辑丢失。</p>
+        </div>
+        <div class="status-row">
+          <div class="status-pill"><strong>Draft</strong> <span id="draft-status">未保存</span></div>
+          <div class="status-pill"><strong>Repo</strong> <span id="repo-status">未连接</span></div>
+          <div class="status-pill"><strong>Preview</strong> <span id="preview-status">待更新</span></div>
+        </div>
+      </div>
+
+      <div class="editor-layout">
+        <section class="studio-panel split-view">
+          <div class="panel-title">
+            <div>
+              <h2>Markdown 编辑器</h2>
+              <p>支持标题、列表、引用、代码块、链接和基础强调样式。</p>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="post-title">文章标题</label>
+            <input id="post-title" type="text" placeholder="输入博客标题" />
+          </div>
+
+          <div class="field full">
+            <label for="post-markdown">Markdown 内容</label>
+            <textarea id="post-markdown" spellcheck="false"></textarea>
+          </div>
+
+          <div class="inline-actions">
+            <a class="btn primary" href="#preview-area">查看预览</a>
+            <button class="btn ghost" id="save-draft-btn" type="button">保存本地草稿</button>
+            <button class="btn ghost" id="restore-draft-btn" type="button">恢复草稿</button>
+            <button class="btn ghost" id="download-md-btn" type="button">下载 .md</button>
+            <button class="btn danger" id="reset-md-btn" type="button">重置示例</button>
+          </div>
+
+          <p class="mini-note">写回 GitHub 需要填写 fine-grained PAT，并确保它拥有目标仓库的 Contents 写权限。该令牌只会保存在当前浏览器的 localStorage 中。</p>
+        </section>
+
+        <section class="studio-panel split-view">
+          <div class="panel-title">
+            <div>
+              <h2>实时预览</h2>
+              <p>这里显示当前 Markdown 的渲染结果。</p>
+            </div>
+          </div>
+
+          <article class="preview" id="preview-area" aria-live="polite"></article>
+        </section>
+      </div>
+
+      <section class="studio-panel">
+        <div class="panel-title">
+          <div>
+            <h2>GitHub 仓库连接</h2>
+            <p>从公开仓库读取 Markdown 文件，或者把当前内容写回到指定路径。</p>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="repo-owner">Owner</label>
+            <input id="repo-owner" type="text" placeholder="BYzhaoran" />
+          </div>
+          <div class="field">
+            <label for="repo-name">Repository</label>
+            <input id="repo-name" type="text" placeholder="repo-name" />
+          </div>
+          <div class="field">
+            <label for="repo-branch">Branch</label>
+            <input id="repo-branch" type="text" placeholder="main" />
+          </div>
+          <div class="field">
+            <label for="repo-path">目录或文件路径</label>
+            <input id="repo-path" type="text" placeholder="docs/posts 或 docs/posts/article.md" />
+          </div>
+          <div class="field full">
+            <label for="github-token">GitHub Token（可选）</label>
+            <input id="github-token" type="password" placeholder="fine-grained PAT，仅在需要写回仓库时使用" />
+          </div>
+          <div class="field full">
+            <label for="commit-message">提交说明</label>
+            <input id="commit-message" type="text" placeholder="Add or update markdown blog post" />
+          </div>
+        </div>
+
+        <div class="inline-actions">
+          <button class="btn primary" id="load-repo-btn" type="button">读取仓库目录</button>
+          <button class="btn ghost" id="load-file-btn" type="button">读取单个文件</button>
+          <button class="btn ghost" id="save-repo-btn" type="button">写回 GitHub</button>
+          <button class="btn ghost" id="clear-token-btn" type="button">清除 Token</button>
+        </div>
+
+        <div class="repo-meta">
+          <span id="repo-count">0 个条目</span>
+          <span id="repo-path-label">路径未设置</span>
+          <span id="repo-latest">未加载</span>
+        </div>
+
+        <div class="repo-shell">
+          <aside class="studio-panel">
+            <div class="panel-title">
+              <div>
+                <h2>仓库文件列表</h2>
+                <p>点击 Markdown 文件即可载入编辑器。</p>
+              </div>
+            </div>
+            <ul class="repo-list" id="repo-list">
+              <li class="desc">还没有加载仓库内容。</li>
+            </ul>
+          </aside>
+
+          <section class="studio-panel split-view">
+            <div class="panel-title">
+              <div>
+                <h2>仓库载入状态</h2>
+                <p>这里会显示当前文件、路径和保存结果。</p>
+              </div>
+            </div>
+            <div class="message" id="repo-message">输入仓库信息后，先读取目录。</div>
+            <div class="message" id="github-hint">公开仓库读取不需要 Token；写回仓库时建议使用 fine-grained PAT。</div>
+          </section>
+        </div>
+      </section>
+    </section>
+
     <main class="grid">
       <article class="panel">
         <h2>最近文章</h2>
         <ul class="post-list">
           <li><span class="date">2026-04-14</span><a class="desc" href="posts/full-stack.html">全方位技术大纲：AI + 嵌入式 + 具身智能路线整理。</a></li>
-          <li><span class="date">2026-04-09</span><span class="desc">双模式主页升级与博客入口接入。</span></li>
-          <li><span class="date">2026-04-01</span><span class="desc">控制算法工程化中的参数管理与回归验证要点。</span></li>
-          <li><span class="date">2026-03-24</span><span class="desc">嵌入式 AI 部署时序与资源隔离实践。</span></li>
-          <li><span class="date">2026-03-10</span><span class="desc">机器人系统模块边界设计与故障定位路径。</span></li>
         </ul>
       </article>
 
@@ -237,11 +704,7 @@
         <h2>专题导航</h2>
         <ul class="topic-list">
           <li><a href="learning-schedule.html">Learning Schedule 总览入口</a></li>
-          <li><a href="learning-schedule/plan.html">两年路线图（计划）</a></li>
-          <li><a href="learning-schedule/resources.html">资源索引（按阶段）</a></li>
           <li><a href="learning-schedule/months.html">24个月执行索引</a></li>
-          <li><a href="learning-schedule/acceptance.html">阶段性开源项目验收</a></li>
-          <li><a href="learning-schedule/app.html">本地计划软件说明</a></li>
           <li><a href="learning-schedule/readme-en.html">English README</a></li>
           <li><a href="posts/full-stack.html">全方位技术大纲（路线总览）</a></li>
           <li><a href="stack.html">控制 / 视觉 / 嵌入式 技术栈</a></li>
@@ -252,6 +715,533 @@
       </aside>
     </main>
   </div>
+  <script>
+    (() => {
+      const STORAGE_KEY = 'blog-markdown-studio-state';
+      const DRAFT_KEY = 'blog-markdown-studio-draft';
+
+      const titleNode = document.getElementById('post-title');
+      const markdownNode = document.getElementById('post-markdown');
+      const previewNode = document.getElementById('preview-area');
+      const draftStatusNode = document.getElementById('draft-status');
+      const repoStatusNode = document.getElementById('repo-status');
+      const previewStatusNode = document.getElementById('preview-status');
+      const repoListNode = document.getElementById('repo-list');
+      const repoMessageNode = document.getElementById('repo-message');
+      const repoCountNode = document.getElementById('repo-count');
+      const repoPathLabelNode = document.getElementById('repo-path-label');
+      const repoLatestNode = document.getElementById('repo-latest');
+
+      const repoOwnerNode = document.getElementById('repo-owner');
+      const repoNameNode = document.getElementById('repo-name');
+      const repoBranchNode = document.getElementById('repo-branch');
+      const repoPathNode = document.getElementById('repo-path');
+      const githubTokenNode = document.getElementById('github-token');
+      const commitMessageNode = document.getElementById('commit-message');
+
+      const loadRepoBtn = document.getElementById('load-repo-btn');
+      const loadFileBtn = document.getElementById('load-file-btn');
+      const saveRepoBtn = document.getElementById('save-repo-btn');
+      const clearTokenBtn = document.getElementById('clear-token-btn');
+      const saveDraftBtn = document.getElementById('save-draft-btn');
+      const restoreDraftBtn = document.getElementById('restore-draft-btn');
+      const downloadBtn = document.getElementById('download-md-btn');
+      const resetBtn = document.getElementById('reset-md-btn');
+
+      const sampleMarkdown = [
+        '# 我的第一篇 Markdown 博客',
+        '',
+        '这是一个可直接编辑的示例。你可以在左侧输入 Markdown，然后在右侧实时查看预览。',
+        '',
+        '## 今天要做的事',
+        '',
+        '- 整理学习路径',
+        '- 补充项目笔记',
+        '- 同步到 GitHub 仓库',
+        '',
+        '> 这部分内容会被渲染成引用样式。',
+        '',
+        '```js',
+        "console.log('hello markdown');",
+        '```',
+        '',
+        '[打开 GitHub](https://github.com/)',
+      ].join('\n');
+
+      const defaultState = {
+        title: '我的第一篇 Markdown 博客',
+        markdown: sampleMarkdown,
+        repoOwner: 'BYzhaoran',
+        repoName: '',
+        repoBranch: 'main',
+        repoPath: '',
+        githubToken: '',
+        commitMessage: 'Add or update blog post',
+      };
+
+      const currentRepoFile = {
+        path: '',
+        sha: '',
+      };
+
+      const escapeHtml = (value) => String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+      const renderInline = (value) => {
+        let html = escapeHtml(value);
+        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+        html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer noopener">$1</a>');
+        return html;
+      };
+
+      const renderMarkdown = (markdown) => {
+        const lines = String(markdown || '').replace(/\r\n/g, '\n').split('\n');
+        const html = [];
+        let inCode = false;
+        let codeBuffer = [];
+        let listType = '';
+
+        const closeList = () => {
+          if (!listType) {
+            return;
+          }
+          html.push(listType === 'ol' ? '</ol>' : '</ul>');
+          listType = '';
+        };
+
+        const flushCode = () => {
+          html.push(`<pre><code>${escapeHtml(codeBuffer.join('\n'))}</code></pre>`);
+          codeBuffer = [];
+        };
+
+        lines.forEach((line) => {
+          const trimmed = line.trim();
+
+          if (trimmed.startsWith('```')) {
+            if (inCode) {
+              flushCode();
+              inCode = false;
+            } else {
+              closeList();
+              inCode = true;
+            }
+            return;
+          }
+
+          if (inCode) {
+            codeBuffer.push(line);
+            return;
+          }
+
+          if (!trimmed) {
+            closeList();
+            return;
+          }
+
+          const headingMatch = trimmed.match(/^(#{1,6})\s+(.+)$/);
+          if (headingMatch) {
+            closeList();
+            const level = headingMatch[1].length;
+            html.push(`<h${level}>${renderInline(headingMatch[2])}</h${level}>`);
+            return;
+          }
+
+          if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+            closeList();
+            html.push('<hr />');
+            return;
+          }
+
+          const unorderedMatch = trimmed.match(/^[-*+]\s+(.+)$/);
+          if (unorderedMatch) {
+            if (listType !== 'ul') {
+              closeList();
+              html.push('<ul>');
+              listType = 'ul';
+            }
+            html.push(`<li>${renderInline(unorderedMatch[1])}</li>`);
+            return;
+          }
+
+          const orderedMatch = trimmed.match(/^\d+\.\s+(.+)$/);
+          if (orderedMatch) {
+            if (listType !== 'ol') {
+              closeList();
+              html.push('<ol>');
+              listType = 'ol';
+            }
+            html.push(`<li>${renderInline(orderedMatch[1])}</li>`);
+            return;
+          }
+
+          closeList();
+
+          if (trimmed.startsWith('>')) {
+            html.push(`<blockquote><p>${renderInline(trimmed.replace(/^>\s?/, ''))}</p></blockquote>`);
+            return;
+          }
+
+          html.push(`<p>${renderInline(trimmed)}</p>`);
+        });
+
+        closeList();
+
+        if (inCode) {
+          flushCode();
+        }
+
+        return html.join('\n');
+      };
+
+      const base64ToUtf8 = (input) => {
+        const binary = window.atob(String(input).replace(/\n/g, ''));
+        const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+      };
+
+      const utf8ToBase64 = (input) => {
+        const bytes = new TextEncoder().encode(String(input));
+        let binary = '';
+        bytes.forEach((byte) => {
+          binary += String.fromCharCode(byte);
+        });
+        return window.btoa(binary);
+      };
+
+      const normalizePath = (path) => String(path || '').trim().replace(/^\/+|\/+$/g, '');
+
+      const encodeRepoPath = (path) => normalizePath(path)
+        .split('/')
+        .filter(Boolean)
+        .map((segment) => encodeURIComponent(segment))
+        .join('/');
+
+      const getRepoBase = () => {
+        const owner = repoOwnerNode.value.trim();
+        const name = repoNameNode.value.trim();
+        return owner && name ? `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(name)}` : '';
+      };
+
+      const setMessage = (text, type = '') => {
+        repoMessageNode.className = type ? `message ${type}` : 'message';
+        repoMessageNode.textContent = text;
+      };
+
+      const updatePreview = () => {
+        previewNode.innerHTML = renderMarkdown(markdownNode.value);
+        previewStatusNode.textContent = '已更新';
+      };
+
+      const collectState = () => ({
+        title: titleNode.value.trim(),
+        markdown: markdownNode.value,
+        repoOwner: repoOwnerNode.value.trim(),
+        repoName: repoNameNode.value.trim(),
+        repoBranch: repoBranchNode.value.trim() || 'main',
+        repoPath: repoPathNode.value.trim(),
+        githubToken: githubTokenNode.value,
+        commitMessage: commitMessageNode.value.trim() || defaultState.commitMessage,
+      });
+
+      const persistState = () => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
+      };
+
+      const syncStateToUI = (state) => {
+        titleNode.value = state.title || '';
+        markdownNode.value = state.markdown || '';
+        repoOwnerNode.value = state.repoOwner || '';
+        repoNameNode.value = state.repoName || '';
+        repoBranchNode.value = state.repoBranch || 'main';
+        repoPathNode.value = state.repoPath || '';
+        githubTokenNode.value = state.githubToken || '';
+        commitMessageNode.value = state.commitMessage || defaultState.commitMessage;
+        repoPathLabelNode.textContent = repoPathNode.value.trim() || '路径未设置';
+        repoLatestNode.textContent = `分支 ${repoBranchNode.value.trim() || 'main'}`;
+        updatePreview();
+      };
+
+      const saveDraft = () => {
+        localStorage.setItem(DRAFT_KEY, JSON.stringify(collectState()));
+        draftStatusNode.textContent = '草稿已保存';
+      };
+
+      const restoreDraft = () => {
+        const raw = localStorage.getItem(DRAFT_KEY) || localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          draftStatusNode.textContent = '没有可恢复的草稿';
+          return;
+        }
+
+        try {
+          syncStateToUI({ ...defaultState, ...JSON.parse(raw) });
+          persistState();
+          draftStatusNode.textContent = '草稿已恢复';
+          setMessage('草稿已恢复。', 'ok');
+        } catch (error) {
+          draftStatusNode.textContent = '草稿解析失败';
+          setMessage(`恢复失败：${error.message}`, 'error');
+        }
+      };
+
+      const downloadMarkdown = () => {
+        const slug = (titleNode.value.trim() || 'blog-post')
+          .replace(/\s+/g, '-')
+          .replace(/[^\w\u4e00-\u9fa5.-]+/g, '');
+        const fileName = `${slug || 'blog-post'}.md`;
+        const blob = new Blob([markdownNode.value], { type: 'text/markdown;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        draftStatusNode.textContent = `已下载 ${fileName}`;
+      };
+
+      const apiJson = async (url, options = {}) => {
+        const response = await fetch(url, {
+          ...options,
+          headers: {
+            Accept: 'application/vnd.github+json',
+            ...(options.headers || {}),
+          },
+        });
+
+        if (!response.ok) {
+          const details = await response.text().catch(() => '');
+          throw new Error(details || `GitHub API 请求失败 (${response.status})`);
+        }
+
+        return response.json();
+      };
+
+      const loadRepoFile = async (path) => {
+        const base = getRepoBase();
+        if (!base) {
+          throw new Error('请先填写仓库 owner 和 name');
+        }
+
+        const branch = repoBranchNode.value.trim() || 'main';
+        const encodedPath = encodeRepoPath(path);
+        const data = await apiJson(`${base}/contents/${encodedPath}?ref=${encodeURIComponent(branch)}`);
+
+        if (!data || data.type !== 'file') {
+          throw new Error('读取到的不是文件');
+        }
+
+        if (typeof data.content !== 'string') {
+          throw new Error('文件内容为空或过大，无法直接读取');
+        }
+
+        currentRepoFile.path = data.path;
+        currentRepoFile.sha = data.sha || '';
+        repoPathNode.value = data.path;
+        titleNode.value = data.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
+        markdownNode.value = base64ToUtf8(data.content);
+        repoStatusNode.textContent = '文件已载入';
+        repoPathLabelNode.textContent = data.path;
+        setMessage(`已载入 ${data.path}。`, 'ok');
+        updatePreview();
+        persistState();
+      };
+
+      const loadRepoEntries = async () => {
+        const base = getRepoBase();
+        if (!base) {
+          throw new Error('请先填写仓库 owner 和 name');
+        }
+
+        const path = normalizePath(repoPathNode.value);
+        const branch = repoBranchNode.value.trim() || 'main';
+        const target = path ? `/${encodeRepoPath(path)}` : '';
+        const data = await apiJson(`${base}/contents${target}?ref=${encodeURIComponent(branch)}`);
+
+        if (!Array.isArray(data)) {
+          throw new Error('当前路径不是目录，无法列出文件');
+        }
+
+        const entries = data
+          .filter((item) => item.type === 'dir' || /\.(md|mdx|markdown|txt)$/i.test(item.name))
+          .sort((left, right) => {
+            if (left.type !== right.type) {
+              return left.type === 'dir' ? -1 : 1;
+            }
+            return left.name.localeCompare(right.name, 'zh-CN');
+          });
+
+        repoListNode.innerHTML = '';
+
+        if (entries.length === 0) {
+          repoListNode.innerHTML = '<li class="desc">这个目录里没有可展示的 Markdown 文件。</li>';
+        } else {
+          entries.forEach((item) => {
+            const li = document.createElement('li');
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = `${item.type === 'dir' ? '📁' : '📝'} ${item.name}`;
+            button.addEventListener('click', async () => {
+              repoPathNode.value = item.path;
+              if (item.type === 'dir') {
+                await loadRepoEntries();
+                return;
+              }
+
+              await loadRepoFile(item.path);
+            });
+            li.appendChild(button);
+            repoListNode.appendChild(li);
+          });
+        }
+
+        repoCountNode.textContent = `${entries.length} 个条目`;
+        repoPathLabelNode.textContent = path || '仓库根目录';
+        repoLatestNode.textContent = `分支 ${branch}`;
+        repoStatusNode.textContent = '目录已加载';
+        setMessage(`已读取 ${path || '仓库根目录'}。点击 Markdown 文件可以载入编辑器。`, 'ok');
+      };
+
+      const writeRepoFile = async () => {
+        const base = getRepoBase();
+        if (!base) {
+          throw new Error('请先填写仓库 owner 和 name');
+        }
+
+        const token = githubTokenNode.value.trim();
+        if (!token) {
+          throw new Error('写回 GitHub 需要 Token');
+        }
+
+        const branch = repoBranchNode.value.trim() || 'main';
+        const safeName = (titleNode.value.trim() || 'blog-post')
+          .replace(/\s+/g, '-')
+          .replace(/[^\w\u4e00-\u9fa5.-]+/g, '');
+        const path = normalizePath(repoPathNode.value) || `${safeName || 'blog-post'}.md`;
+        const payload = {
+          message: commitMessageNode.value.trim() || defaultState.commitMessage,
+          content: utf8ToBase64(markdownNode.value),
+          branch,
+        };
+
+        if (currentRepoFile.path === path && currentRepoFile.sha) {
+          payload.sha = currentRepoFile.sha;
+        }
+
+        const response = await fetch(`${base}/contents/${encodeRepoPath(path)}`, {
+          method: 'PUT',
+          headers: {
+            Accept: 'application/vnd.github+json',
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const resultText = await response.text();
+        if (!response.ok) {
+          throw new Error(resultText || `写入失败 (${response.status})`);
+        }
+
+        const result = JSON.parse(resultText);
+        currentRepoFile.path = result.content?.path || path;
+        currentRepoFile.sha = result.content?.sha || '';
+        repoPathNode.value = currentRepoFile.path;
+        repoPathLabelNode.textContent = currentRepoFile.path;
+        repoStatusNode.textContent = '已写回 GitHub';
+        setMessage(`已提交到 ${currentRepoFile.path}。`, 'ok');
+        saveDraft();
+      };
+
+      const init = () => {
+        const rawState = localStorage.getItem(STORAGE_KEY);
+        let state = defaultState;
+
+        if (rawState) {
+          try {
+            state = { ...defaultState, ...JSON.parse(rawState) };
+          } catch (_) {
+            state = defaultState;
+          }
+        }
+
+        syncStateToUI(state);
+        draftStatusNode.textContent = '本地已就绪';
+        repoStatusNode.textContent = '未连接';
+        previewStatusNode.textContent = '已渲染';
+        setMessage('先在左侧写 Markdown，或者在下方填写仓库信息后读取 GitHub 文件。');
+      };
+
+      [titleNode, markdownNode, repoOwnerNode, repoNameNode, repoBranchNode, repoPathNode, githubTokenNode, commitMessageNode].forEach((node) => {
+        node.addEventListener('input', () => {
+          updatePreview();
+          persistState();
+          repoPathLabelNode.textContent = repoPathNode.value.trim() || '路径未设置';
+          repoLatestNode.textContent = `分支 ${repoBranchNode.value.trim() || 'main'}`;
+        });
+      });
+
+      saveDraftBtn.addEventListener('click', saveDraft);
+      restoreDraftBtn.addEventListener('click', restoreDraft);
+      downloadBtn.addEventListener('click', downloadMarkdown);
+      resetBtn.addEventListener('click', () => {
+        syncStateToUI(defaultState);
+        currentRepoFile.path = '';
+        currentRepoFile.sha = '';
+        persistState();
+        draftStatusNode.textContent = '已重置';
+        repoStatusNode.textContent = '未连接';
+        setMessage('示例内容已恢复。');
+      });
+
+      clearTokenBtn.addEventListener('click', () => {
+        githubTokenNode.value = '';
+        persistState();
+        setMessage('Token 已清除。', 'ok');
+      });
+
+      loadRepoBtn.addEventListener('click', async () => {
+        try {
+          await loadRepoEntries();
+        } catch (error) {
+          repoStatusNode.textContent = '读取失败';
+          setMessage(`读取目录失败：${error.message}`, 'error');
+        }
+      });
+
+      loadFileBtn.addEventListener('click', async () => {
+        try {
+          const path = normalizePath(repoPathNode.value);
+          if (!path) {
+            throw new Error('请先输入一个 Markdown 文件路径');
+          }
+
+          await loadRepoFile(path);
+        } catch (error) {
+          repoStatusNode.textContent = '读取失败';
+          setMessage(`读取文件失败：${error.message}`, 'error');
+        }
+      });
+
+      saveRepoBtn.addEventListener('click', async () => {
+        try {
+          await writeRepoFile();
+        } catch (error) {
+          repoStatusNode.textContent = '写入失败';
+          setMessage(`写入仓库失败：${error.message}`, 'error');
+        }
+      });
+
+      init();
+    })();
+  </script>
   <script src="../effects.js"></script>
 </body>
 </html>
