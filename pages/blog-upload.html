@@ -640,63 +640,68 @@
       <section class="studio-panel">
         <div class="panel-title">
           <div>
-            <h2>GitHub 仓库连接</h2>
-            <p>从公开仓库读取 Markdown 文件，或者把当前内容写回到指定路径。</p>
+            <h2>发布到仓库</h2>
+            <p>默认推送到 BYzhaoran/BYzhaoran 仓库的 docs/posts 目录。</p>
           </div>
         </div>
 
         <div class="field-grid">
-          <div class="field">
-            <label for="repo-owner">Owner</label>
-            <input id="repo-owner" type="text" placeholder="BYzhaoran" />
-          </div>
-          <div class="field">
-            <label for="repo-name">Repository</label>
-            <input id="repo-name" type="text" placeholder="repo-name" />
-          </div>
-          <div class="field">
-            <label for="repo-branch">Branch</label>
-            <input id="repo-branch" type="text" placeholder="main" />
-          </div>
-          <div class="field">
-            <label for="repo-path">目录或文件路径</label>
-            <input id="repo-path" type="text" placeholder="docs/posts 或 docs/posts/article.md" />
-          </div>
           <div class="field full">
-            <label for="github-token">GitHub Token（可选）</label>
-            <input id="github-token" type="password" placeholder="fine-grained PAT，仅在需要写回仓库时使用" />
+            <label for="github-token">GitHub Token</label>
+            <input id="github-token" type="password" placeholder="fine-grained PAT，需要 contents 或 repo 权限" />
           </div>
           <div class="field full">
             <label for="commit-message">提交说明</label>
-            <input id="commit-message" type="text" placeholder="Add or update markdown blog post" />
-          </div>
-          <div class="field">
-            <label for="pr-branch">PR 分支名</label>
-            <input id="pr-branch" type="text" placeholder="blog/update-20260429" />
-          </div>
-          <div class="field">
-            <label for="pr-title">PR 标题</label>
-            <input id="pr-title" type="text" placeholder="Publish markdown blog post" />
-          </div>
-          <div class="field full">
-            <label for="pr-body">PR 说明</label>
-            <input id="pr-body" type="text" placeholder="Auto-generated from the blog upload workspace" />
+            <input id="commit-message" type="text" placeholder="Add or update blog post" />
           </div>
         </div>
 
         <div class="inline-actions">
-          <button class="btn primary" id="load-repo-btn" type="button">读取仓库目录</button>
-          <button class="btn ghost" id="load-file-btn" type="button">读取单个文件</button>
-          <button class="btn ghost" id="save-repo-btn" type="button">写回 GitHub</button>
-          <button class="btn ghost" id="publish-pr-btn" type="button">通过 PR 发布</button>
+          <button class="btn primary" id="publish-direct-btn" type="button">✓ 直接提交到仓库</button>
+          <button class="btn ghost" id="publish-pr-btn" type="button">⤴ 创建 Pull Request</button>
+          <button class="btn ghost" id="load-repo-btn" type="button">📁 浏览仓库</button>
           <button class="btn ghost" id="clear-token-btn" type="button">清除 Token</button>
         </div>
 
         <div class="repo-meta">
-          <span id="repo-count">0 个条目</span>
-          <span id="repo-path-label">路径未设置</span>
-          <span id="repo-latest">未加载</span>
+          <span id="repo-target">目标：BYzhaoran/BYzhaoran → docs/posts</span>
+          <span id="repo-branch-label">分支：main</span>
         </div>
+
+        <div id="repo-browser" style="display: none;">
+          <div class="repo-shell" style="margin-top: 16px;">
+            <aside class="studio-panel">
+              <div class="panel-title">
+                <div>
+                  <h2>仓库文件列表</h2>
+                  <p>点击 Markdown 文件即可载入编辑器。</p>
+                </div>
+              </div>
+              <ul class="repo-list" id="repo-list">
+                <li class="desc">点击上方"浏览仓库"加载文件列表。</li>
+              </ul>
+            </aside>
+
+            <section class="studio-panel split-view">
+              <div class="panel-title">
+                <div>
+                  <h2>仓库操作状态</h2>
+                  <p>这里会显示加载和保存的结果。</p>
+                </div>
+              </div>
+              <div class="message" id="repo-message">加载中...</div>
+            </section>
+          </div>
+        </div>
+
+        <div class="message" id="github-hint">
+          💡 <strong>快速开始：</strong><br/>
+          1. 输入 GitHub Token（需要 contents 或 repo 权限）<br/>
+          2. 点击"✓ 直接提交到仓库"或"⤴ 创建 Pull Request"<br/>
+          3. 可选：点击"📁 浏览仓库"查看或编辑现有文章<br/><br/>
+          <strong>权限说明：</strong> 直接提交需要 Token 有写权限；PR 方式需要 repo 作用域。
+        </div>
+      </section>
 
         <div class="repo-shell">
           <aside class="studio-panel">
@@ -719,7 +724,13 @@
               </div>
             </div>
             <div class="message" id="repo-message">输入仓库信息后，先读取目录。</div>
-            <div class="message" id="github-hint">公开仓库读取不需要 Token；写回仓库时建议使用 fine-grained PAT。</div>
+            <div class="message" id="github-hint">
+              💡 <strong>权限说明：</strong><br/>
+              • 读取公开仓库：无需 Token<br/>
+              • 直接写入（保存到仓库）：需要 Token 拥有 `contents` 权限<br/>
+              • 通过 PR 发布：需要 Token 拥有 `repo` 作用域（包括 fork、分支、PR 权限）<br/>
+              建议使用 fine-grained PAT，在 GitHub Settings → Developer settings → Personal access tokens 创建。
+            </div>
           </section>
         </div>
       </section>
@@ -738,29 +749,18 @@
       const previewStatusNode = document.getElementById('preview-status');
       const repoListNode = document.getElementById('repo-list');
       const repoMessageNode = document.getElementById('repo-message');
-      const repoCountNode = document.getElementById('repo-count');
-      const repoPathLabelNode = document.getElementById('repo-path-label');
-      const repoLatestNode = document.getElementById('repo-latest');
-
-      const repoOwnerNode = document.getElementById('repo-owner');
-      const repoNameNode = document.getElementById('repo-name');
-      const repoBranchNode = document.getElementById('repo-branch');
-      const repoPathNode = document.getElementById('repo-path');
       const githubTokenNode = document.getElementById('github-token');
       const commitMessageNode = document.getElementById('commit-message');
-      const prBranchNode = document.getElementById('pr-branch');
-      const prTitleNode = document.getElementById('pr-title');
-      const prBodyNode = document.getElementById('pr-body');
 
       const loadRepoBtn = document.getElementById('load-repo-btn');
-      const loadFileBtn = document.getElementById('load-file-btn');
-      const saveRepoBtn = document.getElementById('save-repo-btn');
+      const publishDirectBtn = document.getElementById('publish-direct-btn');
       const publishPrBtn = document.getElementById('publish-pr-btn');
       const clearTokenBtn = document.getElementById('clear-token-btn');
       const saveDraftBtn = document.getElementById('save-draft-btn');
       const restoreDraftBtn = document.getElementById('restore-draft-btn');
       const downloadBtn = document.getElementById('download-md-btn');
       const resetBtn = document.getElementById('reset-md-btn');
+      const repoBrowserNode = document.getElementById('repo-browser');
 
       const sampleMarkdown = [
         '# 我的第一篇 Markdown 博客',
@@ -786,9 +786,9 @@
         title: '我的第一篇 Markdown 博客',
         markdown: sampleMarkdown,
         repoOwner: 'BYzhaoran',
-        repoName: '',
+        repoName: 'BYzhaoran',
         repoBranch: 'main',
-        repoPath: '',
+        repoPath: 'docs/posts',
         githubToken: '',
         commitMessage: 'Add or update blog post',
         prBranch: '',
@@ -940,10 +940,12 @@
         .join('/');
 
       const getRepoBase = () => {
-        const owner = repoOwnerNode.value.trim();
-        const name = repoNameNode.value.trim();
-        return owner && name ? `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(name)}` : '';
+        return 'https://api.github.com/repos/BYzhaoran/BYzhaoran';
       };
+
+      const getDefaultPath = () => 'docs/posts';
+
+      const getDefaultBranch = () => 'main';
 
       const getTokenHeaders = () => {
         const token = githubTokenNode.value.trim();
@@ -971,15 +973,12 @@
       const collectState = () => ({
         title: titleNode.value.trim(),
         markdown: markdownNode.value,
-        repoOwner: repoOwnerNode.value.trim(),
-        repoName: repoNameNode.value.trim(),
-        repoBranch: repoBranchNode.value.trim() || 'main',
-        repoPath: repoPathNode.value.trim(),
+        repoOwner: 'BYzhaoran',
+        repoName: 'BYzhaoran',
+        repoBranch: 'main',
+        repoPath: 'docs/posts',
         githubToken: githubTokenNode.value,
         commitMessage: commitMessageNode.value.trim() || defaultState.commitMessage,
-        prBranch: prBranchNode.value.trim(),
-        prTitle: prTitleNode.value.trim(),
-        prBody: prBodyNode.value.trim(),
       });
 
       const persistState = () => {
@@ -989,17 +988,8 @@
       const syncStateToUI = (state) => {
         titleNode.value = state.title || '';
         markdownNode.value = state.markdown || '';
-        repoOwnerNode.value = state.repoOwner || '';
-        repoNameNode.value = state.repoName || '';
-        repoBranchNode.value = state.repoBranch || 'main';
-        repoPathNode.value = state.repoPath || '';
         githubTokenNode.value = state.githubToken || '';
         commitMessageNode.value = state.commitMessage || defaultState.commitMessage;
-        prBranchNode.value = state.prBranch || '';
-        prTitleNode.value = state.prTitle || '';
-        prBodyNode.value = state.prBody || '';
-        repoPathLabelNode.textContent = repoPathNode.value.trim() || '路径未设置';
-        repoLatestNode.textContent = `分支 ${repoBranchNode.value.trim() || 'main'}`;
         updatePreview();
       };
 
@@ -1065,6 +1055,30 @@
         return message.includes('resource not accessible') || message.includes('forbidden') || message.includes('permission') || message.includes('403');
       };
 
+      const getTokenInfo = async () => {
+        try {
+          const user = await apiJson('https://api.github.com/user', {
+            headers: getTokenHeaders(),
+          });
+          return user;
+        } catch {
+          return null;
+        }
+      };
+
+      const checkTokenScopes = async () => {
+        try {
+          const response = await fetch('https://api.github.com/user', {
+            headers: getTokenHeaders(),
+          });
+          const scopeHeader = response.headers.get('x-oauth-scopes') || '';
+          const scopes = scopeHeader.split(',').map((s) => s.trim()).filter(Boolean);
+          return scopes;
+        } catch {
+          return [];
+        }
+      };
+
       const waitForRepo = async (owner, repoName, attempts = 10) => {
         for (let index = 0; index < attempts; index += 1) {
           try {
@@ -1102,7 +1116,13 @@
 
         if (!response.ok && response.status !== 202) {
           const details = await response.text().catch(() => '');
-          throw new Error(details || `创建 fork 失败 (${response.status})`);
+          let errorMsg = details || `创建 fork 失败 (${response.status})`;
+          
+          if (response.status === 403) {
+            errorMsg = `❌ 权限不足：您的 Token 缺少创建 fork 所需的权限。\n\n✓ 解决方案：\n1. 需要 GitHub Token 具有 "repo" 作用域（全仓库访问权限）\n2. 或者申请具有仓库 fork 权限的新 Token\n3. 然后在下面重新粘贴新 Token\n\n详情：${details}`;
+          }
+          
+          throw new Error(errorMsg);
         }
 
         const forkOwner = await getAuthenticatedUser();
@@ -1130,9 +1150,9 @@
       };
 
       const createPullRequest = async (forkOwner, branchName) => {
-        const baseBranch = repoBranchNode.value.trim() || 'main';
-        const title = prTitleNode.value.trim() || titleNode.value.trim() || 'Publish markdown blog post';
-        const body = prBodyNode.value.trim() || `Auto-generated from the blog upload workspace.\n\nTarget path: ${repoPathNode.value.trim() || 'new post'}`;
+        const baseBranch = getDefaultBranch();
+        const title = titleNode.value.trim() || 'Publish markdown blog post';
+        const body = `通过博客上传工作台发布的 Markdown 文章\n\n标题：${title}\n\n---\n\n自动生成的 PR`;
         const response = await fetch(`${getRepoBase()}/pulls`, {
           method: 'POST',
           headers: getTokenHeaders(),
@@ -1154,9 +1174,13 @@
       };
 
       const publishToPullRequest = async () => {
-        const branchName = normalizePath(prBranchNode.value) || `blog/upload-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`;
-        const baseBranch = repoBranchNode.value.trim() || 'main';
-        const targetPath = normalizePath(repoPathNode.value) || `${(titleNode.value.trim() || 'blog-post').replace(/\s+/g, '-').replace(/[^\w\u4e00-\u9fa5.-]+/g, '') || 'blog-post'}.md`;
+        const branchName = `blog/publish-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Date.now()}`;
+        const baseBranch = getDefaultBranch();
+        const defaultPath = getDefaultPath();
+        const safeName = (titleNode.value.trim() || 'blog-post')
+          .replace(/\s+/g, '-')
+          .replace(/[^\w\u4e00-\u9fa5.-]+/g, '');
+        const targetPath = `${defaultPath}/${safeName || 'blog-post'}.md`;
         const forkRepo = await ensureFork();
         const forkOwner = forkRepo.owner?.login || await getAuthenticatedUser();
 
@@ -1181,17 +1205,13 @@
 
         const pullRequest = await createPullRequest(forkOwner, branchName);
         repoStatusNode.textContent = 'PR 已创建';
-        setMessage(`已创建草稿 PR：#${pullRequest.number} ${pullRequest.html_url}`, 'ok');
+        setMessage(`✓ 已创建草稿 PR：#${pullRequest.number}\n${pullRequest.html_url}`, 'ok');
         return pullRequest;
       };
 
       const loadRepoFile = async (path) => {
         const base = getRepoBase();
-        if (!base) {
-          throw new Error('请先填写仓库 owner 和 name');
-        }
-
-        const branch = repoBranchNode.value.trim() || 'main';
+        const branch = getDefaultBranch();
         const encodedPath = encodeRepoPath(path);
         const data = await apiJson(`${base}/contents/${encodedPath}?ref=${encodeURIComponent(branch)}`);
 
@@ -1217,12 +1237,8 @@
 
       const loadRepoEntries = async () => {
         const base = getRepoBase();
-        if (!base) {
-          throw new Error('请先填写仓库 owner 和 name');
-        }
-
-        const path = normalizePath(repoPathNode.value);
-        const branch = repoBranchNode.value.trim() || 'main';
+        const path = getDefaultPath();
+        const branch = getDefaultBranch();
         const target = path ? `/${encodeRepoPath(path)}` : '';
         const data = await apiJson(`${base}/contents${target}?ref=${encodeURIComponent(branch)}`);
 
@@ -1250,12 +1266,9 @@
             button.type = 'button';
             button.textContent = `${item.type === 'dir' ? '📁' : '📝'} ${item.name}`;
             button.addEventListener('click', async () => {
-              repoPathNode.value = item.path;
               if (item.type === 'dir') {
-                await loadRepoEntries();
-                return;
+                throw new Error('暂不支持递归浏览目录');
               }
-
               await loadRepoFile(item.path);
             });
             li.appendChild(button);
@@ -1263,28 +1276,22 @@
           });
         }
 
-        repoCountNode.textContent = `${entries.length} 个条目`;
-        repoPathLabelNode.textContent = path || '仓库根目录';
-        repoLatestNode.textContent = `分支 ${branch}`;
-        repoStatusNode.textContent = '目录已加载';
         setMessage(`已读取 ${path || '仓库根目录'}。点击 Markdown 文件可以载入编辑器。`, 'ok');
       };
 
       const writeRepoFile = async () => {
         const base = getRepoBase();
-        if (!base) {
-          throw new Error('请先填写仓库 owner 和 name');
-        }
-
         if (!githubTokenNode.value.trim()) {
           throw new Error('写回 GitHub 需要 Token');
         }
 
-        const branch = repoBranchNode.value.trim() || 'main';
+        const branch = getDefaultBranch();
+        const defaultPath = getDefaultPath();
         const safeName = (titleNode.value.trim() || 'blog-post')
           .replace(/\s+/g, '-')
           .replace(/[^\w\u4e00-\u9fa5.-]+/g, '');
-        const path = normalizePath(repoPathNode.value) || `${safeName || 'blog-post'}.md`;
+        const fileName = `${safeName || 'blog-post'}.md`;
+        const path = `${defaultPath}/${fileName}`;
         const payload = {
           message: commitMessageNode.value.trim() || defaultState.commitMessage,
           content: utf8ToBase64(markdownNode.value),
@@ -1309,21 +1316,31 @@
         const result = JSON.parse(resultText);
         currentRepoFile.path = result.content?.path || path;
         currentRepoFile.sha = result.content?.sha || '';
-        repoPathNode.value = currentRepoFile.path;
-        repoPathLabelNode.textContent = currentRepoFile.path;
-        repoStatusNode.textContent = '已写回 GitHub';
-        setMessage(`已提交到 ${currentRepoFile.path}。`, 'ok');
+        repoStatusNode.textContent = '✓ 已保存到仓库';
+        setMessage(`✓ 已提交到 ${currentRepoFile.path}`, 'ok');
         saveDraft();
       };
 
       const publishAsPullRequest = async () => {
         try {
+          repoStatusNode.textContent = '正在创建 PR...';
+          setMessage('正在创建 fork 并准备 PR...', 'ok');
           const pullRequest = await publishToPullRequest();
           repoStatusNode.textContent = 'PR 已创建';
-          setMessage(`已创建草稿 PR：#${pullRequest.number} ${pullRequest.html_url}`, 'ok');
+          setMessage(`✓ 已创建草稿 PR：#${pullRequest.number}\n${pullRequest.html_url}`, 'ok');
         } catch (error) {
           repoStatusNode.textContent = 'PR 失败';
-          setMessage(`创建 PR 失败：${error.message}`, 'error');
+          const errorMessage = String(error?.message || error || '');
+          
+          // 权限错误的特殊处理
+          if (errorMessage.includes('权限不足') || errorMessage.includes('Resource not accessible')) {
+            setMessage(
+              `❌ 权限错误：\n${errorMessage}\n\n✓ 要解决此问题：\n1. 访问 GitHub Settings → Developer settings → Personal access tokens\n2. 创建或编辑 Token，确保包含 "repo" 作用域\n3. 复制新 Token，粘贴到上面的 Token 字段\n4. 重新点击"通过 PR 发布"按钮`,
+              'error'
+            );
+          } else {
+            setMessage(`✗ 创建 PR 失败：${errorMessage}`, 'error');
+          }
         }
       };
 
@@ -1343,15 +1360,13 @@
         draftStatusNode.textContent = '本地已就绪';
         repoStatusNode.textContent = '未连接';
         previewStatusNode.textContent = '已渲染';
-        setMessage('先在左侧写 Markdown，或者在下方填写仓库信息后读取 GitHub 文件。');
+        setMessage('✍️ 在左侧编写 Markdown，然后选择发布方式\n\n• 直接提交：需要 Token 有写权限\n• 创建 PR：推荐方式，创建草稿 PR 供审核');
       };
 
-      [titleNode, markdownNode, repoOwnerNode, repoNameNode, repoBranchNode, repoPathNode, githubTokenNode, commitMessageNode].forEach((node) => {
+      [titleNode, markdownNode, githubTokenNode, commitMessageNode].forEach((node) => {
         node.addEventListener('input', () => {
           updatePreview();
           persistState();
-          repoPathLabelNode.textContent = repoPathNode.value.trim() || '路径未设置';
-          repoLatestNode.textContent = `分支 ${repoBranchNode.value.trim() || 'main'}`;
         });
       });
 
@@ -1371,49 +1386,77 @@
       clearTokenBtn.addEventListener('click', () => {
         githubTokenNode.value = '';
         persistState();
-        setMessage('Token 已清除。', 'ok');
+        setMessage('✓ Token 已清除。', 'ok');
       });
 
       loadRepoBtn.addEventListener('click', async () => {
+        if (!githubTokenNode.value.trim()) {
+          setMessage('❌ 需要先输入 Token 才能浏览仓库', 'error');
+          return;
+        }
+
         try {
+          repoBrowserNode.style.display = 'block';
+          setMessage('正在加载文件列表...', 'ok');
           await loadRepoEntries();
         } catch (error) {
           repoStatusNode.textContent = '读取失败';
-          setMessage(`读取目录失败：${error.message}`, 'error');
+          setMessage(`❌ 读取目录失败：${error.message}`, 'error');
         }
       });
 
-      loadFileBtn.addEventListener('click', async () => {
-        try {
-          const path = normalizePath(repoPathNode.value);
-          if (!path) {
-            throw new Error('请先输入一个 Markdown 文件路径');
-          }
-
-          await loadRepoFile(path);
-        } catch (error) {
-          repoStatusNode.textContent = '读取失败';
-          setMessage(`读取文件失败：${error.message}`, 'error');
+      publishDirectBtn.addEventListener('click', async () => {
+        if (!githubTokenNode.value.trim()) {
+          setMessage('❌ 需要先输入 Token', 'error');
+          return;
         }
-      });
 
-      saveRepoBtn.addEventListener('click', async () => {
+        if (!titleNode.value.trim()) {
+          setMessage('❌ 需要输入文章标题', 'error');
+          return;
+        }
+
         try {
+          repoStatusNode.textContent = '正在保存...';
+          setMessage('⏳ 正在提交到仓库...', 'ok');
           await writeRepoFile();
         } catch (error) {
-          if (isPermissionError(error)) {
-            repoStatusNode.textContent = '权限不足，改为 PR';
-            setMessage(`直接写入被拒绝，已切换到 PR 流程：${error.message}`, 'error');
-            await publishAsPullRequest();
-            return;
-          }
-          repoStatusNode.textContent = '写入失败';
-          setMessage(`写入仓库失败：${error.message}`, 'error');
+          const errorMsg = String(error?.message || error || '');
+          repoStatusNode.textContent = '✗ 保存失败';
+          setMessage(`❌ 写入失败：${errorMsg}`, 'error');
         }
       });
 
       publishPrBtn.addEventListener('click', async () => {
-        await publishAsPullRequest();
+        if (!githubTokenNode.value.trim()) {
+          setMessage('❌ 需要先输入 Token（需要 repo 作用域权限）', 'error');
+          return;
+        }
+
+        if (!titleNode.value.trim()) {
+          setMessage('❌ 需要输入文章标题', 'error');
+          return;
+        }
+
+        try {
+          repoStatusNode.textContent = '正在创建 PR...';
+          setMessage('⏳ 正在创建 fork 并准备 PR...', 'ok');
+          const pullRequest = await publishToPullRequest();
+          repoStatusNode.textContent = '✓ PR 已创建';
+          setMessage(`✓ 已创建草稿 PR：#${pullRequest.number}\n${pullRequest.html_url}`, 'ok');
+        } catch (error) {
+          repoStatusNode.textContent = '✗ PR 创建失败';
+          const errorMessage = String(error?.message || error || '');
+          
+          if (errorMessage.includes('权限不足') || errorMessage.includes('Resource not accessible')) {
+            setMessage(
+              `❌ 权限错误：\n${errorMessage}\n\n✓ 要解决此问题：\n1. 访问 GitHub Settings → Developer settings → Personal access tokens\n2. 创建或编辑 Token，确保包含 "repo" 作用域\n3. 复制新 Token，粘贴到上面的 Token 字段\n4. 重新点击"⤴ 创建 Pull Request"按钮`,
+              'error'
+            );
+          } else {
+            setMessage(`❌ 创建 PR 失败：${errorMessage}`, 'error');
+          }
+        }
       });
 
       init();
