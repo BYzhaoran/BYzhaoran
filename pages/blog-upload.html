@@ -1044,6 +1044,10 @@
 
         if (!response.ok) {
           const details = await response.text().catch(() => '');
+          if (response.status === 401) {
+            // 标准化 401 错误为更友好的提示
+            throw new Error('401 Bad credentials：GitHub Token 无效或已过期。请检查并重新生成 Token，确保复制无误。');
+          }
           throw new Error(details || `GitHub API 请求失败 (${response.status})`);
         }
 
@@ -1076,6 +1080,24 @@
           return scopes;
         } catch {
           return [];
+        }
+      };
+
+      const validateToken = async () => {
+        try {
+          const user = await getTokenInfo();
+          if (!user) {
+            setMessage('❌ Token 无效或无法验证（Bad credentials）。请检查 Token 是否正确并具有所需权限。', 'error');
+            return null;
+          }
+
+          const scopes = await checkTokenScopes();
+          setMessage(`已验证为 ${user.login}，Token scopes: ${scopes.join(', ') || '无'}。`, 'ok');
+          return { user, scopes };
+        } catch (err) {
+          const msg = String(err?.message || err || '');
+          setMessage(`❌ 验证 Token 失败：${msg}`, 'error');
+          return null;
         }
       };
 
@@ -1225,11 +1247,9 @@
 
         currentRepoFile.path = data.path;
         currentRepoFile.sha = data.sha || '';
-        repoPathNode.value = data.path;
         titleNode.value = data.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
         markdownNode.value = base64ToUtf8(data.content);
         repoStatusNode.textContent = '文件已载入';
-        repoPathLabelNode.textContent = data.path;
         setMessage(`已载入 ${data.path}。`, 'ok');
         updatePreview();
         persistState();
@@ -1416,6 +1436,9 @@
           return;
         }
 
+        const validated = await validateToken();
+        if (!validated) return;
+
         try {
           repoStatusNode.textContent = '正在保存...';
           setMessage('⏳ 正在提交到仓库...', 'ok');
@@ -1423,6 +1446,10 @@
         } catch (error) {
           const errorMsg = String(error?.message || error || '');
           repoStatusNode.textContent = '✗ 保存失败';
+          if (errorMsg.includes('Bad credentials') || errorMsg.includes('401')) {
+            setMessage('❌ 写入失败：Token 无效或没有权限（Bad credentials）。请检查 Token 并重新输入。', 'error');
+            return;
+          }
           setMessage(`❌ 写入失败：${errorMsg}`, 'error');
         }
       });
@@ -1438,6 +1465,16 @@
           return;
         }
 
+        const validated = await validateToken();
+        if (!validated) return;
+
+        // 校验是否包含 repo 作用域
+        const { scopes } = validated;
+        if (!scopes.includes('repo') && !scopes.includes('public_repo')) {
+          setMessage('⚠️ 当前 Token 可能缺少创建 fork/PR 的权限，请使用包含 "repo" 或 "public_repo" 的 Token。', 'error');
+          return;
+        }
+
         try {
           repoStatusNode.textContent = '正在创建 PR...';
           setMessage('⏳ 正在创建 fork 并准备 PR...', 'ok');
@@ -1447,15 +1484,15 @@
         } catch (error) {
           repoStatusNode.textContent = '✗ PR 创建失败';
           const errorMessage = String(error?.message || error || '');
-          
-          if (errorMessage.includes('权限不足') || errorMessage.includes('Resource not accessible')) {
-            setMessage(
-              `❌ 权限错误：\n${errorMessage}\n\n✓ 要解决此问题：\n1. 访问 GitHub Settings → Developer settings → Personal access tokens\n2. 创建或编辑 Token，确保包含 "repo" 作用域\n3. 复制新 Token，粘贴到上面的 Token 字段\n4. 重新点击"⤴ 创建 Pull Request"按钮`,
-              'error'
-            );
-          } else {
-            setMessage(`❌ 创建 PR 失败：${errorMessage}`, 'error');
+          if (errorMessage.includes('Bad credentials') || errorMessage.includes('401')) {
+            setMessage('❌ PR 创建失败：Token 无效或已过期（Bad credentials）。请检查或重新生成 Token。', 'error');
+            return;
           }
+          if (errorMessage.includes('权限不足') || errorMessage.includes('Resource not accessible')) {
+            setMessage(`❌ 权限错误：${errorMessage}`, 'error');
+            return;
+          }
+          setMessage(`❌ 创建 PR 失败：${errorMessage}`, 'error');
         }
       });
 
