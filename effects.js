@@ -24,7 +24,7 @@
         pointer-events: none;
         z-index: 1;
         opacity: 0;
-        background: radial-gradient(circle, rgba(57,210,255,0.36) 0%, rgba(86,248,178,0.16) 38%, rgba(57,210,255,0) 72%);
+        background: radial-gradient(circle, rgba(255,111,216,0.45) 0%, rgba(168,85,247,0.25) 38%, rgba(57,210,255,0.1) 60%, rgba(255,111,216,0) 72%);
         transform: translate(-50%, -50%);
         transition: opacity 200ms ease;
       }
@@ -33,10 +33,10 @@
         transition: transform 180ms ease, box-shadow 220ms ease, border-color 220ms ease;
         transform-style: preserve-3d;
       }
-      .fx-tilt:hover {
-        border-color: rgba(57,210,255,0.45) !important;
-        box-shadow: 0 34px 88px rgba(0, 0, 0, 0.58);
-      }
+.fx-tilt:hover {
+  border-color: rgba(255,111,216,0.45) !important;
+  box-shadow: 0 34px 88px rgba(0, 0, 0, 0.58), 0 0 30px rgba(255,111,216,0.3) !important;
+}
       @media (max-width: 760px) {
         #fx-particles,
         #cursor-glow {
@@ -172,7 +172,7 @@
         if (p.y < -20 || p.y > height + 20) p.vy *= -1;
 
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(57,210,255,0.64)';
+        ctx.fillStyle = 'rgba(255,111,216,0.75)';
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
 
@@ -182,8 +182,8 @@
           const dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxLink) {
-            const alpha = (1 - dist / maxLink) * 0.36;
-            ctx.strokeStyle = `rgba(86,248,178,${alpha})`;
+            const alpha = (1 - dist / maxLink) * 0.4;
+            ctx.strokeStyle = `rgba(168,85,247,${alpha})`;
             ctx.lineWidth = 1.15;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
