@@ -442,7 +442,7 @@
     <section class="hero">
       <div class="section-label">Markdown Upload</div>
       <h1>拖入 Markdown 文件，然后把内容发到你的 API</h1>
-      <p>这个页面不再提供网页内编辑。你把本地 `.md` 文件拖进来，补上 API 地址和鉴权信息，右侧可以直接预览，最后一键上传。</p>
+      <p>这个页面不再提供网页内编辑。你把本地 `.md` 文件拖进来，补上 GitHub Token，右侧可以直接预览，最后一键上传。</p>
     </section>
 
     <section class="studio panel">
@@ -450,7 +450,7 @@
         <div>
           <div class="section-label">Upload Studio</div>
           <h1>Markdown 文件上传器</h1>
-          <p>默认会把文件内容、标题、文件名和摘要一起发给接口。接口如果需要不同字段，可以在请求体 JSON 里按你的后端格式改造这页。</p>
+          <p>默认会把文件内容、标题和文件名一起发到 GitHub Contents API。你只需要填 Token，其他 GitHub API 地址和请求细节都固定在页面里。</p>
         </div>
         <div class="status-row">
           <div class="status-pill"><strong>File</strong> <span id="file-status">未加载</span></div>
@@ -464,7 +464,7 @@
           <div class="panel-title">
             <div>
               <h2>文件与接口</h2>
-              <p>拖拽 Markdown 文件，或点击选择文件。上传时会使用下面填写的 API 参数。</p>
+              <p>拖拽 Markdown 文件，或点击选择文件。上传时会直接调用 GitHub 的仓库内容接口。</p>
             </div>
           </div>
 
@@ -484,22 +484,9 @@
           </div>
 
           <div class="field-grid" style="margin-top: 14px;">
-            <div class="field full">
-              <label for="api-url">API 地址</label>
-              <input id="api-url" type="url" placeholder="https://example.com/api/blog/upload" />
-            </div>
-
-            <div class="field">
-              <label for="request-method">请求方法</label>
-              <select id="request-method">
-                <option value="POST">POST</option>
-                <option value="PUT">PUT</option>
-              </select>
-            </div>
-
             <div class="field">
               <label for="auth-token">API Token</label>
-              <input id="auth-token" type="password" placeholder="Bearer token / API key" />
+              <input id="auth-token" type="password" placeholder="GitHub token（contents 写权限）" />
             </div>
 
             <div class="field full">
@@ -507,28 +494,9 @@
               <input id="blog-title" type="text" placeholder="从文件名自动生成，也可以手动覆盖" />
             </div>
 
-            <div class="field">
-              <label for="blog-slug">Slug</label>
-              <input id="blog-slug" type="text" placeholder="例如 my-first-post" />
-            </div>
-
-            <div class="field">
-              <label for="publish-status">发布状态</label>
-              <select id="publish-status">
-                <option value="draft">draft</option>
-                <option value="published">published</option>
-                <option value="private">private</option>
-              </select>
-            </div>
-
             <div class="field full">
-              <label for="summary">摘要</label>
-              <textarea id="summary" placeholder="可选摘要，会随请求一起发送"></textarea>
-            </div>
-
-            <div class="field full">
-              <label for="extra-headers">额外请求头 JSON</label>
-              <textarea id="extra-headers" placeholder='例如 {"X-API-Key":"abc123"}'></textarea>
+              <label for="commit-message">提交说明</label>
+              <input id="commit-message" type="text" placeholder="Add or update blog post" />
             </div>
           </div>
 
@@ -539,8 +507,8 @@
             <button class="btn ghost" id="reset-btn" type="button">恢复默认</button>
           </div>
 
-          <p class="mini-note">上传请求默认发送 JSON：`title`、`slug`、`status`、`summary`、`filename`、`content`、`markdown`。你的 API 如果字段不同，直接改这页的请求体即可。</p>
-          <div class="message" id="message">先拖入 Markdown 文件，再填写 API 地址。</div>
+          <p class="mini-note">上传会固定调用 GitHub Contents API：`PUT /repos/{owner}/{repo}/contents/{path}`。请求体会包含 `message`、`content`、`branch`，以及必要时的 `sha`。</p>
+          <div class="message" id="message">先拖入 Markdown 文件，再填写 GitHub Token 和提交说明。</div>
         </section>
 
         <section class="studio-panel">
@@ -560,16 +528,16 @@
   <script>
     (() => {
       const STORAGE_KEY = 'blog-upload-api-state';
+      const REPO_OWNER = 'BYzhaoran';
+      const REPO_NAME = 'BYzhaoran';
+      const REPO_BRANCH = 'main';
+      const REPO_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
+      const REPO_PATH = 'docs/posts';
 
       const defaultState = {
-        apiUrl: '',
-        method: 'POST',
         authToken: '',
         title: '',
-        slug: '',
-        status: 'draft',
-        summary: '',
-        extraHeaders: '',
+        commitMessage: 'Add or update blog post',
       };
 
       const els = {
@@ -581,14 +549,9 @@
         downloadBtn: document.getElementById('download-btn'),
         saveStateBtn: document.getElementById('save-state-btn'),
         resetBtn: document.getElementById('reset-btn'),
-        apiUrl: document.getElementById('api-url'),
-        method: document.getElementById('request-method'),
         authToken: document.getElementById('auth-token'),
         title: document.getElementById('blog-title'),
-        slug: document.getElementById('blog-slug'),
-        status: document.getElementById('publish-status'),
-        summary: document.getElementById('summary'),
-        extraHeaders: document.getElementById('extra-headers'),
+        commitMessage: document.getElementById('commit-message'),
         fileName: document.getElementById('file-name'),
         fileSize: document.getElementById('file-size'),
         fileType: document.getElementById('file-type'),
@@ -719,13 +682,6 @@
         els.message.textContent = text;
       };
 
-      const slugify = (value) => String(value || '')
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\u4e00-\u9fa5.-]+/g, '')
-        .replace(/-{2,}/g, '-');
-
       const formatBytes = (bytes) => {
         if (!Number.isFinite(bytes)) return '-';
         const units = ['B', 'KB', 'MB', 'GB'];
@@ -749,9 +705,6 @@
         if (!els.title.value.trim()) {
           els.title.value = baseName.replace(/[-_]+/g, ' ');
         }
-        if (!els.slug.value.trim()) {
-          els.slug.value = slugify(baseName);
-        }
       };
 
       const renderFileMeta = () => {
@@ -771,14 +724,9 @@
 
       const persist = () => {
         const payload = {
-          apiUrl: els.apiUrl.value.trim(),
-          method: els.method.value,
           authToken: els.authToken.value,
           title: els.title.value,
-          slug: els.slug.value,
-          status: els.status.value,
-          summary: els.summary.value,
-          extraHeaders: els.extraHeaders.value,
+          commitMessage: els.commitMessage.value,
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
       };
@@ -788,14 +736,9 @@
         if (!raw) return;
         try {
           const saved = { ...defaultState, ...JSON.parse(raw) };
-          els.apiUrl.value = saved.apiUrl || '';
-          els.method.value = saved.method || 'POST';
           els.authToken.value = saved.authToken || '';
           els.title.value = saved.title || '';
-          els.slug.value = saved.slug || '';
-          els.status.value = saved.status || 'draft';
-          els.summary.value = saved.summary || '';
-          els.extraHeaders.value = saved.extraHeaders || '';
+          els.commitMessage.value = saved.commitMessage || defaultState.commitMessage;
         } catch {
           // Ignore bad saved state.
         }
@@ -819,56 +762,49 @@
         state.filename = '';
         els.fileInput.value = '';
         els.title.value = '';
-        els.slug.value = '';
         renderFileMeta();
         updatePreview();
         setMessage('文件已清空。');
       };
 
-      const parseHeaders = () => {
-        const headers = {};
-        const token = els.authToken.value.trim();
-        if (token) {
-          headers.Authorization = token.toLowerCase().startsWith('bearer ') ? token : `Bearer ${token}`;
-        }
+      const encodeRepoPath = (path) => String(path || '')
+        .trim()
+        .replace(/^\/+|\/+$/g, '')
+        .split('/')
+        .filter(Boolean)
+        .map((segment) => encodeURIComponent(segment))
+        .join('/');
 
-        const extra = els.extraHeaders.value.trim();
-        if (extra) {
-          const parsed = JSON.parse(extra);
-          if (!parsed || Array.isArray(parsed) || typeof parsed !== 'object') {
-            throw new Error('额外请求头必须是 JSON 对象');
-          }
-          Object.assign(headers, parsed);
-        }
-
-        return headers;
+      const toBase64 = (input) => {
+        const bytes = new TextEncoder().encode(String(input));
+        let binary = '';
+        bytes.forEach((byte) => {
+          binary += String.fromCharCode(byte);
+        });
+        return window.btoa(binary);
       };
 
-      const buildPayload = () => ({
-        title: els.title.value.trim() || (state.filename ? state.filename.replace(/\.[^.]+$/, '') : ''),
-        slug: els.slug.value.trim() || slugify(els.title.value || state.filename),
-        status: els.status.value,
-        summary: els.summary.value.trim(),
-        filename: state.filename,
-        content: state.content,
-        markdown: state.content,
-      });
-
       const upload = async () => {
-        const apiUrl = els.apiUrl.value.trim();
         if (!state.file || !state.content) throw new Error('先加载 Markdown 文件');
-        if (!apiUrl) throw new Error('请填写 API 地址');
+        const token = els.authToken.value.trim();
+        if (!token) throw new Error('请填写 GitHub Token');
 
-        let response;
-        const headers = parseHeaders();
-        headers.Accept = 'application/json';
+        const safeToken = token.toLowerCase().startsWith('bearer ') ? token : `Bearer ${token}`;
+        const title = els.title.value.trim() || state.filename.replace(/\.[^.]+$/, '');
+        const fileName = `${(title || 'blog-post').replace(/\s+/g, '-').replace(/[^\w\u4e00-\u9fa5.-]+/g, '') || 'blog-post'}.md`;
+        const path = `${REPO_PATH}/${fileName}`;
+        const payload = {
+          message: els.commitMessage.value.trim() || defaultState.commitMessage,
+          content: toBase64(state.content),
+          branch: REPO_BRANCH,
+        };
 
-        const payload = buildPayload();
-        response = await fetch(apiUrl, {
-          method: els.method.value,
+        const response = await fetch(`${REPO_BASE}/contents/${encodeRepoPath(path)}`, {
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            ...headers,
+            Accept: 'application/vnd.github+json',
+            Authorization: safeToken,
           },
           body: JSON.stringify(payload),
         });
@@ -878,7 +814,7 @@
           throw new Error(responseText || `上传失败 (${response.status})`);
         }
 
-        return responseText || '上传成功';
+        return responseText || `已提交到 ${REPO_OWNER}/${REPO_NAME}`;
       };
 
       const downloadMarkdown = () => {
@@ -901,14 +837,9 @@
 
       const resetAll = () => {
         localStorage.removeItem(STORAGE_KEY);
-        els.apiUrl.value = defaultState.apiUrl;
-        els.method.value = defaultState.method;
         els.authToken.value = defaultState.authToken;
         els.title.value = defaultState.title;
-        els.slug.value = defaultState.slug;
-        els.status.value = defaultState.status;
-        els.summary.value = defaultState.summary;
-        els.extraHeaders.value = defaultState.extraHeaders;
+        els.commitMessage.value = defaultState.commitMessage;
         clearFile();
         setMessage('配置已恢复默认。');
       };
@@ -968,29 +899,23 @@
         }
       });
 
-      [els.apiUrl, els.method, els.authToken, els.title, els.slug, els.status, els.summary, els.extraHeaders].forEach((node) => {
+      [els.authToken, els.title, els.commitMessage].forEach((node) => {
         node.addEventListener('input', () => {
           persist();
         });
       });
 
-      [els.title, els.slug, els.summary, els.extraHeaders].forEach((node) => {
+      [els.title, els.commitMessage].forEach((node) => {
         node.addEventListener('blur', persist);
-      });
-
-      els.title.addEventListener('input', () => {
-        if (!els.slug.value.trim()) {
-          els.slug.value = slugify(els.title.value);
-        }
       });
 
       restore();
       renderFileMeta();
       updatePreview();
-      if (els.apiUrl.value.trim()) {
+      if (els.authToken.value.trim()) {
         els.apiStatus.textContent = '已配置';
       }
-      setMessage('先拖入 Markdown 文件，再填写 API 地址和鉴权信息。');
+      setMessage('先拖入 Markdown 文件，再填写 GitHub Token 和提交说明。');
     })();
   </script>
   <script src="../effects.js"></script>
