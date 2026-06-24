@@ -22,24 +22,32 @@
       --danger: #ff8b8b;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
       font-family: "Source Han Sans SC", "Segoe UI", sans-serif;
       color: var(--text);
-      background: radial-gradient(circle at 18% -12%, rgba(57, 210, 255, 0.2), transparent 35%),
+      background:
+        radial-gradient(circle at 18% -12%, rgba(57, 210, 255, 0.2), transparent 35%),
         radial-gradient(circle at 95% 0, rgba(86, 248, 178, 0.18), transparent 30%),
         linear-gradient(180deg, #070d1f 0%, #090f20 55%, #050812 100%);
     }
 
     .wrap {
-      width: min(1080px, calc(100% - 24px));
+      width: min(1120px, calc(100% - 24px));
       margin: 0 auto;
       padding: 22px 0 44px;
+    }
+
+    .top,
+    .hero,
+    .panel,
+    .studio-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
     }
 
     .top {
@@ -48,9 +56,6 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 16px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
       padding: 12px 14px;
     }
 
@@ -85,13 +90,16 @@
     }
 
     .btn {
+      appearance: none;
+      border: 0;
       text-decoration: none;
       border-radius: 999px;
-      padding: 8px 12px;
+      padding: 9px 12px;
       font-size: 0.86rem;
       border: 1px solid rgba(159, 176, 212, 0.28);
       color: var(--text);
       background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
     }
 
     .btn.primary {
@@ -101,15 +109,21 @@
       background: linear-gradient(135deg, var(--accent), var(--accent2));
     }
 
+    .btn.ghost { background: rgba(255, 255, 255, 0.05); }
+    .btn.danger {
+      color: #ffe9e9;
+      border-color: rgba(255, 139, 139, 0.28);
+      background: rgba(255, 139, 139, 0.08);
+    }
+
     .hero {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 20px;
       padding: 24px;
       margin-bottom: 16px;
     }
 
-    .hero p {
+    .hero p,
+    .panel p,
+    .studio-panel p {
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
@@ -136,38 +150,19 @@
       box-shadow: 0 0 18px rgba(57, 210, 255, 0.6);
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       margin: 0;
       font-family: "Orbitron", sans-serif;
       line-height: 1.15;
     }
 
-    h1 {
-      font-size: clamp(1.35rem, 2.8vw, 2rem);
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    h1 { font-size: clamp(1.35rem, 2.8vw, 2rem); margin-bottom: 10px; }
+    h2 { font-size: 1rem; margin-bottom: 8px; }
+    h3 { font-size: 0.92rem; }
 
     .studio {
-      margin-top: 16px;
-      padding: 20px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(12, 22, 48, 0.96), rgba(7, 13, 31, 0.9)),
-        radial-gradient(circle at top right, rgba(86, 248, 178, 0.12), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(57, 210, 255, 0.12), transparent 35%);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+      display: grid;
+      gap: 16px;
     }
 
     .studio-head {
@@ -175,13 +170,7 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .studio-head p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
+      padding: 20px;
     }
 
     .status-row {
@@ -211,18 +200,16 @@
       letter-spacing: 0.08em;
     }
 
-    .editor-layout {
+    .studio-body {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
       gap: 16px;
-      margin-bottom: 16px;
     }
 
     .studio-panel {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(159, 176, 212, 0.18);
-      border-radius: 18px;
-      padding: 16px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(12, 22, 48, 0.96), rgba(7, 13, 31, 0.94));
+      min-height: 100%;
     }
 
     .panel-title {
@@ -231,18 +218,6 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 12px;
-    }
-
-    .panel-title p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.86rem;
-    }
-
-    .mini-note {
-      color: var(--warn);
-      font-size: 0.82rem;
-      line-height: 1.65;
     }
 
     .field-grid {
@@ -258,9 +233,7 @@
       gap: 6px;
     }
 
-    .field.full {
-      grid-column: 1 / -1;
-    }
+    .field.full { grid-column: 1 / -1; }
 
     .field label {
       font-size: 0.78rem;
@@ -270,7 +243,8 @@
     }
 
     .field input,
-    .field textarea {
+    .field textarea,
+    .field select {
       width: 100%;
       border: 1px solid rgba(159, 176, 212, 0.22);
       border-radius: 14px;
@@ -282,16 +256,60 @@
     }
 
     .field input:focus,
-    .field textarea:focus {
+    .field textarea:focus,
+    .field select:focus {
       border-color: rgba(57, 210, 255, 0.55);
       box-shadow: 0 0 0 3px rgba(57, 210, 255, 0.12);
     }
 
     .field textarea {
-      min-height: 260px;
+      min-height: 92px;
       resize: vertical;
       line-height: 1.7;
       font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .dropzone {
+      border: 1px dashed rgba(57, 210, 255, 0.38);
+      background: rgba(57, 210, 255, 0.06);
+      border-radius: 18px;
+      padding: 20px;
+      display: grid;
+      gap: 10px;
+      align-content: center;
+      min-height: 220px;
+      transition: 0.15s ease;
+    }
+
+    .dropzone.dragover {
+      border-color: rgba(86, 248, 178, 0.7);
+      background: rgba(86, 248, 178, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .dropzone strong {
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .dropzone small {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .file-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(159, 176, 212, 0.16);
     }
 
     .inline-actions {
@@ -301,25 +319,8 @@
       margin-top: 12px;
     }
 
-    .btn.ghost {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .btn.danger {
-      color: #ffe9e9;
-      border-color: rgba(255, 139, 139, 0.28);
-      background: rgba(255, 139, 139, 0.08);
-    }
-
-    .split-view {
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     .preview {
-      min-height: 260px;
+      min-height: 280px;
       border-radius: 16px;
       border: 1px solid rgba(159, 176, 212, 0.18);
       background: rgba(4, 9, 21, 0.72);
@@ -349,9 +350,7 @@
       line-height: 1.8;
     }
 
-    .preview p {
-      margin: 0 0 0.9em;
-    }
+    .preview p { margin: 0 0 0.9em; }
 
     .preview a {
       color: var(--accent);
@@ -393,170 +392,35 @@
       margin: 0 0 1em;
     }
 
-    .repo-shell {
-      display: grid;
-      grid-template-columns: 280px minmax(0, 1fr);
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .repo-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 8px;
-      max-height: 360px;
-      overflow: auto;
-    }
-
-    .repo-list button {
-      width: 100%;
-      text-align: left;
-      border: 1px solid rgba(159, 176, 212, 0.18);
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-
-    .repo-list button:hover {
-      border-color: rgba(57, 210, 255, 0.45);
-    }
-
-    .repo-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
-
-    .repo-meta span {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(159, 176, 212, 0.16);
-    }
-
     .message {
       margin-top: 12px;
       color: var(--muted);
       font-size: 0.86rem;
       line-height: 1.7;
+      white-space: pre-wrap;
     }
 
-    .message.error {
-      color: var(--danger);
-    }
+    .message.error { color: var(--danger); }
+    .message.ok { color: var(--accent2); }
 
-    .message.ok {
-      color: var(--accent2);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .grid-posts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .post-list,
-    .topic-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .post-list li,
-    .topic-list li {
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(159, 176, 212, 0.14);
-    }
-
-    .post-list li:last-child,
-    .topic-list li:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .date {
-      color: var(--accent);
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.76rem;
-      margin-right: 8px;
-    }
-
-    .desc {
-      color: var(--muted);
-      font-size: 0.92rem;
+    .mini-note {
+      margin-top: 12px;
+      color: var(--warn);
+      font-size: 0.82rem;
       line-height: 1.65;
     }
 
-    .topic-list a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(57, 210, 255, 0.35);
-    }
+    .hidden { display: none !important; }
 
-    .topic-list a:hover {
-      color: var(--accent);
-    }
-
-    .entry-card {
-      display: grid;
-      gap: 12px;
-      align-content: start;
-      background: linear-gradient(180deg, rgba(12, 22, 48, 0.96), rgba(7, 13, 31, 0.94));
-      border: 1px solid rgba(159, 176, 212, 0.18);
-      border-radius: 18px;
-      padding: 18px;
-      min-height: 100%;
-    }
-
-    .entry-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
+    @media (max-width: 880px) {
+      .studio-body { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 780px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-posts,
-      .editor-layout,
-      .repo-shell,
-      .field-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .studio-head {
-        flex-direction: column;
-      }
-
-      .status-row {
-        justify-content: flex-start;
-      }
-
-      .top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .top { flex-direction: column; align-items: flex-start; }
+      .studio-head { flex-direction: column; }
+      .status-row { justify-content: flex-start; }
+      .field-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -577,228 +441,168 @@
 
     <section class="hero">
       <div class="section-label">Markdown Upload</div>
-      <h1>独立的博客上传工作台</h1>
-      <p>这里保留 Markdown 编辑、实时预览、本地草稿和 GitHub 仓库读取/写回功能。博客主页只保留入口，这个页面专门负责写作和发布。</p>
+      <h1>拖入 Markdown 文件，然后把内容发到你的 API</h1>
+      <p>这个页面不再提供网页内编辑。你把本地 `.md` 文件拖进来，补上 API 地址和鉴权信息，右侧可以直接预览，最后一键上传。</p>
     </section>
 
-    <section class="studio">
+    <section class="studio panel">
       <div class="studio-head">
         <div>
-          <div class="section-label">Markdown Studio</div>
-          <h1>在线写作 + GitHub 仓库读取</h1>
-          <p>在这个工作台里直接写 Markdown、实时预览、加载 GitHub 仓库里的文章，并在填写仓库权限后把内容写回到仓库。默认也会把草稿保存在浏览器里，避免编辑丢失。</p>
+          <div class="section-label">Upload Studio</div>
+          <h1>Markdown 文件上传器</h1>
+          <p>默认会把文件内容、标题、文件名和摘要一起发给接口。接口如果需要不同字段，可以在请求体 JSON 里按你的后端格式改造这页。</p>
         </div>
         <div class="status-row">
-          <div class="status-pill"><strong>Draft</strong> <span id="draft-status">未保存</span></div>
-          <div class="status-pill"><strong>Repo</strong> <span id="repo-status">未连接</span></div>
+          <div class="status-pill"><strong>File</strong> <span id="file-status">未加载</span></div>
           <div class="status-pill"><strong>Preview</strong> <span id="preview-status">待更新</span></div>
+          <div class="status-pill"><strong>API</strong> <span id="api-status">未连接</span></div>
         </div>
       </div>
 
-      <div class="editor-layout">
-        <section class="studio-panel split-view">
+      <div class="studio-body">
+        <section class="studio-panel">
           <div class="panel-title">
             <div>
-              <h2>Markdown 编辑器</h2>
-              <p>支持标题、列表、引用、代码块、链接和基础强调样式。</p>
+              <h2>文件与接口</h2>
+              <p>拖拽 Markdown 文件，或点击选择文件。上传时会使用下面填写的 API 参数。</p>
             </div>
           </div>
 
-          <div class="field full">
-            <label for="post-title">文章标题</label>
-            <input id="post-title" type="text" placeholder="输入博客标题" />
+          <div class="dropzone" id="dropzone">
+            <strong>拖入 Markdown 文件</strong>
+            <small>支持 `.md`、`.markdown`、`.mdx`。如果你已经有本地文件，直接拖到这里即可，页面会自动读取并预览。</small>
+            <div class="file-meta">
+              <span class="chip" id="file-name">文件：未选择</span>
+              <span class="chip" id="file-size">大小：-</span>
+              <span class="chip" id="file-type">类型：-</span>
+            </div>
+            <div class="inline-actions">
+              <button class="btn primary" id="pick-file-btn" type="button">选择文件</button>
+              <button class="btn ghost" id="clear-file-btn" type="button">清空文件</button>
+            </div>
+            <input class="hidden" id="file-input" type="file" accept=".md,.markdown,.mdx,text/markdown,text/plain" />
           </div>
 
-          <div class="field full">
-            <label for="post-markdown">Markdown 内容</label>
-            <textarea id="post-markdown" spellcheck="false"></textarea>
+          <div class="field-grid" style="margin-top: 14px;">
+            <div class="field full">
+              <label for="api-url">API 地址</label>
+              <input id="api-url" type="url" placeholder="https://example.com/api/blog/upload" />
+            </div>
+
+            <div class="field">
+              <label for="request-method">请求方法</label>
+              <select id="request-method">
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="auth-token">API Token</label>
+              <input id="auth-token" type="password" placeholder="Bearer token / API key" />
+            </div>
+
+            <div class="field full">
+              <label for="blog-title">文章标题</label>
+              <input id="blog-title" type="text" placeholder="从文件名自动生成，也可以手动覆盖" />
+            </div>
+
+            <div class="field">
+              <label for="blog-slug">Slug</label>
+              <input id="blog-slug" type="text" placeholder="例如 my-first-post" />
+            </div>
+
+            <div class="field">
+              <label for="publish-status">发布状态</label>
+              <select id="publish-status">
+                <option value="draft">draft</option>
+                <option value="published">published</option>
+                <option value="private">private</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="summary">摘要</label>
+              <textarea id="summary" placeholder="可选摘要，会随请求一起发送"></textarea>
+            </div>
+
+            <div class="field full">
+              <label for="extra-headers">额外请求头 JSON</label>
+              <textarea id="extra-headers" placeholder='例如 {"X-API-Key":"abc123"}'></textarea>
+            </div>
           </div>
 
           <div class="inline-actions">
-            <a class="btn primary" href="#preview-area">查看预览</a>
-            <button class="btn ghost" id="save-draft-btn" type="button">保存本地草稿</button>
-            <button class="btn ghost" id="restore-draft-btn" type="button">恢复草稿</button>
-            <button class="btn ghost" id="download-md-btn" type="button">下载 .md</button>
-            <button class="btn danger" id="reset-md-btn" type="button">重置示例</button>
+            <button class="btn primary" id="upload-btn" type="button">上传博客</button>
+            <button class="btn ghost" id="download-btn" type="button">下载 Markdown</button>
+            <button class="btn ghost" id="save-state-btn" type="button">保存配置</button>
+            <button class="btn ghost" id="reset-btn" type="button">恢复默认</button>
           </div>
 
-          <p class="mini-note">写回 GitHub 需要填写 fine-grained PAT，并确保它拥有目标仓库的 Contents 写权限。该令牌只会保存在当前浏览器的 localStorage 中。</p>
+          <p class="mini-note">上传请求默认发送 JSON：`title`、`slug`、`status`、`summary`、`filename`、`content`、`markdown`。你的 API 如果字段不同，直接改这页的请求体即可。</p>
+          <div class="message" id="message">先拖入 Markdown 文件，再填写 API 地址。</div>
         </section>
 
-        <section class="studio-panel split-view">
+        <section class="studio-panel">
           <div class="panel-title">
             <div>
               <h2>实时预览</h2>
-              <p>这里显示当前 Markdown 的渲染结果。</p>
+              <p>这里只做展示，不再允许网页编辑。</p>
             </div>
           </div>
 
           <article class="preview" id="preview-area" aria-live="polite"></article>
         </section>
       </div>
-
-      <section class="studio-panel">
-        <div class="panel-title">
-          <div>
-            <h2>发布到仓库</h2>
-            <p>默认推送到 BYzhaoran/BYzhaoran 仓库的 docs/posts 目录。</p>
-          </div>
-        </div>
-
-        <div class="field-grid">
-          <div class="field full">
-            <label for="github-token">GitHub Token</label>
-            <input id="github-token" type="password" placeholder="fine-grained PAT，需要 contents 或 repo 权限" />
-          </div>
-          <div class="field full">
-            <label for="commit-message">提交说明</label>
-            <input id="commit-message" type="text" placeholder="Add or update blog post" />
-          </div>
-        </div>
-
-        <div class="inline-actions">
-          <button class="btn primary" id="publish-direct-btn" type="button">✓ 直接提交到仓库</button>
-          <button class="btn ghost" id="publish-pr-btn" type="button">⤴ 创建 Pull Request</button>
-          <button class="btn ghost" id="load-repo-btn" type="button">📁 浏览仓库</button>
-          <button class="btn ghost" id="clear-token-btn" type="button">清除 Token</button>
-        </div>
-
-        <div class="repo-meta">
-          <span id="repo-target">目标：BYzhaoran/BYzhaoran → docs/posts</span>
-          <span id="repo-branch-label">分支：main</span>
-        </div>
-
-        <div id="repo-browser" style="display: none;">
-          <div class="repo-shell" style="margin-top: 16px;">
-            <aside class="studio-panel">
-              <div class="panel-title">
-                <div>
-                  <h2>仓库文件列表</h2>
-                  <p>点击 Markdown 文件即可载入编辑器。</p>
-                </div>
-              </div>
-              <ul class="repo-list" id="repo-list">
-                <li class="desc">点击上方"浏览仓库"加载文件列表。</li>
-              </ul>
-            </aside>
-
-            <section class="studio-panel split-view">
-              <div class="panel-title">
-                <div>
-                  <h2>仓库操作状态</h2>
-                  <p>这里会显示加载和保存的结果。</p>
-                </div>
-              </div>
-              <div class="message" id="repo-message">加载中...</div>
-            </section>
-          </div>
-        </div>
-
-        <div class="message" id="github-hint">
-          💡 <strong>快速开始：</strong><br/>
-          1. 输入 GitHub Token（需要 contents 或 repo 权限）<br/>
-          2. 点击"✓ 直接提交到仓库"或"⤴ 创建 Pull Request"<br/>
-          3. 可选：点击"📁 浏览仓库"查看或编辑现有文章<br/><br/>
-          <strong>权限说明：</strong> 直接提交需要 Token 有写权限；PR 方式需要 repo 作用域。
-        </div>
-      </section>
-
-        <div class="repo-shell">
-          <aside class="studio-panel">
-            <div class="panel-title">
-              <div>
-                <h2>仓库文件列表</h2>
-                <p>点击 Markdown 文件即可载入编辑器。</p>
-              </div>
-            </div>
-            <ul class="repo-list" id="repo-list">
-              <li class="desc">还没有加载仓库内容。</li>
-            </ul>
-          </aside>
-
-          <section class="studio-panel split-view">
-            <div class="panel-title">
-              <div>
-                <h2>仓库载入状态</h2>
-                <p>这里会显示当前文件、路径和保存结果。</p>
-              </div>
-            </div>
-            <div class="message" id="repo-message">输入仓库信息后，先读取目录。</div>
-            <div class="message" id="github-hint">
-              💡 <strong>权限说明：</strong><br/>
-              • 读取公开仓库：无需 Token<br/>
-              • 直接写入（保存到仓库）：需要 Token 拥有 `contents` 权限<br/>
-              • 通过 PR 发布：需要 Token 拥有 `repo` 作用域（包括 fork、分支、PR 权限）<br/>
-              建议使用 fine-grained PAT，在 GitHub Settings → Developer settings → Personal access tokens 创建。
-            </div>
-          </section>
-        </div>
-      </section>
     </section>
   </div>
+
   <script>
     (() => {
-      const STORAGE_KEY = 'blog-markdown-studio-state';
-      const DRAFT_KEY = 'blog-markdown-studio-draft';
-
-      const titleNode = document.getElementById('post-title');
-      const markdownNode = document.getElementById('post-markdown');
-      const previewNode = document.getElementById('preview-area');
-      const draftStatusNode = document.getElementById('draft-status');
-      const repoStatusNode = document.getElementById('repo-status');
-      const previewStatusNode = document.getElementById('preview-status');
-      const repoListNode = document.getElementById('repo-list');
-      const repoMessageNode = document.getElementById('repo-message');
-      const githubTokenNode = document.getElementById('github-token');
-      const commitMessageNode = document.getElementById('commit-message');
-
-      const loadRepoBtn = document.getElementById('load-repo-btn');
-      const publishDirectBtn = document.getElementById('publish-direct-btn');
-      const publishPrBtn = document.getElementById('publish-pr-btn');
-      const clearTokenBtn = document.getElementById('clear-token-btn');
-      const saveDraftBtn = document.getElementById('save-draft-btn');
-      const restoreDraftBtn = document.getElementById('restore-draft-btn');
-      const downloadBtn = document.getElementById('download-md-btn');
-      const resetBtn = document.getElementById('reset-md-btn');
-      const repoBrowserNode = document.getElementById('repo-browser');
-
-      const sampleMarkdown = [
-        '# 我的第一篇 Markdown 博客',
-        '',
-        '这是一个可直接编辑的示例。你可以在左侧输入 Markdown，然后在右侧实时查看预览。',
-        '',
-        '## 今天要做的事',
-        '',
-        '- 整理学习路径',
-        '- 补充项目笔记',
-        '- 同步到 GitHub 仓库',
-        '',
-        '> 这部分内容会被渲染成引用样式。',
-        '',
-        '```js',
-        "console.log('hello markdown');",
-        '```',
-        '',
-        '[打开 GitHub](https://github.com/)',
-      ].join('\n');
+      const STORAGE_KEY = 'blog-upload-api-state';
 
       const defaultState = {
-        title: '我的第一篇 Markdown 博客',
-        markdown: sampleMarkdown,
-        repoOwner: 'BYzhaoran',
-        repoName: 'BYzhaoran',
-        repoBranch: 'main',
-        repoPath: 'docs/posts',
-        githubToken: '',
-        commitMessage: 'Add or update blog post',
-        prBranch: '',
-        prTitle: '',
-        prBody: '',
+        apiUrl: '',
+        method: 'POST',
+        authToken: '',
+        title: '',
+        slug: '',
+        status: 'draft',
+        summary: '',
+        extraHeaders: '',
       };
 
-      const currentRepoFile = {
-        path: '',
-        sha: '',
+      const els = {
+        dropzone: document.getElementById('dropzone'),
+        fileInput: document.getElementById('file-input'),
+        pickFileBtn: document.getElementById('pick-file-btn'),
+        clearFileBtn: document.getElementById('clear-file-btn'),
+        uploadBtn: document.getElementById('upload-btn'),
+        downloadBtn: document.getElementById('download-btn'),
+        saveStateBtn: document.getElementById('save-state-btn'),
+        resetBtn: document.getElementById('reset-btn'),
+        apiUrl: document.getElementById('api-url'),
+        method: document.getElementById('request-method'),
+        authToken: document.getElementById('auth-token'),
+        title: document.getElementById('blog-title'),
+        slug: document.getElementById('blog-slug'),
+        status: document.getElementById('publish-status'),
+        summary: document.getElementById('summary'),
+        extraHeaders: document.getElementById('extra-headers'),
+        fileName: document.getElementById('file-name'),
+        fileSize: document.getElementById('file-size'),
+        fileType: document.getElementById('file-type'),
+        fileStatus: document.getElementById('file-status'),
+        previewStatus: document.getElementById('preview-status'),
+        apiStatus: document.getElementById('api-status'),
+        preview: document.getElementById('preview-area'),
+        message: document.getElementById('message'),
+      };
+
+      const state = {
+        file: null,
+        content: '',
+        filename: '',
       };
 
       const escapeHtml = (value) => String(value)
@@ -825,9 +629,7 @@
         let listType = '';
 
         const closeList = () => {
-          if (!listType) {
-            return;
-          }
+          if (!listType) return;
           html.push(listType === 'ol' ? '</ol>' : '</ul>');
           listType = '';
         };
@@ -908,120 +710,184 @@
         });
 
         closeList();
-
-        if (inCode) {
-          flushCode();
-        }
-
+        if (inCode) flushCode();
         return html.join('\n');
       };
 
-      const base64ToUtf8 = (input) => {
-        const binary = window.atob(String(input).replace(/\n/g, ''));
-        const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
-        return new TextDecoder().decode(bytes);
-      };
-
-      const utf8ToBase64 = (input) => {
-        const bytes = new TextEncoder().encode(String(input));
-        let binary = '';
-        bytes.forEach((byte) => {
-          binary += String.fromCharCode(byte);
-        });
-        return window.btoa(binary);
-      };
-
-      const normalizePath = (path) => String(path || '').trim().replace(/^\/+|\/+$/g, '');
-
-      const encodeRepoPath = (path) => normalizePath(path)
-        .split('/')
-        .filter(Boolean)
-        .map((segment) => encodeURIComponent(segment))
-        .join('/');
-
-      const getRepoBase = () => {
-        return 'https://api.github.com/repos/BYzhaoran/BYzhaoran';
-      };
-
-      const getDefaultPath = () => 'docs/posts';
-
-      const getDefaultBranch = () => 'main';
-
-      const getTokenHeaders = () => {
-        const token = githubTokenNode.value.trim();
-        if (!token) {
-          throw new Error('需要 GitHub Token');
-        }
-
-        return {
-          Accept: 'application/vnd.github+json',
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        };
-      };
-
       const setMessage = (text, type = '') => {
-        repoMessageNode.className = type ? `message ${type}` : 'message';
-        repoMessageNode.textContent = text;
+        els.message.className = type ? `message ${type}` : 'message';
+        els.message.textContent = text;
+      };
+
+      const slugify = (value) => String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\u4e00-\u9fa5.-]+/g, '')
+        .replace(/-{2,}/g, '-');
+
+      const formatBytes = (bytes) => {
+        if (!Number.isFinite(bytes)) return '-';
+        const units = ['B', 'KB', 'MB', 'GB'];
+        let index = 0;
+        let value = bytes;
+        while (value >= 1024 && index < units.length - 1) {
+          value /= 1024;
+          index += 1;
+        }
+        return `${value.toFixed(value >= 10 || index === 0 ? 0 : 1)} ${units[index]}`;
       };
 
       const updatePreview = () => {
-        previewNode.innerHTML = renderMarkdown(markdownNode.value);
-        previewStatusNode.textContent = '已更新';
+        els.preview.innerHTML = state.content ? renderMarkdown(state.content) : '<p>拖入 Markdown 文件后，这里显示预览。</p>';
+        els.previewStatus.textContent = state.content ? '已更新' : '待更新';
       };
 
-      const collectState = () => ({
-        title: titleNode.value.trim(),
-        markdown: markdownNode.value,
-        repoOwner: 'BYzhaoran',
-        repoName: 'BYzhaoran',
-        repoBranch: 'main',
-        repoPath: 'docs/posts',
-        githubToken: githubTokenNode.value,
-        commitMessage: commitMessageNode.value.trim() || defaultState.commitMessage,
-      });
-
-      const persistState = () => {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(collectState()));
+      const syncDerivedFields = () => {
+        if (!state.file) return;
+        const baseName = state.filename.replace(/\.[^.]+$/, '');
+        if (!els.title.value.trim()) {
+          els.title.value = baseName.replace(/[-_]+/g, ' ');
+        }
+        if (!els.slug.value.trim()) {
+          els.slug.value = slugify(baseName);
+        }
       };
 
-      const syncStateToUI = (state) => {
-        titleNode.value = state.title || '';
-        markdownNode.value = state.markdown || '';
-        githubTokenNode.value = state.githubToken || '';
-        commitMessageNode.value = state.commitMessage || defaultState.commitMessage;
-        updatePreview();
-      };
-
-      const saveDraft = () => {
-        localStorage.setItem(DRAFT_KEY, JSON.stringify(collectState()));
-        draftStatusNode.textContent = '草稿已保存';
-      };
-
-      const restoreDraft = () => {
-        const raw = localStorage.getItem(DRAFT_KEY) || localStorage.getItem(STORAGE_KEY);
-        if (!raw) {
-          draftStatusNode.textContent = '没有可恢复的草稿';
+      const renderFileMeta = () => {
+        if (!state.file) {
+          els.fileName.textContent = '文件：未选择';
+          els.fileSize.textContent = '大小：-';
+          els.fileType.textContent = '类型：-';
+          els.fileStatus.textContent = '未加载';
           return;
         }
 
+        els.fileName.textContent = `文件：${state.filename}`;
+        els.fileSize.textContent = `大小：${formatBytes(state.file.size)}`;
+        els.fileType.textContent = `类型：${state.file.type || 'text/markdown'}`;
+        els.fileStatus.textContent = '已加载';
+      };
+
+      const persist = () => {
+        const payload = {
+          apiUrl: els.apiUrl.value.trim(),
+          method: els.method.value,
+          authToken: els.authToken.value,
+          title: els.title.value,
+          slug: els.slug.value,
+          status: els.status.value,
+          summary: els.summary.value,
+          extraHeaders: els.extraHeaders.value,
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      };
+
+      const restore = () => {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
         try {
-          syncStateToUI({ ...defaultState, ...JSON.parse(raw) });
-          persistState();
-          draftStatusNode.textContent = '草稿已恢复';
-          setMessage('草稿已恢复。', 'ok');
-        } catch (error) {
-          draftStatusNode.textContent = '草稿解析失败';
-          setMessage(`恢复失败：${error.message}`, 'error');
+          const saved = { ...defaultState, ...JSON.parse(raw) };
+          els.apiUrl.value = saved.apiUrl || '';
+          els.method.value = saved.method || 'POST';
+          els.authToken.value = saved.authToken || '';
+          els.title.value = saved.title || '';
+          els.slug.value = saved.slug || '';
+          els.status.value = saved.status || 'draft';
+          els.summary.value = saved.summary || '';
+          els.extraHeaders.value = saved.extraHeaders || '';
+        } catch {
+          // Ignore bad saved state.
         }
       };
 
+      const readFile = async (file) => {
+        const text = await file.text();
+        state.file = file;
+        state.content = text;
+        state.filename = file.name;
+        renderFileMeta();
+        syncDerivedFields();
+        updatePreview();
+        setMessage(`已加载 ${file.name}。`, 'ok');
+        persist();
+      };
+
+      const clearFile = () => {
+        state.file = null;
+        state.content = '';
+        state.filename = '';
+        els.fileInput.value = '';
+        els.title.value = '';
+        els.slug.value = '';
+        renderFileMeta();
+        updatePreview();
+        setMessage('文件已清空。');
+      };
+
+      const parseHeaders = () => {
+        const headers = {};
+        const token = els.authToken.value.trim();
+        if (token) {
+          headers.Authorization = token.toLowerCase().startsWith('bearer ') ? token : `Bearer ${token}`;
+        }
+
+        const extra = els.extraHeaders.value.trim();
+        if (extra) {
+          const parsed = JSON.parse(extra);
+          if (!parsed || Array.isArray(parsed) || typeof parsed !== 'object') {
+            throw new Error('额外请求头必须是 JSON 对象');
+          }
+          Object.assign(headers, parsed);
+        }
+
+        return headers;
+      };
+
+      const buildPayload = () => ({
+        title: els.title.value.trim() || (state.filename ? state.filename.replace(/\.[^.]+$/, '') : ''),
+        slug: els.slug.value.trim() || slugify(els.title.value || state.filename),
+        status: els.status.value,
+        summary: els.summary.value.trim(),
+        filename: state.filename,
+        content: state.content,
+        markdown: state.content,
+      });
+
+      const upload = async () => {
+        const apiUrl = els.apiUrl.value.trim();
+        if (!state.file || !state.content) throw new Error('先加载 Markdown 文件');
+        if (!apiUrl) throw new Error('请填写 API 地址');
+
+        let response;
+        const headers = parseHeaders();
+        headers.Accept = 'application/json';
+
+        const payload = buildPayload();
+        response = await fetch(apiUrl, {
+          method: els.method.value,
+          headers: {
+            'Content-Type': 'application/json',
+            ...headers,
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const responseText = await response.text().catch(() => '');
+        if (!response.ok) {
+          throw new Error(responseText || `上传失败 (${response.status})`);
+        }
+
+        return responseText || '上传成功';
+      };
+
       const downloadMarkdown = () => {
-        const slug = (titleNode.value.trim() || 'blog-post')
-          .replace(/\s+/g, '-')
-          .replace(/[^\w\u4e00-\u9fa5.-]+/g, '');
-        const fileName = `${slug || 'blog-post'}.md`;
-        const blob = new Blob([markdownNode.value], { type: 'text/markdown;charset=utf-8' });
+        if (!state.content) {
+          setMessage('没有可下载的 Markdown。', 'error');
+          return;
+        }
+        const fileName = state.filename || 'blog-post.md';
+        const blob = new Blob([state.content], { type: 'text/markdown;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
@@ -1030,473 +896,101 @@
         link.click();
         link.remove();
         URL.revokeObjectURL(url);
-        draftStatusNode.textContent = `已下载 ${fileName}`;
+        setMessage(`已下载 ${fileName}。`, 'ok');
       };
 
-      const apiJson = async (url, options = {}) => {
-        const response = await fetch(url, {
-          ...options,
-          headers: {
-            Accept: 'application/vnd.github+json',
-            ...(options.headers || {}),
-          },
+      const resetAll = () => {
+        localStorage.removeItem(STORAGE_KEY);
+        els.apiUrl.value = defaultState.apiUrl;
+        els.method.value = defaultState.method;
+        els.authToken.value = defaultState.authToken;
+        els.title.value = defaultState.title;
+        els.slug.value = defaultState.slug;
+        els.status.value = defaultState.status;
+        els.summary.value = defaultState.summary;
+        els.extraHeaders.value = defaultState.extraHeaders;
+        clearFile();
+        setMessage('配置已恢复默认。');
+      };
+
+      const handleDrag = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      };
+
+      ['dragenter', 'dragover'].forEach((type) => {
+        els.dropzone.addEventListener(type, (event) => {
+          handleDrag(event);
+          els.dropzone.classList.add('dragover');
         });
+      });
 
-        if (!response.ok) {
-          const details = await response.text().catch(() => '');
-          if (response.status === 401) {
-            // 标准化 401 错误为更友好的提示
-            throw new Error('401 Bad credentials：GitHub Token 无效或已过期。请检查并重新生成 Token，确保复制无误。');
-          }
-          throw new Error(details || `GitHub API 请求失败 (${response.status})`);
+      ['dragleave', 'drop'].forEach((type) => {
+        els.dropzone.addEventListener(type, (event) => {
+          handleDrag(event);
+          els.dropzone.classList.remove('dragover');
+        });
+      });
+
+      els.dropzone.addEventListener('drop', async (event) => {
+        const file = event.dataTransfer?.files?.[0];
+        if (file) {
+          await readFile(file);
         }
+      });
 
-        return response.json();
-      };
+      els.pickFileBtn.addEventListener('click', () => els.fileInput.click());
+      els.fileInput.addEventListener('change', async () => {
+        const file = els.fileInput.files?.[0];
+        if (file) {
+          await readFile(file);
+        }
+      });
 
-      const isPermissionError = (error) => {
-        const message = String(error?.message || error || '').toLowerCase();
-        return message.includes('resource not accessible') || message.includes('forbidden') || message.includes('permission') || message.includes('403');
-      };
+      els.clearFileBtn.addEventListener('click', clearFile);
+      els.downloadBtn.addEventListener('click', downloadMarkdown);
+      els.saveStateBtn.addEventListener('click', () => {
+        persist();
+        setMessage('配置已保存。', 'ok');
+      });
+      els.resetBtn.addEventListener('click', resetAll);
 
-      const getTokenInfo = async () => {
+      els.uploadBtn.addEventListener('click', async () => {
         try {
-          const user = await apiJson('https://api.github.com/user', {
-            headers: getTokenHeaders(),
-          });
-          return user;
-        } catch {
-          return null;
-        }
-      };
-
-      const checkTokenScopes = async () => {
-        try {
-          const response = await fetch('https://api.github.com/user', {
-            headers: getTokenHeaders(),
-          });
-          const scopeHeader = response.headers.get('x-oauth-scopes') || '';
-          const scopes = scopeHeader.split(',').map((s) => s.trim()).filter(Boolean);
-          return scopes;
-        } catch {
-          return [];
-        }
-      };
-
-      const validateToken = async () => {
-        try {
-          const user = await getTokenInfo();
-          if (!user) {
-            setMessage('❌ Token 无效或无法验证（Bad credentials）。请检查 Token 是否正确并具有所需权限。', 'error');
-            return null;
-          }
-
-          const scopes = await checkTokenScopes();
-          setMessage(`已验证为 ${user.login}，Token scopes: ${scopes.join(', ') || '无'}。`, 'ok');
-          return { user, scopes };
-        } catch (err) {
-          const msg = String(err?.message || err || '');
-          setMessage(`❌ 验证 Token 失败：${msg}`, 'error');
-          return null;
-        }
-      };
-
-      const waitForRepo = async (owner, repoName, attempts = 10) => {
-        for (let index = 0; index < attempts; index += 1) {
-          try {
-            return await apiJson(`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repoName)}`, {
-              headers: getTokenHeaders(),
-            });
-          } catch (error) {
-            if (index === attempts - 1) {
-              throw error;
-            }
-            await new Promise((resolve) => window.setTimeout(resolve, 1200));
-          }
-        }
-
-        throw new Error('fork 仓库创建超时');
-      };
-
-      const getAuthenticatedUser = async () => {
-        const user = await apiJson('https://api.github.com/user', {
-          headers: getTokenHeaders(),
-        });
-        if (!user?.login) {
-          throw new Error('无法读取 GitHub 用户信息');
-        }
-        return user.login;
-      };
-
-      const ensureFork = async () => {
-        const base = getRepoBase();
-        const response = await fetch(`${base}/forks`, {
-          method: 'POST',
-          headers: getTokenHeaders(),
-          body: JSON.stringify({}),
-        });
-
-        if (!response.ok && response.status !== 202) {
-          const details = await response.text().catch(() => '');
-          let errorMsg = details || `创建 fork 失败 (${response.status})`;
-          
-          if (response.status === 403) {
-            errorMsg = `❌ 权限不足：您的 Token 缺少创建 fork 所需的权限。\n\n✓ 解决方案：\n1. 需要 GitHub Token 具有 "repo" 作用域（全仓库访问权限）\n2. 或者申请具有仓库 fork 权限的新 Token\n3. 然后在下面重新粘贴新 Token\n\n详情：${details}`;
-          }
-          
-          throw new Error(errorMsg);
-        }
-
-        const forkOwner = await getAuthenticatedUser();
-        return waitForRepo(forkOwner, repoNameNode.value.trim());
-      };
-
-      const createBranch = async (repoOwner, repoName, branchName, baseBranch = 'main') => {
-        const baseRef = await apiJson(`https://api.github.com/repos/${encodeURIComponent(repoOwner)}/${encodeURIComponent(repoName)}/git/ref/heads/${encodeURIComponent(baseBranch)}`, {
-          headers: getTokenHeaders(),
-        });
-
-        const createRefResponse = await fetch(`https://api.github.com/repos/${encodeURIComponent(repoOwner)}/${encodeURIComponent(repoName)}/git/refs`, {
-          method: 'POST',
-          headers: getTokenHeaders(),
-          body: JSON.stringify({
-            ref: `refs/heads/${branchName}`,
-            sha: baseRef.object.sha,
-          }),
-        });
-
-        if (!createRefResponse.ok) {
-          const details = await createRefResponse.text().catch(() => '');
-          throw new Error(details || `创建分支失败 (${createRefResponse.status})`);
-        }
-      };
-
-      const createPullRequest = async (forkOwner, branchName) => {
-        const baseBranch = getDefaultBranch();
-        const title = titleNode.value.trim() || 'Publish markdown blog post';
-        const body = `通过博客上传工作台发布的 Markdown 文章\n\n标题：${title}\n\n---\n\n自动生成的 PR`;
-        const response = await fetch(`${getRepoBase()}/pulls`, {
-          method: 'POST',
-          headers: getTokenHeaders(),
-          body: JSON.stringify({
-            title,
-            body,
-            head: `${forkOwner}:${branchName}`,
-            base: baseBranch,
-            draft: true,
-          }),
-        });
-
-        const responseText = await response.text();
-        if (!response.ok) {
-          throw new Error(responseText || `创建 PR 失败 (${response.status})`);
-        }
-
-        return JSON.parse(responseText);
-      };
-
-      const publishToPullRequest = async () => {
-        const branchName = `blog/publish-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Date.now()}`;
-        const baseBranch = getDefaultBranch();
-        const defaultPath = getDefaultPath();
-        const safeName = (titleNode.value.trim() || 'blog-post')
-          .replace(/\s+/g, '-')
-          .replace(/[^\w\u4e00-\u9fa5.-]+/g, '');
-        const targetPath = `${defaultPath}/${safeName || 'blog-post'}.md`;
-        const forkRepo = await ensureFork();
-        const forkOwner = forkRepo.owner?.login || await getAuthenticatedUser();
-
-        await createBranch(forkOwner, forkRepo.name, branchName, baseBranch);
-
-        const currentFile = currentRepoFile.path === targetPath && currentRepoFile.sha ? { sha: currentRepoFile.sha } : {};
-        const commitResponse = await fetch(`https://api.github.com/repos/${encodeURIComponent(forkOwner)}/${encodeURIComponent(forkRepo.name)}/contents/${encodeRepoPath(targetPath)}`, {
-          method: 'PUT',
-          headers: getTokenHeaders(),
-          body: JSON.stringify({
-            message: commitMessageNode.value.trim() || defaultState.commitMessage,
-            content: utf8ToBase64(markdownNode.value),
-            branch: branchName,
-            ...currentFile,
-          }),
-        });
-
-        const commitText = await commitResponse.text();
-        if (!commitResponse.ok) {
-          throw new Error(commitText || `向 fork 写入失败 (${commitResponse.status})`);
-        }
-
-        const pullRequest = await createPullRequest(forkOwner, branchName);
-        repoStatusNode.textContent = 'PR 已创建';
-        setMessage(`✓ 已创建草稿 PR：#${pullRequest.number}\n${pullRequest.html_url}`, 'ok');
-        return pullRequest;
-      };
-
-      const loadRepoFile = async (path) => {
-        const base = getRepoBase();
-        const branch = getDefaultBranch();
-        const encodedPath = encodeRepoPath(path);
-        const data = await apiJson(`${base}/contents/${encodedPath}?ref=${encodeURIComponent(branch)}`);
-
-        if (!data || data.type !== 'file') {
-          throw new Error('读取到的不是文件');
-        }
-
-        if (typeof data.content !== 'string') {
-          throw new Error('文件内容为空或过大，无法直接读取');
-        }
-
-        currentRepoFile.path = data.path;
-        currentRepoFile.sha = data.sha || '';
-        titleNode.value = data.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
-        markdownNode.value = base64ToUtf8(data.content);
-        repoStatusNode.textContent = '文件已载入';
-        setMessage(`已载入 ${data.path}。`, 'ok');
-        updatePreview();
-        persistState();
-      };
-
-      const loadRepoEntries = async () => {
-        const base = getRepoBase();
-        const path = getDefaultPath();
-        const branch = getDefaultBranch();
-        const target = path ? `/${encodeRepoPath(path)}` : '';
-        const data = await apiJson(`${base}/contents${target}?ref=${encodeURIComponent(branch)}`);
-
-        if (!Array.isArray(data)) {
-          throw new Error('当前路径不是目录，无法列出文件');
-        }
-
-        const entries = data
-          .filter((item) => item.type === 'dir' || /\.(md|mdx|markdown|txt)$/i.test(item.name))
-          .sort((left, right) => {
-            if (left.type !== right.type) {
-              return left.type === 'dir' ? -1 : 1;
-            }
-            return left.name.localeCompare(right.name, 'zh-CN');
-          });
-
-        repoListNode.innerHTML = '';
-
-        if (entries.length === 0) {
-          repoListNode.innerHTML = '<li class="desc">这个目录里没有可展示的 Markdown 文件。</li>';
-        } else {
-          entries.forEach((item) => {
-            const li = document.createElement('li');
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.textContent = `${item.type === 'dir' ? '📁' : '📝'} ${item.name}`;
-            button.addEventListener('click', async () => {
-              if (item.type === 'dir') {
-                throw new Error('暂不支持递归浏览目录');
-              }
-              await loadRepoFile(item.path);
-            });
-            li.appendChild(button);
-            repoListNode.appendChild(li);
-          });
-        }
-
-        setMessage(`已读取 ${path || '仓库根目录'}。点击 Markdown 文件可以载入编辑器。`, 'ok');
-      };
-
-      const writeRepoFile = async () => {
-        const base = getRepoBase();
-        if (!githubTokenNode.value.trim()) {
-          throw new Error('写回 GitHub 需要 Token');
-        }
-
-        const branch = getDefaultBranch();
-        const defaultPath = getDefaultPath();
-        const safeName = (titleNode.value.trim() || 'blog-post')
-          .replace(/\s+/g, '-')
-          .replace(/[^\w\u4e00-\u9fa5.-]+/g, '');
-        const fileName = `${safeName || 'blog-post'}.md`;
-        const path = `${defaultPath}/${fileName}`;
-        const payload = {
-          message: commitMessageNode.value.trim() || defaultState.commitMessage,
-          content: utf8ToBase64(markdownNode.value),
-          branch,
-        };
-
-        if (currentRepoFile.path === path && currentRepoFile.sha) {
-          payload.sha = currentRepoFile.sha;
-        }
-
-        const response = await fetch(`${base}/contents/${encodeRepoPath(path)}`, {
-          method: 'PUT',
-          headers: getTokenHeaders(),
-          body: JSON.stringify(payload),
-        });
-
-        const resultText = await response.text();
-        if (!response.ok) {
-          throw new Error(resultText || `写入失败 (${response.status})`);
-        }
-
-        const result = JSON.parse(resultText);
-        currentRepoFile.path = result.content?.path || path;
-        currentRepoFile.sha = result.content?.sha || '';
-        repoStatusNode.textContent = '✓ 已保存到仓库';
-        setMessage(`✓ 已提交到 ${currentRepoFile.path}`, 'ok');
-        saveDraft();
-      };
-
-      const publishAsPullRequest = async () => {
-        try {
-          repoStatusNode.textContent = '正在创建 PR...';
-          setMessage('正在创建 fork 并准备 PR...', 'ok');
-          const pullRequest = await publishToPullRequest();
-          repoStatusNode.textContent = 'PR 已创建';
-          setMessage(`✓ 已创建草稿 PR：#${pullRequest.number}\n${pullRequest.html_url}`, 'ok');
+          els.apiStatus.textContent = '上传中';
+          setMessage('正在上传...', 'ok');
+          const result = await upload();
+          els.apiStatus.textContent = '已连接';
+          setMessage(result, 'ok');
         } catch (error) {
-          repoStatusNode.textContent = 'PR 失败';
-          const errorMessage = String(error?.message || error || '');
-          
-          // 权限错误的特殊处理
-          if (errorMessage.includes('权限不足') || errorMessage.includes('Resource not accessible')) {
-            setMessage(
-              `❌ 权限错误：\n${errorMessage}\n\n✓ 要解决此问题：\n1. 访问 GitHub Settings → Developer settings → Personal access tokens\n2. 创建或编辑 Token，确保包含 "repo" 作用域\n3. 复制新 Token，粘贴到上面的 Token 字段\n4. 重新点击"通过 PR 发布"按钮`,
-              'error'
-            );
-          } else {
-            setMessage(`✗ 创建 PR 失败：${errorMessage}`, 'error');
-          }
+          els.apiStatus.textContent = '失败';
+          setMessage(`上传失败：${error.message}`, 'error');
         }
-      };
+      });
 
-      const init = () => {
-        const rawState = localStorage.getItem(STORAGE_KEY);
-        let state = defaultState;
-
-        if (rawState) {
-          try {
-            state = { ...defaultState, ...JSON.parse(rawState) };
-          } catch (_) {
-            state = defaultState;
-          }
-        }
-
-        syncStateToUI(state);
-        draftStatusNode.textContent = '本地已就绪';
-        repoStatusNode.textContent = '未连接';
-        previewStatusNode.textContent = '已渲染';
-        setMessage('✍️ 在左侧编写 Markdown，然后选择发布方式\n\n• 直接提交：需要 Token 有写权限\n• 创建 PR：推荐方式，创建草稿 PR 供审核');
-      };
-
-      [titleNode, markdownNode, githubTokenNode, commitMessageNode].forEach((node) => {
+      [els.apiUrl, els.method, els.authToken, els.title, els.slug, els.status, els.summary, els.extraHeaders].forEach((node) => {
         node.addEventListener('input', () => {
-          updatePreview();
-          persistState();
+          persist();
         });
       });
 
-      saveDraftBtn.addEventListener('click', saveDraft);
-      restoreDraftBtn.addEventListener('click', restoreDraft);
-      downloadBtn.addEventListener('click', downloadMarkdown);
-      resetBtn.addEventListener('click', () => {
-        syncStateToUI(defaultState);
-        currentRepoFile.path = '';
-        currentRepoFile.sha = '';
-        persistState();
-        draftStatusNode.textContent = '已重置';
-        repoStatusNode.textContent = '未连接';
-        setMessage('示例内容已恢复。');
+      [els.title, els.slug, els.summary, els.extraHeaders].forEach((node) => {
+        node.addEventListener('blur', persist);
       });
 
-      clearTokenBtn.addEventListener('click', () => {
-        githubTokenNode.value = '';
-        persistState();
-        setMessage('✓ Token 已清除。', 'ok');
-      });
-
-      loadRepoBtn.addEventListener('click', async () => {
-        if (!githubTokenNode.value.trim()) {
-          setMessage('❌ 需要先输入 Token 才能浏览仓库', 'error');
-          return;
-        }
-
-        try {
-          repoBrowserNode.style.display = 'block';
-          setMessage('正在加载文件列表...', 'ok');
-          await loadRepoEntries();
-        } catch (error) {
-          repoStatusNode.textContent = '读取失败';
-          setMessage(`❌ 读取目录失败：${error.message}`, 'error');
+      els.title.addEventListener('input', () => {
+        if (!els.slug.value.trim()) {
+          els.slug.value = slugify(els.title.value);
         }
       });
 
-      publishDirectBtn.addEventListener('click', async () => {
-        if (!githubTokenNode.value.trim()) {
-          setMessage('❌ 需要先输入 Token', 'error');
-          return;
-        }
-
-        if (!titleNode.value.trim()) {
-          setMessage('❌ 需要输入文章标题', 'error');
-          return;
-        }
-
-        const validated = await validateToken();
-        if (!validated) return;
-
-        try {
-          repoStatusNode.textContent = '正在保存...';
-          setMessage('⏳ 正在提交到仓库...', 'ok');
-          await writeRepoFile();
-        } catch (error) {
-          const errorMsg = String(error?.message || error || '');
-          repoStatusNode.textContent = '✗ 保存失败';
-          if (errorMsg.includes('Bad credentials') || errorMsg.includes('401')) {
-            setMessage('❌ 写入失败：Token 无效或没有权限（Bad credentials）。请检查 Token 并重新输入。', 'error');
-            return;
-          }
-          setMessage(`❌ 写入失败：${errorMsg}`, 'error');
-        }
-      });
-
-      publishPrBtn.addEventListener('click', async () => {
-        if (!githubTokenNode.value.trim()) {
-          setMessage('❌ 需要先输入 Token（需要 repo 作用域权限）', 'error');
-          return;
-        }
-
-        if (!titleNode.value.trim()) {
-          setMessage('❌ 需要输入文章标题', 'error');
-          return;
-        }
-
-        const validated = await validateToken();
-        if (!validated) return;
-
-        // 校验是否包含 repo 作用域
-        const { scopes } = validated;
-        if (!scopes.includes('repo') && !scopes.includes('public_repo')) {
-          setMessage('⚠️ 当前 Token 可能缺少创建 fork/PR 的权限，请使用包含 "repo" 或 "public_repo" 的 Token。', 'error');
-          return;
-        }
-
-        try {
-          repoStatusNode.textContent = '正在创建 PR...';
-          setMessage('⏳ 正在创建 fork 并准备 PR...', 'ok');
-          const pullRequest = await publishToPullRequest();
-          repoStatusNode.textContent = '✓ PR 已创建';
-          setMessage(`✓ 已创建草稿 PR：#${pullRequest.number}\n${pullRequest.html_url}`, 'ok');
-        } catch (error) {
-          repoStatusNode.textContent = '✗ PR 创建失败';
-          const errorMessage = String(error?.message || error || '');
-          if (errorMessage.includes('Bad credentials') || errorMessage.includes('401')) {
-            setMessage('❌ PR 创建失败：Token 无效或已过期（Bad credentials）。请检查或重新生成 Token。', 'error');
-            return;
-          }
-          if (errorMessage.includes('权限不足') || errorMessage.includes('Resource not accessible')) {
-            setMessage(`❌ 权限错误：${errorMessage}`, 'error');
-            return;
-          }
-          setMessage(`❌ 创建 PR 失败：${errorMessage}`, 'error');
-        }
-      });
-
-      init();
+      restore();
+      renderFileMeta();
+      updatePreview();
+      if (els.apiUrl.value.trim()) {
+        els.apiStatus.textContent = '已配置';
+      }
+      setMessage('先拖入 Markdown 文件，再填写 API 地址和鉴权信息。');
     })();
   </script>
   <script src="../effects.js"></script>
