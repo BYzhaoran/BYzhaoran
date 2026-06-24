@@ -1,45 +1,85 @@
 (() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+  const sakuraEnabled = !isCoarsePointer && !prefersReducedMotion;
 
   const injectFxStyles = () => {
     if (document.getElementById('fx-global-style')) return;
     const style = document.createElement('style');
     style.id = 'fx-global-style';
     style.textContent = `
+      :root {
+        --fx-sakura-pink: rgba(255, 182, 193, 0.92);
+        --fx-sakura-pink-soft: rgba(255, 192, 203, 0.58);
+        --fx-sakura-pink-glow: rgba(255, 111, 216, 0.24);
+      }
       #fx-particles {
         position: fixed;
         inset: 0;
         z-index: 0;
         pointer-events: none;
-        opacity: 0.8;
+        opacity: 0.5;
       }
       #cursor-glow {
         position: fixed;
         left: 0;
         top: 0;
-        width: 360px;
-        height: 360px;
+        width: 220px;
+        height: 220px;
         border-radius: 50%;
         pointer-events: none;
         z-index: 1;
         opacity: 0;
-        background: radial-gradient(circle, rgba(255,111,216,0.45) 0%, rgba(168,85,247,0.25) 38%, rgba(57,210,255,0.1) 60%, rgba(255,111,216,0) 72%);
+        background: radial-gradient(circle, rgba(255,111,216,0.22) 0%, rgba(168,85,247,0.14) 40%, rgba(57,210,255,0.06) 62%, rgba(255,111,216,0) 74%);
         transform: translate(-50%, -50%);
-        transition: opacity 200ms ease;
+        transition: opacity 220ms ease, transform 80ms linear;
+        mix-blend-mode: screen;
+      }
+      .sakura-container {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .sakura {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: radial-gradient(circle, var(--fx-sakura-pink) 0%, var(--fx-sakura-pink-soft) 52%, transparent 72%);
+        border-radius: 50% 0 50% 50%;
+        opacity: 0.65;
+        animation: sakura-fall linear infinite;
+        filter: drop-shadow(0 0 8px var(--fx-sakura-pink-glow));
+      }
+      .sakura.petal1 { left: 8%; animation-duration: 16s; animation-delay: 0s; }
+      .sakura.petal2 { left: 24%; animation-duration: 19s; animation-delay: 2s; }
+      .sakura.petal3 { left: 43%; animation-duration: 17s; animation-delay: 4s; }
+      .sakura.petal4 { left: 66%; animation-duration: 20s; animation-delay: 1s; }
+      .sakura.petal5 { left: 84%; animation-duration: 18s; animation-delay: 3s; }
+      .sakura.petal6 { left: 14%; animation-duration: 21s; animation-delay: 5s; }
+      .sakura.petal7 { left: 57%; animation-duration: 22s; animation-delay: 6s; }
+      .sakura.petal8 { left: 92%; animation-duration: 18s; animation-delay: 2.5s; }
+      @keyframes sakura-fall {
+        0% { top: -6%; transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+        8% { opacity: 0.75; }
+        50% { transform: translate3d(36px, 0, 0) rotate(180deg); }
+        92% { opacity: 0.75; }
+        100% { top: 108%; transform: translate3d(72px, 0, 0) rotate(360deg); opacity: 0; }
       }
       .fx-tilt {
         will-change: transform;
-        transition: transform 180ms ease, box-shadow 220ms ease, border-color 220ms ease;
+        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
         transform-style: preserve-3d;
       }
-.fx-tilt:hover {
-  border-color: rgba(255,111,216,0.45) !important;
-  box-shadow: 0 34px 88px rgba(0, 0, 0, 0.58), 0 0 30px rgba(255,111,216,0.3) !important;
-}
+      .fx-tilt:hover {
+        border-color: rgba(255,111,216,0.35) !important;
+        box-shadow: 0 30px 78px rgba(0, 0, 0, 0.5), 0 0 22px rgba(255,111,216,0.18) !important;
+      }
       @media (max-width: 760px) {
         #fx-particles,
-        #cursor-glow {
+        #cursor-glow,
+        .sakura-container {
           display: none;
         }
       }
@@ -60,6 +100,22 @@
       glow.setAttribute('aria-hidden', 'true');
       document.body.prepend(glow);
     }
+    if (!document.querySelector('.sakura-container')) {
+      const sakura = document.createElement('div');
+      sakura.className = 'sakura-container';
+      sakura.setAttribute('aria-hidden', 'true');
+      sakura.innerHTML = `
+        <span class="sakura petal1"></span>
+        <span class="sakura petal2"></span>
+        <span class="sakura petal3"></span>
+        <span class="sakura petal4"></span>
+        <span class="sakura petal5"></span>
+        <span class="sakura petal6"></span>
+        <span class="sakura petal7"></span>
+        <span class="sakura petal8"></span>
+      `;
+      document.body.prepend(sakura);
+    }
   };
 
   const initCursorGlow = () => {
@@ -71,6 +127,11 @@
       glow.style.left = `${event.clientX}px`;
       glow.style.top = `${event.clientY}px`;
       glow.style.opacity = '1';
+    });
+
+    document.addEventListener('pointerdown', (event) => {
+      glow.style.left = `${event.clientX}px`;
+      glow.style.top = `${event.clientY}px`;
     });
 
     document.addEventListener('pointerleave', () => {
@@ -112,9 +173,9 @@
         const rect = el.getBoundingClientRect();
         const px = (event.clientX - rect.left) / rect.width;
         const py = (event.clientY - rect.top) / rect.height;
-        const rotY = (px - 0.5) * 10;
-        const rotX = (0.5 - py) * 8;
-        el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+        const rotY = (px - 0.5) * 4.5;
+        const rotX = (0.5 - py) * 3.5;
+        el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-2px)`;
       });
 
       el.addEventListener('pointerleave', () => {
@@ -172,7 +233,7 @@
         if (p.y < -20 || p.y > height + 20) p.vy *= -1;
 
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(255,111,216,0.75)';
+        ctx.fillStyle = 'rgba(255,111,216,0.55)';
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
 
@@ -182,9 +243,9 @@
           const dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxLink) {
-            const alpha = (1 - dist / maxLink) * 0.4;
+            const alpha = (1 - dist / maxLink) * 0.26;
             ctx.strokeStyle = `rgba(168,85,247,${alpha})`;
-            ctx.lineWidth = 1.15;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
@@ -208,6 +269,10 @@
     initParallaxLayers();
     initCardTilt();
     initParticleField();
+
+    if (sakuraEnabled && document.querySelector('.sakura-container')) {
+      document.querySelector('.sakura-container').style.display = 'block';
+    }
   };
 
   if (document.readyState === 'loading') {
