@@ -80,15 +80,20 @@
 
 ## 🧩 Experience
 
-### 🤖 RoboMaster Robotics Competition (RM)
-- **Core Embedded Developer**: Focused on **real-time control systems** and **CAN-based communication**.
-- Designed multi-actuator control pipelines and optimized PID loops for high-dynamic adversarial environments.
-- Implemented fault diagnosis systems to ensure stability under strict real-time constraints.
+### 🤖 RoboMaster Engineering Robot Lead
+- Led the engineering robot control system development, designed the chassis motion control framework, and packaged core modules for an embedded engineering implementation.
+- Built a multi-task control system on STM32 + FreeRTOS, covering motor drivers, PID closed-loop control, forward/inverse kinematics, and trajectory tracking.
+- Drove system integration and performance tuning to improve motion stability and control accuracy.
+- Won 1st Prize in the RMUL 2026 Sichuan Engineering Challenge; the team reached RMUC South Division in its first year and placed 12th in the group.
 
-### 🎓 AI + Education & Workflow
-- **Smart Education**: Delivered workshops based on the **National Smart Education Platform** for primary schools.
-- **AI-Assisted Dev**: Integrated **DeepSeek & Code Agents** into embedded development for faster debugging and system integration.
-- **Personal Site**: Built a fully responsive personal website with GitHub API integration, glassmorphism UI, and dynamic content loading — see it live at [byzhaoran.github.io/BYzhaoran](https://byzhaoran.github.io/BYzhaoran/).
+### 🦾 Orbbec Technology Group — R&D Engineer Intern
+- Integrated Orbbec depth-vision devices with the LeRobot imitation learning framework, including perception module access, data collection pipeline setup, and system validation.
+- Built multi-scenario experiments to compare depth vision and RGB vision solutions, analyzing how perception modalities affect imitation learning performance, environment understanding, and task generalization.
+- Received an Orbbec internship certificate after 6 months of work; open-source contributions were adopted and cited in Seeed Studio’s official Wiki.
+
+### 🏆 Hackathon & Project Practice
+- Participated in multiple hackathons and robotics competitions, continuously sharpening the full workflow from solution design and algorithm validation to engineering integration.
+- Worked on embodied intelligence, imitation learning, and robot control projects across perception, decision-making, planning, and execution.
 
 ---
 
@@ -96,12 +101,11 @@
 
 | Project | Description | Tech |
 | :--- | :--- | :--- |
-| **🧠 Visual Detection Pipeline** | End-to-end detection system based on VisDrone & Deformable DETR | Python, PyTorch |
-| **🦾 SO100 Robotic Arm** | Trajectory planning, inverse kinematics, and multi-joint feedback control | C++, ROS2 |
-| **❄️ AI Voice Smart Fridge** | Multimodal system combining YOLO detection, Whisper ASR, TTS & LLM | Python, YOLO, Whisper |
+| **🧠 RebotArm Embodied Intelligence Manipulation System** | End-to-end robot manipulation system with ACT imitation learning, VLA task planning, and Orbbec depth perception | Python, ACT, VLA, Orbbec, ROS2 |
+| **🤖 World Model & RL Study** | DreamerV3-based world model and reinforcement learning exploration for embodied decision making | Python, DreamerV3, RL |
+| **🧊 AI Voice Smart Fridge** | Multimodal system combining YOLO detection, Whisper ASR, TTS & LLM | Python, YOLO, Whisper |
 | **📐 Control Algorithm Suite** | Engineering validation & comparison of SMC, ADRC, LQR, and MPC | MATLAB, Simulink, Embedded C |
-| **🌐 Depth Camera Integration** | Adapted Orbbec Gemini2 for ROS-based Embodied AI perception pipelines | C++, ROS2, Python |
-| **🔧 Personal Website** | GitHub API powered portfolio with blog, project showcase & dynamic updates | HTML, CSS, JS, Glassmorphism |
+| **🌐 Depth Camera Integration** | Adapted Orbbec Gemini2 for ROS-based embodied AI perception pipelines | C++, ROS2, Python |
 
 > ✅ All projects are publicly listed on [GitHub](https://github.com/BYzhaoran?tab=repositories) — dynamically synced via API on the [Projects page](https://byzhaoran.github.io/BYzhaoran/pages/projects.html).
 
