@@ -49,11 +49,11 @@
 
 ## 🔬 Research & Interest Areas
 
+- <b>Robotics Reinforcement Learning</b>: Continuous control, sparse-reward optimization, and policy robustness for manipulation and whole-body control.
+- <b>Embodied Intelligence</b>: Multimodal interaction, physical world grounding, and sim-to-real transfer.
+- <b>Robotics & Control</b>: Motion control, trajectory planning, and classical control methods for robotic systems.
+- <b>Simulation & Middleware</b>: ROS2, Isaac Sim & Gazebo for robot modeling, training, and deployment.
 - <b>Embedded & Edge AI Systems</b>: Real-time inference & optimization on STM32 / Jetson Nano.
-- <b>Computer Vision</b>: Object Detection (DETR / YOLO) & Representation Learning.
-- <b>Embodied Intelligence</b>: Multimodal interaction & Physical world grounding.
-- <b>Robotics & Control</b>: From PID/SMC to advanced MPC & Trajectory planning.
-- <b>Simulation & Middleware</b>: ROS2, Isaac Sim & Gazebo.
 
 ---
 
@@ -71,9 +71,9 @@
 | :--- | :--- |
 | **Microcontrollers** | STM32 (F4/H7), MSPM0G350x, ESP32, 51 |
 | **Edge & Sensors** | Jetson Nano, Raspberry Pi 5, Orbbec Gemini2, ASR Pro |
-| **AI & Models** | Deformable DETR, YOLO Series, Whisper ASR, DeepSeek-V2 |
-| **Robotics & Simulation** | ROS2 Humble, Isaac Sim, Gazebo, SO100 ARM |
-| **Control Algorithms** | PID, SMC, ADRC, LQR, MPC — validated in Simulink & Embedded C |
+| **AI & Models** | Deformable DETR, YOLO Series, Whisper ASR, DeepSeek-V2, Reinforcement Learning |
+| **Robotics & Simulation** | ROS2 Humble, Isaac Sim, Gazebo, MuJoCo, robot modeling & sim-to-real workflows |
+| **Control Algorithms** | PID, SMC, ADRC, LQR, MPC, motion control, trajectory optimization |
 | **Languages** | Python, C, C++, Embedded C, MATLAB/Simulink, JavaScript |
 
 ---
@@ -109,9 +109,8 @@
 
 ## 🎯 Goals
 
-- 📚 Deepen exploration in **real-time embodied AI systems** on edge devices.
+- 🤖 Advance expertise in **robot reinforcement learning**, manipulation control, and sim-to-real transfer.
 - 🔬 Bridge **classical control theory** and **learning-based methods** in robotics.
-- 🤖 Advance expertise in **large-scale ROS2 robotic architectures** and simulation.
 - 🌐 Continue building the personal tech blog & knowledge base at [BYzhaoran](https://byzhaoran.github.io/BYzhaoran/).
 
 ---
