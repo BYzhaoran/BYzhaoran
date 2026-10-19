@@ -10,12 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --panel: rgba(10, 18, 38, 0.82);
-      --line: rgba(114, 151, 255, 0.22);
-      --text: #e9f0ff;
-      --muted: #9fb0d4;
-      --accent: #39d2ff;
-      --accent2: #56f8b2;
+      --panel: rgba(255, 255, 255, 0.86);
+      --line: rgba(70, 153, 157, 0.24);
+      --text: #29414a;
+      --muted: #6f8185;
+      --accent: #40a9ad;
+      --accent2: #7cc9a4;
     }
 
     * { box-sizing: border-box; }
@@ -25,9 +25,9 @@
       min-height: 100vh;
       font-family: "Source Han Sans SC", "Segoe UI", sans-serif;
       color: var(--text);
-      background: radial-gradient(circle at 18% -12%, rgba(57, 210, 255, 0.2), transparent 35%),
-        radial-gradient(circle at 95% 0, rgba(86, 248, 178, 0.18), transparent 30%),
-        linear-gradient(180deg, #070d1f 0%, #090f20 55%, #050812 100%);
+      background: radial-gradient(circle at 12% 4%, rgba(255, 205, 216, 0.55), transparent 26%),
+        radial-gradient(circle at 94% 8%, rgba(183, 230, 210, 0.55), transparent 24%),
+        linear-gradient(180deg, #fffaf5 0%, #f5fbf7 54%, #fff7f4 100%);
     }
 
     .wrap {
@@ -65,14 +65,14 @@
       border-radius: 10px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--accent), #7e80ff);
-      color: #04101f;
-      font-family: "Orbitron", sans-serif;
+      background: linear-gradient(135deg, #ef8fa9, #8c9bd4);
+      color: #fff;
+      font-family: "Nunito", sans-serif;
       font-weight: 800;
     }
 
     .brand strong {
-      font-family: "Orbitron", sans-serif;
+      font-family: "Nunito", sans-serif;
       letter-spacing: 0.08em;
       font-size: 0.92rem;
     }
@@ -90,14 +90,14 @@
       font-size: 0.86rem;
       border: 1px solid rgba(159, 176, 212, 0.28);
       color: var(--text);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.64);
     }
 
     .btn.primary {
-      color: #04101f;
+      color: #fff;
       border: 0;
       font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      background: linear-gradient(135deg, #ef8fa9, #8c9bd4);
     }
 
     .hero {
@@ -118,7 +118,7 @@
       gap: 8px;
       margin-bottom: 10px;
       color: var(--accent);
-      font-family: "Orbitron", sans-serif;
+      font-family: "Nunito", sans-serif;
       font-size: 0.76rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -162,8 +162,8 @@
     .entry-card {
       display: grid;
       gap: 12px;
-      background: linear-gradient(180deg, rgba(12, 22, 48, 0.96), rgba(7, 13, 31, 0.94));
-      border: 1px solid rgba(159, 176, 212, 0.18);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(243, 251, 247, 0.88));
+      border: 1px solid rgba(64, 169, 173, 0.18);
       border-radius: 18px;
       padding: 18px;
     }
@@ -191,7 +191,7 @@
 
     .date {
       color: var(--accent);
-      font-family: "Orbitron", sans-serif;
+      font-family: "Nunito", sans-serif;
       font-size: 0.76rem;
       margin-right: 8px;
     }
@@ -205,7 +205,7 @@
     .topic-list a {
       color: var(--text);
       text-decoration: none;
-      border-bottom: 1px dashed rgba(57, 210, 255, 0.35);
+      border-bottom: 1px dashed rgba(64, 169, 173, 0.35);
     }
 
     .topic-list a:hover { color: var(--accent); }

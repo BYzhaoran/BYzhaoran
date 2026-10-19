@@ -4,8 +4,10 @@
 
 当前项目方向包括：
 
-- Visual Detection Pipeline
-- SO100 Robotic Arm
+- RebotArm 具身智能操作系统
+- Washer Manipulation Workflow
+- World Model & Reinforcement Learning
+- RoboMaster 工程机器人控制系统
 - AI Voice Smart Fridge
 - Control Algorithm Suite
 

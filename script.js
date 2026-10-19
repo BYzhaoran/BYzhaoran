@@ -14,7 +14,7 @@ yearNode.textContent = `© ${new Date().getFullYear()} BYzhaoran`;
 const setMode = (mode) => {
   document.body.dataset.mode = mode;
   localStorage.setItem(MODE_KEY, mode);
-  modeLabelNode.textContent = mode === 'card' ? 'Card' : 'Blog';
+  if (modeLabelNode) modeLabelNode.textContent = mode === 'card' ? 'Card' : 'Blog';
   modeButtons.forEach((btn) => {
     const active = btn.dataset.modeTarget === mode;
     btn.classList.toggle('active', active);
@@ -43,6 +43,7 @@ const typeTitle = () => {
 typeTitle();
 
 const updateClock = () => {
+  if (!clockMiniNode && !dateLineNode) return;
   const now = new Date();
   const timeText = new Intl.DateTimeFormat('zh-CN', {
     hour: '2-digit',
@@ -60,8 +61,8 @@ const updateClock = () => {
     timeZone: 'Asia/Shanghai',
   }).format(now);
 
-  clockMiniNode.textContent = timeText;
-  dateLineNode.textContent = `${dateText} · Shanghai`;
+  if (clockMiniNode) clockMiniNode.textContent = timeText;
+  if (dateLineNode) dateLineNode.textContent = `${dateText} · Shanghai`;
 };
 updateClock();
 setInterval(updateClock, 1000);
