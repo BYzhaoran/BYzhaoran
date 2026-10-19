@@ -1341,8 +1341,7 @@ body:not(.doc-page) .menu a[aria-current="page"] {
 .sider-nav .link-list a { padding: 9px 12px; border-radius: 8px; color: #72798c; }
 .sider-nav .link-list a:hover { color: #5d9bc2; background: rgba(143, 191, 224, .16); }
 .sider-nav .nav-sub { display: none; }
-.sider-note { position: relative; margin-top: 34px; padding: 15px; border-left: 2px solid #8fbfe0; background: rgba(255,255,255,.62); overflow: hidden; }
-.pixel-vault-sider-art { position: absolute; right: -16px; bottom: -18px; width: 82px; height: 82px; object-fit: contain; image-rendering: pixelated; opacity: .22; }
+.sider-note { margin-top: 34px; padding: 15px; border-left: 2px solid #8fbfe0; background: rgba(255,255,255,.62); }
 .sider-note p:last-child { font-size: .8rem; line-height: 1.75; }
 
 .koharu-main { min-width: 0; flex: 1; }
@@ -1356,9 +1355,7 @@ body:not(.doc-page) .menu a[aria-current="page"] {
 .post-card { overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 10px 30px rgba(56, 55, 78, .08); transition: transform .25s ease, box-shadow .25s ease; }
 .post-card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(56, 55, 78, .14); }
 .post-card-featured { grid-column: span 2; display: grid; grid-template-columns: 42% 1fr; }
-.post-cover { position: relative; min-height: 156px; display: grid; place-items: center; color: rgba(255,255,255,.9); font-family: "Nunito", sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: .12em; line-height: 1.25; text-align: center; overflow: hidden; }
-.post-cover img { position: absolute; width: 138px; height: 138px; object-fit: contain; image-rendering: pixelated; opacity: .78; filter: drop-shadow(0 8px 8px rgba(39,70,93,.18)); }
-.post-cover span { position: relative; z-index: 1; text-shadow: 0 2px 8px rgba(36,58,76,.35); }
+.post-cover { min-height: 156px; display: grid; place-items: center; color: rgba(255,255,255,.9); font-family: "Nunito", sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: .12em; line-height: 1.25; text-align: center; }
 .post-card-featured .post-cover { min-height: 230px; }
 .post-cover-robot { background: linear-gradient(135deg, #789bb9, #a8d1e5); }
 .post-cover-control { background: linear-gradient(135deg, #7db0ad, #c7d8c9); }
