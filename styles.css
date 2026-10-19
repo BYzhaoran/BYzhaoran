@@ -1223,7 +1223,7 @@ h1, h2, h3,
 
 /* Koharu-inspired home composition: cover, quiet sider, and image-led post stream. */
 body:not(.doc-page) {
-  background: #f8f7fb;
+  background: #f5f9fc;
   color: #394153;
 }
 
@@ -1261,7 +1261,7 @@ body:not(.doc-page) .brand-box {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #f1a9c1;
+  background: #8fbfe0;
   box-shadow: none;
   font-size: 0.8rem;
 }
@@ -1284,7 +1284,7 @@ body:not(.doc-page) .menu a {
 body:not(.doc-page) .menu a:hover,
 body:not(.doc-page) .menu a[aria-current="page"] {
   color: #fff;
-  border-bottom-color: #f1a9c1;
+  border-bottom-color: #8fbfe0;
 }
 
 .nav-search {
@@ -1311,7 +1311,7 @@ body:not(.doc-page) .menu a[aria-current="page"] {
 .cover-inner { width: min(740px, calc(100% - 36px)); padding-top: 50px; }
 .cover-kicker { color: rgba(255, 255, 255, 0.78); font-size: 0.72rem; letter-spacing: 0.2em; }
 .cover-hero h1 { margin: 18px 0 14px; font-size: clamp(2.5rem, 7vw, 5.4rem); line-height: 1.05; text-shadow: 0 5px 24px rgba(33, 30, 50, 0.25); }
-.cover-hero h1 em { color: #ffd6e1; font-style: normal; }
+.cover-hero h1 em { color: #d9f1ff; font-style: normal; }
 .cover-hero .cover-inner > p:not(.cover-kicker) { color: rgba(255, 255, 255, 0.86); font-size: 1.05rem; }
 .cover-scroll { display: inline-flex; gap: 12px; align-items: center; margin-top: 46px; color: #fff; text-decoration: none; font-size: 0.82rem; }
 .cover-scroll span { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; }
@@ -1328,28 +1328,28 @@ body:not(.doc-page) .menu a[aria-current="page"] {
 .koharu-sider { position: sticky; top: 86px; width: 250px; flex: 0 0 250px; }
 .home-profile { text-align: center; }
 .home-profile .avatar-row { margin-bottom: 14px; }
-.home-profile .avatar { width: 116px; height: 116px; border-radius: 50%; object-fit: cover; padding: 4px; border: 3px solid #fff; background: #f1a9c1; box-shadow: 0 8px 24px rgba(65, 61, 86, .16); }
+.home-profile .avatar { width: 116px; height: 116px; border-radius: 50%; object-fit: cover; padding: 4px; border: 3px solid #fff; background: #8fbfe0; box-shadow: 0 8px 24px rgba(65, 61, 86, .16); }
 .home-profile h1 { margin-bottom: 8px; font-size: 1.28rem; }
 .home-profile p { font-size: 0.86rem; line-height: 1.75; }
 .profile-stats { display: flex; justify-content: center; gap: 22px; margin-top: 20px; }
 .profile-stats a { display: grid; gap: 2px; color: #7d8497; text-decoration: none; }
-.profile-stats strong { color: #e38daa; font-family: "Nunito", sans-serif; font-size: 1.1rem; }
+.profile-stats strong { color: #5d9bc2; font-family: "Nunito", sans-serif; font-size: 1.1rem; }
 .profile-stats span { font-size: 0.72rem; }
 .sider-nav { margin-top: 36px; }
 .sider-label { margin-bottom: 9px; color: #a1a7b8; font-family: "Nunito", sans-serif; font-size: .68rem; letter-spacing: .16em; }
 .sider-nav .link-list li { border: 0; padding: 0; }
 .sider-nav .link-list a { padding: 9px 12px; border-radius: 8px; color: #72798c; }
-.sider-nav .link-list a:hover { color: #e38daa; background: rgba(241, 169, 193, .12); }
+.sider-nav .link-list a:hover { color: #5d9bc2; background: rgba(143, 191, 224, .16); }
 .sider-nav .nav-sub { display: none; }
-.sider-note { margin-top: 34px; padding: 15px; border-left: 2px solid #f1a9c1; background: rgba(255,255,255,.52); }
+.sider-note { margin-top: 34px; padding: 15px; border-left: 2px solid #8fbfe0; background: rgba(255,255,255,.62); }
 .sider-note p:last-child { font-size: .8rem; line-height: 1.75; }
 
 .koharu-main { min-width: 0; flex: 1; }
 .section-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-.section-heading > span:first-child { color: #e9a0b7; font-size: 1rem; }
+.section-heading > span:first-child { color: #78afd0; font-size: 1rem; }
 .section-heading h2 { margin: 0; color: #454b60; font-size: 1.12rem; }
 .section-heading a { margin-left: auto; color: #a1a7b8; font-size: .78rem; text-decoration: none; }
-.section-heading a:hover { color: #e38daa; }
+.section-heading a:hover { color: #5d9bc2; }
 .heading-line { height: 1px; flex: 1; background: #e6e5ec; }
 .post-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .post-card { overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 10px 30px rgba(56, 55, 78, .08); transition: transform .25s ease, box-shadow .25s ease; }
@@ -1357,14 +1357,14 @@ body:not(.doc-page) .menu a[aria-current="page"] {
 .post-card-featured { grid-column: span 2; display: grid; grid-template-columns: 42% 1fr; }
 .post-cover { min-height: 156px; display: grid; place-items: center; color: rgba(255,255,255,.9); font-family: "Nunito", sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: .12em; line-height: 1.25; text-align: center; }
 .post-card-featured .post-cover { min-height: 230px; }
-.post-cover-robot { background: linear-gradient(135deg, #768aad, #e5a6ba); }
+.post-cover-robot { background: linear-gradient(135deg, #789bb9, #a8d1e5); }
 .post-cover-control { background: linear-gradient(135deg, #7db0ad, #c7d8c9); }
-.post-cover-vision { background: linear-gradient(135deg, #b9a0c7, #e4bdc5); }
+.post-cover-vision { background: linear-gradient(135deg, #9db7d0, #c5e1ed); }
 .post-body { padding: 20px; }
-.post-meta { color: #e391ae; font-size: .72rem; }
+.post-meta { color: #6b9fc0; font-size: .72rem; }
 .post-body h3 { margin: 9px 0; color: #454b60; font-size: 1.12rem; line-height: 1.45; }
 .post-body > p:not(.post-meta) { font-size: .84rem; line-height: 1.75; }
-.post-body a { display: inline-block; margin-top: 15px; color: #d884a3; font-size: .8rem; font-weight: 700; text-decoration: none; }
+.post-body a { display: inline-block; margin-top: 15px; color: #5d94b8; font-size: .8rem; font-weight: 700; text-decoration: none; }
 .post-body a span { margin-left: 4px; }
 
 body:not(.doc-page) .updates-panel,
@@ -1372,7 +1372,7 @@ body:not(.doc-page) .snake-panel { padding: 0; border: 0; background: transparen
 body:not(.doc-page) .updates-head { justify-content: flex-end; margin-bottom: 0; }
 body:not(.doc-page) #updates-source { font-size: .7rem; color: #a1a7b8; }
 body:not(.doc-page) .updates-list li { padding: 13px 0; border-color: #e6e5ec; }
-body:not(.doc-page) .updates-date { color: #e391ae; }
+body:not(.doc-page) .updates-date { color: #6b9fc0; }
 body:not(.doc-page) .updates-text { color: #737a8d; }
 body:not(.doc-page) .snake-panel { margin-top: 34px; padding-top: 28px; border-top: 1px solid #e6e5ec; }
 body:not(.doc-page) .snake-head h3 { color: #454b60; }

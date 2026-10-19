@@ -2,9 +2,9 @@
 :root {
   --kh-ink: #303247;
   --kh-muted: #74778d;
-  --kh-pink: #ee8fae;
-  --kh-blue: #78b9d8;
-  --kh-lilac: #b9a6d9;
+  --kh-pink: #8fbfe0;
+  --kh-blue: #6fa9cf;
+  --kh-lilac: #aebfd3;
   --kh-paper: rgba(255, 255, 255, 0.84);
   --kh-line: rgba(78, 75, 110, 0.13);
   --kh-shadow: 0 22px 60px rgba(69, 67, 101, 0.14);
@@ -13,7 +13,7 @@
 body.koharu-shell,
 body.doc-page {
   color: var(--kh-ink);
-  background: #f8f6fb url("../assets/koharu/site-header.webp") center -110px / 100% auto no-repeat;
+  background: #f5f9fc url("../assets/koharu/site-header.webp") center -110px / 100% auto no-repeat;
   background-attachment: fixed;
   line-height: 1.75;
 }
@@ -25,7 +25,7 @@ body.doc-page::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,.16), #f8f6fb 42%, #f8f6fb 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,.2), #f5f9fc 42%, #f5f9fc 100%);
 }
 
 body.koharu-shell > *,
@@ -61,7 +61,7 @@ body.koharu-shell .brand-box {
   border-radius: 12px;
   background: linear-gradient(135deg, var(--kh-pink), var(--kh-blue));
   color: white;
-  box-shadow: 0 7px 15px rgba(238,143,174,.25);
+  box-shadow: 0 7px 15px rgba(111,169,207,.25);
 }
 body.doc-page .brand-title,
 body.doc-page .brand-sub { color: var(--kh-ink); }
@@ -175,8 +175,8 @@ body.koharu-shell .link-list a { text-decoration: none; }
 body.koharu-shell .article { color: var(--kh-ink); }
 body.koharu-shell .article p,
 body.koharu-shell .article li { color: #55586d; }
-body.koharu-shell .article code { color: #76506b; background: #fff0f5; border-color: rgba(238,143,174,.3); }
-body.koharu-shell .article blockquote { border-left-color: var(--kh-pink); background: #fff1f5; color: #666078; }
+body.koharu-shell .article code { color: #466b86; background: #edf7fc; border-color: rgba(111,169,207,.3); }
+body.koharu-shell .article blockquote { border-left-color: var(--kh-pink); background: #eef8fd; color: #566778; }
 body.koharu-shell .article th,
 body.koharu-shell .article td { border-color: var(--kh-line); }
 body.koharu-shell .month-grid a { background: rgba(255,255,255,.6); border-color: var(--kh-line); }
