@@ -99,6 +99,10 @@ My learning repository contains **300+ Markdown notes**, **60+ paper records**, 
 - Built multi-scenario experiments to compare depth vision and RGB vision solutions, analyzing how perception modalities affect imitation learning performance, environment understanding, and task generalization.
 - Received an Orbbec internship certificate after 6 months of work; open-source contributions were adopted and cited in Seeed Studio’s official Wiki.
 
+### 🤖 Knowin Intelligence (诺因智能) — Robotics Intern
+- Worked on Knowin World robotics systems, covering navigation and simulation integration, skill workflows, and embodied manipulation policy deployment.
+- Supported washer-task pipelines from perception and data collection to policy inference, control, and execution debugging.
+
 ### 🧪 Current Engineering Focus
 - Building an end-to-end washer manipulation workflow: data collection, dataset validation, action representation, policy training, cloud inference, board-side adaptation, and execution safety checks.
 - Exploring stereo-conditioned action policies, qpos/delta action representations, receding-horizon execution, trajectory sanity checks, and sim-to-real deployment.
