@@ -1,0 +1,211 @@
+/* Shared Koharu-inspired shell for secondary pages. */
+:root {
+  --kh-ink: #303247;
+  --kh-muted: #74778d;
+  --kh-pink: #8fbfe0;
+  --kh-blue: #6fa9cf;
+  --kh-lilac: #aebfd3;
+  --kh-paper: rgba(255, 255, 255, 0.84);
+  --kh-line: rgba(78, 75, 110, 0.13);
+  --kh-shadow: 0 22px 60px rgba(69, 67, 101, 0.14);
+}
+
+body.koharu-shell,
+body.doc-page {
+  color: var(--kh-ink);
+  background: #f5f9fc url("../assets/koharu/site-header.webp") center -110px / 100% auto no-repeat;
+  background-attachment: fixed;
+  line-height: 1.75;
+}
+
+body.koharu-shell::before,
+body.doc-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.2), #f5f9fc 42%, #f5f9fc 100%);
+}
+
+body.koharu-shell > *,
+body.doc-page > * { position: relative; z-index: 1; }
+
+body.koharu-shell .wrap,
+body.doc-page .doc-wrap {
+  width: min(1120px, calc(100% - 32px));
+  padding: 94px 0 64px;
+}
+
+body.koharu-shell .top,
+body.doc-page .doc-nav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 10;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0;
+  transform: translateX(-50%);
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 18px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 12px 36px rgba(69,67,101,.12);
+  backdrop-filter: blur(18px);
+}
+
+body.doc-page .doc-nav { display: flex; }
+body.doc-page .brand { color: var(--kh-ink); }
+body.doc-page .brand-box,
+body.koharu-shell .brand-box {
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--kh-pink), var(--kh-blue));
+  color: white;
+  box-shadow: 0 7px 15px rgba(111,169,207,.25);
+}
+body.doc-page .brand-title,
+body.doc-page .brand-sub { color: var(--kh-ink); }
+body.doc-page .brand-sub { opacity: .6; }
+
+body.doc-page .menu { gap: 4px; }
+body.doc-page .menu a {
+  color: var(--kh-muted);
+  border-radius: 999px;
+  padding: 8px 10px;
+  font-size: .7rem;
+  letter-spacing: .06em;
+}
+body.doc-page .menu a:hover,
+body.doc-page .menu a[aria-current="page"] {
+  color: #fff;
+  background: var(--kh-pink);
+}
+
+body.doc-page .doc-wrap::before,
+body.koharu-shell .wrap::before {
+  content: "";
+  position: absolute;
+  right: -42px;
+  top: 130px;
+  width: 150px;
+  height: 190px;
+  opacity: .7;
+  pointer-events: none;
+  background: url("../assets/koharu/sparkles.gif") center / contain no-repeat;
+  mix-blend-mode: multiply;
+}
+
+body.doc-page .doc-panel,
+body.koharu-shell .panel,
+body.koharu-shell .studio-panel,
+body.koharu-shell .hero {
+  border: 1px solid var(--kh-line);
+  border-radius: 22px;
+  background: var(--kh-paper);
+  box-shadow: var(--kh-shadow);
+  color: var(--kh-ink);
+  backdrop-filter: blur(12px);
+}
+
+body.doc-page .doc-panel { padding: clamp(24px, 5vw, 58px); }
+body.doc-page .doc-panel::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 4px;
+  margin-top: 42px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--kh-pink), var(--kh-blue));
+}
+body.doc-page h1,
+body.doc-page h2,
+body.doc-page h3,
+body.koharu-shell h1,
+body.koharu-shell h2,
+body.koharu-shell h3,
+body.koharu-shell .brand strong { color: var(--kh-ink); }
+body.doc-page h1 { font-size: clamp(2rem, 5vw, 3.7rem); letter-spacing: -.02em; }
+body.doc-page h2 { margin-top: 2.2em; }
+body.doc-page p,
+body.doc-page li,
+body.koharu-shell p,
+body.koharu-shell li { color: var(--kh-muted); }
+body.doc-page a,
+body.koharu-shell a { color: #5c88aa; }
+body.doc-page a:hover,
+body.koharu-shell a:hover { color: var(--kh-pink); }
+body.doc-page .eyebrow,
+body.koharu-shell .section-label { color: var(--kh-pink); }
+
+body.doc-page .repo-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 0;
+  list-style: none;
+}
+body.doc-page .repo-item {
+  min-height: 150px;
+  padding: 18px;
+  border: 1px solid var(--kh-line);
+  border-radius: 16px;
+  background: rgba(255,255,255,.62);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+body.doc-page .repo-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(69,67,101,.12); }
+body.doc-page .repo-title { font-size: 1.05rem; font-weight: 700; color: var(--kh-ink); }
+body.doc-page .repo-desc { min-height: 48px; }
+body.doc-page .repo-item-meta { color: var(--kh-muted); }
+
+body.koharu-shell .top { color: var(--kh-ink); }
+body.koharu-shell .actions .btn,
+body.koharu-shell .btn {
+  border-color: var(--kh-line);
+  color: var(--kh-ink);
+  background: rgba(255,255,255,.56);
+}
+body.koharu-shell .actions .btn.primary,
+body.koharu-shell .btn.primary { color: #fff; background: var(--kh-pink); }
+body.koharu-shell .panel { padding: 26px; }
+body.koharu-shell .grid { gap: 18px; }
+body.koharu-shell .card { transition: transform .2s ease, box-shadow .2s ease; }
+body.koharu-shell .card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(69,67,101,.12); }
+body.koharu-shell .link-list li { border-color: var(--kh-line); }
+body.koharu-shell .link-list a { text-decoration: none; }
+body.koharu-shell .article { color: var(--kh-ink); }
+body.koharu-shell .article p,
+body.koharu-shell .article li { color: #55586d; }
+body.koharu-shell .article code { color: #466b86; background: #edf7fc; border-color: rgba(111,169,207,.3); }
+body.koharu-shell .article blockquote { border-left-color: var(--kh-pink); background: #eef8fd; color: #566778; }
+body.koharu-shell .article th,
+body.koharu-shell .article td { border-color: var(--kh-line); }
+body.koharu-shell .month-grid a { background: rgba(255,255,255,.6); border-color: var(--kh-line); }
+
+body.koharu-shell .hero { padding: clamp(24px, 5vw, 46px); }
+body.koharu-shell .hero::after {
+  content: "";
+  display: block;
+  width: 110px;
+  height: 110px;
+  margin: -60px 0 -20px auto;
+  background: url("../assets/koharu/koharu-avatar.webp") center / contain no-repeat;
+  opacity: .8;
+}
+
+body.koharu-shell .studio { position: relative; }
+body.koharu-shell textarea,
+body.koharu-shell input,
+body.koharu-shell select { color: var(--kh-ink); background: rgba(255,255,255,.76); border-color: var(--kh-line); }
+
+@media (max-width: 760px) {
+  body.koharu-shell .wrap,
+  body.doc-page .doc-wrap { width: min(100% - 20px, 680px); padding-top: 86px; }
+  body.koharu-shell .top,
+  body.doc-page .doc-nav { top: 10px; width: calc(100% - 20px); }
+  body.doc-page .doc-nav { overflow-x: auto; }
+  body.doc-page .menu { min-width: max-content; }
+  body.doc-page .repo-list { grid-template-columns: 1fr; }
+  body.doc-page .doc-panel { padding: 24px 20px; }
+  body.koharu-shell .top { flex-direction: column; align-items: flex-start; }
+  body.koharu-shell .actions { width: 100%; }
+}

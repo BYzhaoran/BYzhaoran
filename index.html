@@ -4,51 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="BYzhaoran 的个人主页：博客兼个人名片。" />
-  <meta name="theme-color" content="#0a1226" />
-  <title>BYzhaoran | Dual-Mode Home</title>
+  <meta name="theme-color" content="#fff8f3" />
+  <title>BYzhaoran | Robot Notes & Lab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Nunito:wght@500;600;700;800&family=Source+Han+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-mode="blog">
   <div class="bg-layer"></div>
   <div class="noise-layer"></div>
-  <canvas id="fx-particles" aria-hidden="true"></canvas>
-  <div id="cursor-glow" aria-hidden="true"></div>
-
-  <div class="deco-corner top-left" aria-hidden="true"></div>
-  <div class="deco-corner top-right" aria-hidden="true"></div>
-  <div class="deco-corner bottom-left" aria-hidden="true"></div>
-  <div class="deco-corner bottom-right" aria-hidden="true"></div>
-
-  <div class="sparkle-container" aria-hidden="true">
-    <span class="sparkle s1"></span>
-    <span class="sparkle s2"></span>
-    <span class="sparkle s3"></span>
-    <span class="sparkle s4"></span>
-    <span class="sparkle s5"></span>
-    <span class="sparkle s6"></span>
-    <span class="sparkle s7"></span>
-    <span class="sparkle s8"></span>
-  </div>
-
   <div class="sakura-container" aria-hidden="true">
-    <span class="sakura petal1"></span>
-    <span class="sakura petal2"></span>
-    <span class="sakura petal3"></span>
-    <span class="sakura petal4"></span>
-    <span class="sakura petal5"></span>
+    <span class="sakura petal1"></span><span class="sakura petal2"></span>
+    <span class="sakura petal3"></span><span class="sakura petal4"></span>
+    <span class="sakura petal5"></span><span class="sakura petal6"></span>
   </div>
 
   <header class="top-nav glass">
-    <div class="brand">
+    <a class="brand" href="index.html" aria-label="返回首页">
       <span class="brand-box">BZ</span>
-      <div>
-        <p class="brand-title">BYzhaoran</p>
-        <p class="brand-sub">Embedded AI / Robotics / Control</p>
-      </div>
-    </div>
+      <span class="brand-title">BYzhaoran</span>
+    </a>
 
     <nav class="menu" aria-label="main-nav">
       <a href="pages/blog.html">BLOG</a>
@@ -60,36 +36,31 @@
       <a href="pages/contact.html">CONTACT</a>
     </nav>
 
-    <div class="nav-right">
-      <div class="mode-switch" role="tablist" aria-label="view-mode">
-        <button class="mode-btn active" id="mode-blog" type="button" data-mode-target="blog" role="tab" aria-selected="true">博客首页模式</button>
-        <button class="mode-btn" id="mode-card" type="button" data-mode-target="card" role="tab" aria-selected="false">个人名片模式</button>
-      </div>
-      <div class="status-pill">
-        <span class="dot"></span>
-        <span id="clock-mini">--:--:--</span>
-      </div>
-    </div>
+    <div class="nav-right"><a class="nav-search" href="pages/blog.html" aria-label="打开博客">⌕ <span>博客</span></a></div>
   </header>
 
-  <main class="layout">
-    <aside class="left-column">
-      <section class="glass profile-card reveal">
+  <section class="cover-hero">
+    <div class="cover-inner">
+      <p class="cover-kicker">ROBOTICS / EMBODIED AI / NOTES</p>
+      <h1>BYzhaoran 的<br /><em>小春日和</em></h1>
+      <p>把感知、学习与控制，写成可以在真实世界运行的笔记。</p>
+      <a class="cover-scroll" href="#home-content">向下阅读 <span>↓</span></a>
+    </div>
+  </section>
+
+  <main class="koharu-layout" id="home-content">
+    <aside class="koharu-sider">
+      <section class="home-profile reveal">
         <div class="avatar-row">
           <img class="avatar" src="assets/avator.jpg" alt="BYzhaoran avatar" width="380" height="380" />
         </div>
-        <h1 id="typing-title">正在连接个人节点...</h1>
-        <p>
-          做嵌入式 AI、机器人与控制算法，偏好把复杂系统做成长期稳定运行的工程产物。
-        </p>
-        <div class="action-row">
-          <a class="btn btn-solid" href="pages/projects.html">项目总览</a>
-          <a class="btn btn-ghost" href="pages/contact.html">联系我</a>
-        </div>
+        <h1 id="typing-title">你好，我是 BYzhaoran</h1>
+        <p>机器人与具身智能方向的工程实践者，记录从数据到硬件的完整链路。</p>
+        <div class="profile-stats"><a href="pages/blog.html"><strong>300+</strong><span>笔记</span></a><a href="pages/projects.html"><strong>6</strong><span>项目</span></a><a href="pages/stack.html"><strong>60+</strong><span>论文</span></a></div>
       </section>
 
-      <section class="glass panel reveal blog-only">
-        <h2>站点导航</h2>
+      <section class="sider-nav reveal">
+        <p class="sider-label">MENU</p>
         <ul class="link-list">
           <li>
             <a href="pages/blog.html">
@@ -136,71 +107,41 @@
         </ul>
       </section>
 
-      <section class="glass panel reveal">
-        <h2>站点统计</h2>
-        <ul class="stat-list">
-          <li><span>项目方向</span><strong>4</strong></li>
-          <li><span>技术关键词</span><strong>20+</strong></li>
-          <li><span>主页模式</span><strong id="mode-label">Blog</strong></li>
-          <li><span>当前状态</span><strong>Online</strong></li>
-        </ul>
+      <section class="sider-note reveal">
+        <p class="sider-label">NOW</p>
+        <p>正在研究视觉条件策略、动作表示和机器人任务的失败恢复。</p>
       </section>
     </aside>
 
-    <section class="right-column">
-      <article class="glass hero-banner reveal">
-        <p class="eyebrow">DUAL MODE REBUILD</p>
-        <h2>极限犹可突破，至臻亦不可止</h2>
-        <p>
-            主页双模式重构完成！后续将持续优化交互细节和内容结构，欢迎持续关注。    
-        </p>
-      </article>
+    <section class="koharu-main">
+      <div class="section-heading reveal"><span>✦</span><h2>精选记录</h2><a href="pages/blog.html">查看全部 →</a></div>
 
-      <article class="glass panel reveal quote-panel">
-        <h3>今日箴言</h3>
-        <ul class="quote-list">
-          <li>98%的人在这里失败,100%的人在这里收获成长。</li>
-          <li>初心高于胜负,成长胜于输赢。</li>
-          <li>把每一次复盘做扎实，时间会替你放大结果。</li>
-        </ul>
-      </article>
-
-      <div class="content-grid reveal blog-only">
-        <article class="glass card">
-          <h3>归档 / Archive</h3>
-          <p>按时间聚合学习笔记、竞赛总结和工程记录。</p>
-          <a href="pages/readme.html">进入归档入口</a>
+      <div class="post-cards reveal">
+        <article class="post-card post-card-featured">
+          <div class="post-cover post-cover-robot"><span>ROBOT<br />LEARNING</span></div>
+          <div class="post-body"><p class="post-meta">具身智能 · 2026.10</p><h3>从感知到执行：机器人操作系统的工程闭环</h3><p>记录数据采集、策略训练、推理部署与真实执行之间那些必须被验证的连接。</p><a href="pages/blog.html">阅读文章 <span>↗</span></a></div>
         </article>
-        <article class="glass card">
-          <h3>分类 / Categories</h3>
-          <p>按控制、视觉、嵌入式、机器人进行模块化组织。</p>
-          <a href="pages/stack.html">查看分类映射</a>
+        <article class="post-card">
+          <div class="post-cover post-cover-control"><span>CONTROL<br />LOOP</span></div>
+          <div class="post-body"><p class="post-meta">控制 · 复盘</p><h3>让系统跑起来，再让它变漂亮</h3><p>PID、LQR、MPC 与现场调参的工程记录。</p><a href="pages/readme.html">打开笔记 <span>↗</span></a></div>
         </article>
-        <article class="glass card">
-          <h3>标签 / Tags</h3>
-          <p>通过关键词快速定位知识片段，提升后续复盘与检索效率。</p>
-          <a href="pages/projects.html">浏览项目标签</a>
-        </article>
-        <article class="glass card">
-          <h3>留言 / Contact</h3>
-          <p>项目沟通和技术交流。</p>
-          <a href="pages/contact.html">打开联系方式</a>
+        <article class="post-card">
+          <div class="post-cover post-cover-vision"><span>VISION<br />&amp; EDGE</span></div>
+          <div class="post-body"><p class="post-meta">视觉 · 部署</p><h3>深度相机如何进入模仿学习链路</h3><p>从传感器接入到边缘端执行的实践摘要。</p><a href="pages/projects.html">查看项目 <span>↗</span></a></div>
         </article>
       </div>
 
-      <article class="glass updates-panel reveal">
-        <div class="updates-head">
-          <h3>最近更新</h3>
-          <span id="updates-source">数据源: loading...</span>
-        </div>
+      <div class="section-heading reveal"><span>✦</span><h2>最近更新</h2><span class="heading-line"></span></div>
+      <article class="updates-panel reveal">
+        <div class="updates-head"><span id="updates-source">数据源: loading...</span></div>
         <ul id="updates-list" class="updates-list">
           <li class="loading">正在读取更新数据...</li>
         </ul>
       </article>
 
-      <article class="glass snake-panel reveal blog-only">
+      <article class="snake-panel reveal">
         <div class="snake-head">
-          <h3>Contribution Stream</h3>
+        <h3>GitHub 成长轨迹</h3>
           <span id="date-line">Loading...</span>
         </div>
         <picture>
@@ -210,16 +151,6 @@
         </picture>
       </article>
 
-      <article class="glass card-mode-panel reveal card-only">
-        <h3>个人简介</h3>
-        <p>我是 BYzhaoran，关注嵌入式系统、机器人控制、计算机视觉与具身智能</p>
-        <div class="quick-links">
-          <a href="pages/about.html">关于我</a>
-          <a href="pages/stack.html">技术栈</a>
-          <a href="pages/projects.html">项目</a>
-          <a href="pages/contact.html">联系</a>
-        </div>
-      </article>
     </section>
   </main>
 

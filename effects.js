@@ -9,9 +9,9 @@
     style.id = 'fx-global-style';
     style.textContent = `
       :root {
-        --fx-sakura-pink: rgba(255, 182, 193, 0.92);
-        --fx-sakura-pink-soft: rgba(255, 192, 203, 0.58);
-        --fx-sakura-pink-glow: rgba(255, 111, 216, 0.24);
+        --fx-sakura-pink: rgba(255, 183, 198, 0.9);
+        --fx-sakura-pink-soft: rgba(255, 211, 220, 0.62);
+        --fx-sakura-pink-glow: rgba(239, 143, 169, 0.2);
       }
       #fx-particles {
         position: fixed;
@@ -30,7 +30,7 @@
         pointer-events: none;
         z-index: 1;
         opacity: 0;
-        background: radial-gradient(circle, rgba(255,111,216,0.22) 0%, rgba(168,85,247,0.14) 40%, rgba(57,210,255,0.06) 62%, rgba(255,111,216,0) 74%);
+        background: radial-gradient(circle, rgba(239,143,169,0.18) 0%, rgba(124,201,164,0.12) 42%, rgba(64,169,173,0.05) 62%, rgba(239,143,169,0) 74%);
         transform: translate(-50%, -50%);
         transition: opacity 220ms ease, transform 80ms linear;
         mix-blend-mode: screen;
@@ -73,8 +73,8 @@
         transform-style: preserve-3d;
       }
       .fx-tilt:hover {
-        border-color: rgba(255,111,216,0.35) !important;
-        box-shadow: 0 30px 78px rgba(0, 0, 0, 0.5), 0 0 22px rgba(255,111,216,0.18) !important;
+        border-color: rgba(239,143,169,0.35) !important;
+        box-shadow: 0 24px 54px rgba(75, 119, 123, 0.14), 0 0 22px rgba(239,143,169,0.14) !important;
       }
       @media (max-width: 760px) {
         #fx-particles,
@@ -233,7 +233,7 @@
         if (p.y < -20 || p.y > height + 20) p.vy *= -1;
 
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(255,111,216,0.55)';
+        ctx.fillStyle = 'rgba(239,143,169,0.42)';
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
 
@@ -244,7 +244,7 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < maxLink) {
             const alpha = (1 - dist / maxLink) * 0.26;
-            ctx.strokeStyle = `rgba(168,85,247,${alpha})`;
+            ctx.strokeStyle = `rgba(64,169,173,${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
