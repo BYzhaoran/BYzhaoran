@@ -268,6 +268,177 @@ body.koharu-shell textarea,
 body.koharu-shell input,
 body.koharu-shell select { color: var(--kh-ink); background: rgba(255,255,255,.76); border-color: var(--kh-line); }
 
+/* Writing room: a calm, paper-first workspace for drafting and publishing. */
+body.koharu-shell:has(.studio) {
+  background:
+    linear-gradient(rgba(255,255,255,.42), rgba(255,255,255,.42)),
+    url("../assets/koharu/site-header.webp") center top / min(100%, 1120px) auto no-repeat,
+    var(--kh-bg);
+}
+body.koharu-shell:has(.studio) .wrap {
+  width: min(1240px, calc(100% - 32px));
+  padding-top: 30px;
+}
+body.koharu-shell:has(.studio) .top {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+  min-height: 62px;
+  margin-bottom: 22px;
+  padding: 10px 12px 10px 16px;
+  border-color: rgba(255,255,255,.88);
+  border-radius: 18px;
+  background: rgba(255,255,255,.84);
+  box-shadow: 0 12px 30px rgba(69,67,101,.1);
+  backdrop-filter: blur(16px);
+}
+body.koharu-shell:has(.studio) .brand-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--kh-pink);
+  color: #fff;
+  box-shadow: 0 7px 14px rgba(238,145,169,.28);
+}
+body.koharu-shell:has(.studio) .brand strong {
+  font-family: "Source Han Sans SC", "Segoe UI", sans-serif;
+  letter-spacing: .02em;
+  font-size: .98rem;
+}
+body.koharu-shell:has(.studio) .actions { gap: 6px; }
+body.koharu-shell:has(.studio) .actions .btn {
+  border-radius: 11px;
+  padding: 8px 11px;
+  font-size: .78rem;
+}
+body.koharu-shell:has(.studio) .hero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18px;
+  padding: 30px 34px 26px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.72);
+}
+body.koharu-shell:has(.studio) .hero::after {
+  width: 145px;
+  height: 145px;
+  margin: -92px 8px -20px auto;
+  opacity: .56;
+}
+body.koharu-shell:has(.studio) .hero h1 { max-width: 760px; font-size: clamp(1.7rem, 3vw, 2.65rem); }
+body.koharu-shell:has(.studio) .hero p { max-width: 760px; font-size: .95rem; }
+body.koharu-shell:has(.studio) .studio {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+body.koharu-shell:has(.studio) .studio-head {
+  align-items: center;
+  padding: 4px 4px 18px;
+}
+body.koharu-shell:has(.studio) .studio-head h1 { font-size: clamp(1.35rem, 2.2vw, 1.8rem); }
+body.koharu-shell:has(.studio) .studio-head p { max-width: 680px; font-size: .86rem; }
+body.koharu-shell:has(.studio) .studio-body {
+  align-items: start;
+  grid-template-columns: minmax(390px, .9fr) minmax(0, 1.1fr);
+  gap: 18px;
+}
+body.koharu-shell:has(.studio) .studio-panel {
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(69,67,101,.09);
+}
+body.koharu-shell:has(.studio) .studio-body > .studio-panel:last-child {
+  position: sticky;
+  top: 100px;
+}
+body.koharu-shell:has(.studio) .panel-title {
+  align-items: flex-start;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(202,209,222,.7);
+}
+body.koharu-shell:has(.studio) .panel-title h2 { font-size: 1.04rem; margin-bottom: 5px; }
+body.koharu-shell:has(.studio) .panel-title p { font-size: .79rem; line-height: 1.65; }
+body.koharu-shell:has(.studio) .dropzone {
+  min-height: 188px;
+  padding: 22px;
+  border: 1px dashed rgba(111,169,207,.6);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(237,247,252,.9), rgba(255,245,248,.76));
+}
+body.koharu-shell:has(.studio) .dropzone strong { font-family: inherit; font-size: 1rem; }
+body.koharu-shell:has(.studio) .dropzone small { font-size: .78rem; }
+body.koharu-shell:has(.studio) .field-grid { gap: 12px; }
+body.koharu-shell:has(.studio) .field { gap: 5px; }
+body.koharu-shell:has(.studio) .field label {
+  color: var(--kh-ink);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+body.koharu-shell:has(.studio) .field input,
+body.koharu-shell:has(.studio) .field textarea,
+body.koharu-shell:has(.studio) .field select {
+  min-height: 42px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: .86rem;
+  box-shadow: inset 0 1px 2px rgba(69,67,101,.04);
+}
+body.koharu-shell:has(.studio) .btn {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+body.koharu-shell:has(.studio) .btn:hover { transform: translateY(-1px); box-shadow: 0 7px 14px rgba(69,67,101,.1); }
+body.koharu-shell:has(.studio) .inline-actions { gap: 8px; }
+body.koharu-shell:has(.studio) .inline-actions .btn { font-size: .78rem; }
+body.koharu-shell:has(.studio) .inline-actions #upload-btn {
+  padding-inline: 16px;
+  box-shadow: 0 7px 14px rgba(238,145,169,.2);
+}
+body.koharu-shell:has(.studio) .preview {
+  min-height: 560px;
+  max-height: calc(100vh - 180px);
+  padding: clamp(24px, 4vw, 42px);
+  border-radius: 12px;
+  background: #fffdfb;
+  box-shadow: inset 0 0 0 1px rgba(232,223,218,.55);
+}
+body.koharu-shell:has(.studio) .preview:empty::before {
+  content: "Preview will appear here";
+  display: grid;
+  min-height: 300px;
+  place-items: center;
+  color: #9a9aaa;
+  font-size: .85rem;
+}
+body.koharu-shell:has(.studio) .preview h1,
+body.koharu-shell:has(.studio) .preview h2,
+body.koharu-shell:has(.studio) .preview h3,
+body.koharu-shell:has(.studio) .preview h4 { color: var(--kh-ink); letter-spacing: 0; }
+body.koharu-shell:has(.studio) .preview h1 { font-size: clamp(1.7rem, 3vw, 2.25rem); }
+body.koharu-shell:has(.studio) .preview h2 { font-size: 1.35rem; }
+body.koharu-shell:has(.studio) .preview p,
+body.koharu-shell:has(.studio) .preview li { font-size: .93rem; line-height: 1.9; }
+body.koharu-shell:has(.studio) .preview pre { border-radius: 10px; }
+body.koharu-shell:has(.studio) .message { padding-top: 2px; font-size: .78rem; }
+
+@media (max-width: 900px) {
+  body.koharu-shell:has(.studio) .studio-body { grid-template-columns: 1fr; }
+  body.koharu-shell:has(.studio) .studio-body > .studio-panel:last-child { position: static; }
+  body.koharu-shell:has(.studio) .preview { max-height: none; }
+}
+@media (max-width: 560px) {
+  body.koharu-shell:has(.studio) .wrap { width: min(100% - 18px, 680px); padding-top: 12px; }
+  body.koharu-shell:has(.studio) .top { position: static; }
+  body.koharu-shell:has(.studio) .hero { padding: 24px 20px 18px; }
+  body.koharu-shell:has(.studio) .studio-panel { padding: 17px; }
+  body.koharu-shell:has(.studio) .status-row { width: 100%; justify-content: flex-start; }
+  body.koharu-shell:has(.studio) .status-pill { flex: 1 1 auto; justify-content: center; }
+}
+
 @media (max-width: 760px) {
   body.koharu-shell .wrap,
   body.doc-page .doc-wrap { width: min(100% - 20px, 680px); padding-top: 86px; }

@@ -651,7 +651,7 @@ p {
 .hero-banner {
   padding: 24px;
   background: linear-gradient(90deg, rgba(10, 18, 38, 0.97) 0%, rgba(10, 18, 38, 0.82) 52%, rgba(10, 18, 38, 0.58) 100%),
-    url("assets/anime/wallhaven/wallhaven-vp2dxl.png") center 58% / cover no-repeat;
+    url("assets/anime/wallhaven/wallhaven-yqkl97.jpg") center 58% / cover no-repeat;
   overflow: hidden;
 }
 
@@ -1341,7 +1341,7 @@ body:not(.doc-page) .menu a[aria-current="page"] {
   color: #fff;
   text-align: center;
   background: linear-gradient(180deg, rgba(49, 46, 72, 0.25), rgba(49, 46, 72, 0.76)),
-    url("assets/anime/wallhaven/wallhaven-vp2dxl.png") center / cover,
+    url("assets/anime/wallhaven/wallhaven-yqkl97.jpg") center / cover,
     linear-gradient(135deg, #9dabc9, #e6b7c3);
 }
 
