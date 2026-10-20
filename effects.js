@@ -261,6 +261,44 @@
     tick();
   };
 
+  const initSecondaryPageMotion = () => {
+    const isSecondaryPage = document.body.matches('.doc-page, .koharu-shell');
+    if (!isSecondaryPage) return;
+
+    const targets = document.querySelectorAll([
+      '.doc-wrap > *',
+      '.koharu-shell .hero',
+      '.koharu-shell > .wrap > .panel',
+      '.koharu-shell .grid > *',
+      '.koharu-shell .studio-body > *',
+      '.koharu-shell .entry-card',
+      '.koharu-shell .post-list li',
+      '.koharu-shell .topic-list li',
+      '.doc-page .repo-item',
+    ].join(','));
+
+    targets.forEach((node, index) => {
+      if (node.closest('.doc-nav') && node !== node.closest('.doc-nav')) return;
+      node.classList.add('kh-reveal');
+      node.style.setProperty('--kh-reveal-delay', `${Math.min(index * 55, 440)}ms`);
+    });
+
+    if (prefersReducedMotion) {
+      targets.forEach((node) => node.classList.add('kh-reveal-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, instance) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('kh-reveal-visible');
+        instance.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px' });
+
+    targets.forEach((node) => observer.observe(node));
+  };
+
   const init = () => {
     if (!document.body) return;
     injectFxStyles();
@@ -269,6 +307,7 @@
     initParallaxLayers();
     initCardTilt();
     initParticleField();
+    initSecondaryPageMotion();
 
     if (sakuraEnabled && document.querySelector('.sakura-container')) {
       document.querySelector('.sakura-container').style.display = 'block';

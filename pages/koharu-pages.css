@@ -439,6 +439,97 @@ body.koharu-shell:has(.studio) .message { padding-top: 2px; font-size: .78rem; }
   body.koharu-shell:has(.studio) .status-pill { flex: 1 1 auto; justify-content: center; }
 }
 
+/* Shared page motion: soft, staggered, and quiet enough for repeated reading. */
+@keyframes kh-page-in {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes kh-nav-in {
+  from { opacity: 0; transform: translate3d(-50%, -12px, 0); }
+  to { opacity: 1; transform: translate3d(-50%, 0, 0); }
+}
+body.doc-page .doc-nav,
+body.koharu-shell > .wrap > .top { animation: kh-nav-in .7s cubic-bezier(.22,1,.36,1) both; }
+.kh-reveal { opacity: 0; }
+.kh-reveal.kh-reveal-visible {
+  animation: kh-page-in .65s cubic-bezier(.22,1,.36,1) var(--kh-reveal-delay, 0ms) both;
+}
+body.doc-page .doc-panel,
+body.koharu-shell .hero,
+body.koharu-shell .panel,
+body.koharu-shell .studio-panel,
+body.koharu-shell .entry-card,
+body.doc-page .repo-item {
+  transition: transform .32s cubic-bezier(.22,1,.36,1), box-shadow .32s ease, border-color .32s ease;
+}
+body.doc-page .doc-panel:hover,
+body.koharu-shell .hero:hover,
+body.koharu-shell .panel:hover,
+body.koharu-shell .studio-panel:hover,
+body.doc-page .repo-item:hover {
+  border-color: rgba(111,169,207,.3);
+  box-shadow: 0 26px 60px rgba(69,67,101,.16);
+}
+body.koharu-shell .entry-card .entry-cover {
+  transition: transform .6s cubic-bezier(.22,1,.36,1), filter .4s ease;
+}
+body.koharu-shell .entry-card:hover .entry-cover {
+  transform: scale(1.045);
+  filter: saturate(1.08) brightness(1.03);
+}
+body.doc-page .menu a,
+body.koharu-shell .actions .btn,
+body.koharu-shell .btn {
+  position: relative;
+  overflow: hidden;
+  transition: color .22s ease, background .22s ease, border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+body.doc-page .menu a::after,
+body.koharu-shell .actions .btn::after,
+body.koharu-shell .btn::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -130%;
+  width: 70%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+body.doc-page .menu a:hover::after,
+body.koharu-shell .actions .btn:hover::after,
+body.koharu-shell .btn:hover::after { left: 150%; }
+body.koharu-shell .post-list li,
+body.koharu-shell .topic-list li,
+body.koharu-shell .link-list li {
+  transition: padding-left .22s ease, background .22s ease, border-color .22s ease;
+}
+body.koharu-shell .post-list li:hover,
+body.koharu-shell .topic-list li:hover,
+body.koharu-shell .link-list li:hover {
+  padding-left: 8px;
+  background: rgba(237,247,252,.42);
+}
+body.koharu-shell .dropzone {
+  transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+body.koharu-shell .dropzone:hover,
+body.koharu-shell .dropzone.dragover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(111,169,207,.13);
+}
+body.koharu-shell .status-pill { transition: background .22s ease, transform .22s ease; }
+body.koharu-shell .status-pill:hover { transform: translateY(-2px); background: rgba(237,247,252,.82); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .kh-reveal { opacity: 1; }
+}
+
 @media (max-width: 760px) {
   body.koharu-shell .wrap,
   body.doc-page .doc-wrap { width: min(100% - 20px, 680px); padding-top: 86px; }
