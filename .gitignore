@@ -1,0 +1,8 @@
+# Keep only the Wallhaven images used by the site.
+assets/anime/wallhaven/*.jpg
+assets/anime/wallhaven/*.png
+!assets/anime/wallhaven/wallhaven-pomg5p.jpg
+!assets/anime/wallhaven/wallhaven-vp2dxl.png
+!assets/anime/wallhaven/wallhaven-yqkl97.jpg
+assets/88.png
+assets/damie-sprite.gif
