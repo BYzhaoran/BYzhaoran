@@ -1,6 +1,6 @@
 (() => {
   const stream = document.querySelector('#posts');
-  const count = document.querySelector('#post-count');
+  const countNodes = document.querySelectorAll('#post-count-sidebar, #post-count-label');
   const postsPath = '../docs/posts/';
 
   const escapeHtml = (value) => String(value)
@@ -96,12 +96,12 @@
       if (!response.ok) throw new Error('无法读取 docs/posts/index.json');
       const posts = await response.json();
       posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-      count.textContent = String(posts.length).padStart(2, '0');
+      countNodes.forEach((node) => { node.textContent = String(posts.length).padStart(2, '0'); });
       stream.innerHTML = '';
       for (let index = 0; index < posts.length; index += 1) stream.appendChild(await createPost(posts[index], index));
     } catch (error) {
       stream.innerHTML = `<p class="post-error">博客加载失败：${escapeHtml(error.message)}。请确认站点以 HTTP 服务启动，并检查 <code>docs/posts/index.json</code>。</p>`;
-      count.textContent = '00';
+      countNodes.forEach((node) => { node.textContent = '00'; });
     }
   };
 

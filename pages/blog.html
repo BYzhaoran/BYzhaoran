@@ -17,19 +17,39 @@
       <div class="blog-nav-links"><a href="../index.html">首页</a><a href="#posts">文章</a></div>
     </nav>
 
-    <header class="blog-intro">
-      <div>
-        <p class="eyebrow">Engineering Notes / Posts</p>
-        <h1>把想法写成<br />可以复盘的记录。</h1>
-        <p>这里的每一篇文章都直接来自工程笔记目录，按日期整理，记录机器人、控制、视觉与嵌入式系统里的实践过程。</p>
-      </div>
-      <aside class="blog-index-note"><strong id="post-count">--</strong><span>篇记录来自<br /><code>docs/posts</code></span></aside>
-    </header>
+    <div class="blog-layout">
+      <aside class="blog-sidebar">
+        <section class="blog-profile">
+          <div class="blog-avatar-row"><img src="../assets/avator.jpg" alt="Zhaoran" width="380" height="380" /></div>
+          <h2>你好，我是 Zhaoran</h2>
+          <p>机器人与具身智能方向的工程实践者，记录从数据到硬件的完整链路。</p>
+          <div class="blog-stats"><a href="#posts"><strong id="post-count-sidebar">--</strong><span>笔记</span></a><a href="../index.html#home-content"><strong>6</strong><span>项目</span></a><a href="#posts"><strong>60+</strong><span>论文</span></a></div>
+        </section>
+        <nav class="blog-side-nav" aria-label="博客栏目">
+          <p>MENU</p>
+          <a href="../index.html">首页</a>
+          <a href="#posts">文章索引</a>
+          <a href="#posts">工程笔记</a>
+        </nav>
+        <p class="blog-side-note">正在研究视觉条件策略、动作表示和机器人任务的失败恢复。</p>
+      </aside>
 
-    <section id="posts" class="post-stream" aria-live="polite">
-      <p class="post-empty">正在读取工程笔记……</p>
-    </section>
-    <footer class="blog-footer">Source: <code>docs/posts</code> · Markdown rendered in the browser</footer>
+      <div class="blog-main">
+        <header class="blog-intro">
+          <div>
+            <p class="eyebrow">Engineering Notes / Posts</p>
+            <h1>把想法写成<br />可以复盘的记录。</h1>
+            <p>这里的每一篇文章都直接来自工程笔记目录，按日期整理，记录机器人、控制、视觉与嵌入式系统里的实践过程。</p>
+          </div>
+          <aside class="blog-index-note"><strong><span id="post-count-label">--</span></strong><span>篇记录来自<br /><code>docs/posts</code></span></aside>
+        </header>
+
+        <section id="posts" class="post-stream" aria-live="polite">
+          <p class="post-empty">正在读取工程笔记……</p>
+        </section>
+        <footer class="blog-footer">Source: <code>docs/posts</code> · Markdown rendered in the browser</footer>
+      </div>
+    </div>
   </main>
 
   <script src="blog.js"></script>
