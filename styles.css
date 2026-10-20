@@ -64,11 +64,40 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  overflow: hidden;
   background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 72px 72px;
   opacity: 0.2;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 95%);
+}
+
+.bg-layer::before,
+.bg-layer::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.bg-layer::before {
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 13, 31, 0.66), rgba(7, 13, 31, 0.9) 70%),
+    url("assets/anime/wallhaven/wallhaven-yqkl97.jpg") center top / cover no-repeat;
+  opacity: 0.72;
+  filter: saturate(0.82) contrast(1.05);
+  mix-blend-mode: screen;
+}
+
+.bg-layer::after {
+  right: -8vw;
+  bottom: -8vh;
+  width: min(680px, 48vw);
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(90deg, rgba(7, 13, 31, 0.96), rgba(7, 13, 31, 0.08)),
+    url("assets/anime/wallhaven/wallhaven-pomg5p.jpg") center / cover no-repeat;
+  opacity: 0.24;
+  filter: saturate(0.7) contrast(1.1);
+  transform: rotate(-4deg);
 }
 
 .noise-layer {
@@ -618,6 +647,8 @@ p {
 
 .hero-banner {
   padding: 24px;
+  background: linear-gradient(90deg, rgba(10, 18, 38, 0.97) 0%, rgba(10, 18, 38, 0.82) 52%, rgba(10, 18, 38, 0.58) 100%),
+    url("assets/anime/wallhaven/wallhaven-vp2dxl.png") center 58% / cover no-repeat;
 }
 
 .eyebrow {
@@ -1031,6 +1062,12 @@ body[data-mode="card"] .profile-card {
   .sparkle-container,
   .sakura-container {
     display: none;
+  }
+
+  .bg-layer::after {
+    right: -30vw;
+    width: 90vw;
+    opacity: 0.16;
   }
 
   .top-nav,
