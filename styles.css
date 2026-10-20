@@ -1341,7 +1341,7 @@ body:not(.doc-page) .menu a[aria-current="page"] {
   color: #fff;
   text-align: center;
   background: linear-gradient(180deg, rgba(49, 46, 72, 0.25), rgba(49, 46, 72, 0.76)),
-    url("assets/damie.gif") center / cover,
+    url("assets/anime/wallhaven/wallhaven-vp2dxl.png") center / cover,
     linear-gradient(135deg, #9dabc9, #e6b7c3);
 }
 
@@ -1394,9 +1394,11 @@ body:not(.doc-page) .menu a[aria-current="page"] {
 .post-card-featured { grid-column: span 2; display: grid; grid-template-columns: 42% 1fr; }
 .post-cover { min-height: 156px; display: grid; place-items: center; color: rgba(255,255,255,.9); font-family: "Nunito", sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: .12em; line-height: 1.25; text-align: center; }
 .post-card-featured .post-cover { min-height: 230px; }
-.post-cover-robot { background: linear-gradient(135deg, #789bb9, #a8d1e5); }
-.post-cover-control { background: linear-gradient(135deg, #7db0ad, #c7d8c9); }
-.post-cover-vision { background: linear-gradient(135deg, #9db7d0, #c5e1ed); }
+.post-cover-robot { background: linear-gradient(135deg, rgba(39, 49, 68, .35), rgba(39, 49, 68, .72)), url("assets/anime/wallhaven/wallhaven-1qodl3.jpg") center 28% / cover; }
+.post-cover-control { background: linear-gradient(135deg, rgba(24, 68, 83, .28), rgba(24, 68, 83, .68)), url("assets/anime/wallhaven/wallhaven-1qom63.jpg") center / cover; }
+.post-cover-vision { background: linear-gradient(135deg, rgba(77, 60, 94, .25), rgba(77, 60, 94, .7)), url("assets/anime/wallhaven/wallhaven-w53k9q.jpg") center / cover; }
+.post-cover-lab { background: linear-gradient(135deg, rgba(18, 54, 68, .28), rgba(18, 54, 68, .72)), url("assets/anime/wallhaven/wallhaven-8g8d8y.jpg") center / cover; }
+.post-cover-field { background: linear-gradient(135deg, rgba(80, 62, 42, .18), rgba(80, 62, 42, .68)), url("assets/anime/wallhaven/wallhaven-yqk3v7.jpg") center / cover; }
 .post-body { padding: 20px; }
 .post-meta { color: #6b9fc0; font-size: .72rem; }
 .post-body h3 { margin: 9px 0; color: #454b60; font-size: 1.12rem; line-height: 1.45; }

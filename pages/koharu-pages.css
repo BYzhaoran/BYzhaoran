@@ -193,6 +193,77 @@ body.koharu-shell .hero::after {
 }
 
 body.koharu-shell .studio { position: relative; }
+body.koharu-shell .studio-panel {
+  background: var(--kh-paper);
+  color: var(--kh-ink);
+}
+
+body.koharu-shell .entry-card {
+  overflow: hidden;
+  padding: 0;
+  background: var(--kh-paper);
+}
+body.koharu-shell .entry-card .entry-cover {
+  min-height: 168px;
+  background-position: center;
+  background-size: cover;
+}
+body.koharu-shell .entry-card .entry-copy { padding: 20px; }
+body.koharu-shell .entry-card > div:not(.entry-cover) { padding: 20px; }
+body.koharu-shell .entry-card.entry-cover-robot .entry-cover {
+  background-image: linear-gradient(135deg, rgba(39,49,68,.18), rgba(39,49,68,.7)), url("../assets/anime/wallhaven/wallhaven-2163og.jpg");
+}
+body.koharu-shell .entry-card.entry-cover-night .entry-cover {
+  background-image: linear-gradient(135deg, rgba(40,25,76,.16), rgba(40,25,76,.72)), url("../assets/anime/wallhaven/wallhaven-7jxx19.jpg");
+}
+body.koharu-shell .entry-card.entry-cover-harbor .entry-cover {
+  background-image: linear-gradient(135deg, rgba(53,64,74,.12), rgba(53,64,74,.58)), url("../assets/anime/wallhaven/wallhaven-vp21ol.jpg");
+}
+
+body.doc-page .menu a[href$="about.html"],
+body.doc-page .menu a[href$="readme.html"],
+body.doc-page .menu a[href$="stack.html"],
+body.koharu-shell .topic-list li:has(a[href$="about.html"]),
+body.koharu-shell .topic-list li:has(a[href$="readme.html"]),
+body.koharu-shell .topic-list li:has(a[href$="stack.html"]) { display: none; }
+body.koharu-shell .studio-panel h3,
+body.koharu-shell .studio-panel strong { color: var(--kh-ink); }
+body.koharu-shell .status-pill {
+  color: var(--kh-muted);
+  border-color: var(--kh-line);
+  background: rgba(255, 255, 255, .56);
+}
+body.koharu-shell .status-pill strong { color: var(--kh-blue); }
+body.koharu-shell .dropzone {
+  border-color: rgba(111, 169, 207, .42);
+  background: rgba(237, 247, 252, .72);
+}
+body.koharu-shell .chip {
+  background: rgba(255, 255, 255, .62);
+  border-color: var(--kh-line);
+}
+body.koharu-shell .preview {
+  color: var(--kh-ink);
+  border-color: var(--kh-line);
+  background: rgba(255, 255, 255, .72);
+}
+body.koharu-shell .preview p,
+body.koharu-shell .preview li,
+body.koharu-shell .preview blockquote { color: #55586d; }
+body.koharu-shell .preview code {
+  color: #466b86;
+  background: #edf7fc;
+  border-color: rgba(111, 169, 207, .3);
+}
+body.koharu-shell .preview pre {
+  color: #466b86;
+  background: rgba(237, 247, 252, .86);
+  border-color: var(--kh-line);
+}
+body.koharu-shell .preview blockquote {
+  border-left-color: var(--kh-pink);
+  background: #eef8fd;
+}
 body.koharu-shell textarea,
 body.koharu-shell input,
 body.koharu-shell select { color: var(--kh-ink); background: rgba(255,255,255,.76); border-color: var(--kh-line); }
