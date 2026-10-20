@@ -15,8 +15,6 @@
 
 I build robotic systems across **perception, learning, control, and deployment**. My current focus is embodied manipulation: connecting stereo vision, imitation learning, VLA policies, classical control, and edge execution into reliable closed-loop systems.
 
-My learning repository contains **300+ Markdown notes**, **60+ paper records**, and engineering notes spanning robot kinematics, dynamics, state estimation, ROS2, navigation, computer vision, reinforcement learning, simulation, sim-to-real, and embedded systems.
-
 > Build the model, close the loop, verify it on hardware.
 
 ---
