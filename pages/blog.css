@@ -14,7 +14,7 @@ body {
   margin: 0;
   color: var(--blog-ink);
   font: 16px/1.85 "KaiTi", "STKaiti", "华文楷体", "楷体", serif;
-  background: #f5f9fc url("../assets/koharu/site-header.webp") center top / 100% auto no-repeat;
+  background: #f5f9fc url("https://w.wallhaven.cc/full/5y/wallhaven-5yp5v8.jpg") center top / cover fixed no-repeat;
 }
 body::before {
   content: "";
